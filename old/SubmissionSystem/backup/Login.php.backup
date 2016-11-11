@@ -1,0 +1,106 @@
+
+<html>
+<title>Login</title>
+<body>
+
+<?php
+$SRC_ROOT = "/usr/local/apache2/htdocs/SubmissionSystem";  
+include_once $SRC_ROOT."/AdminAre/conf.php";
+include_once $SRC_ROOT."/AdminAre/fun.php";
+
+session_start();
+
+if(isset($_SESSION[$IDENTITY]))
+{
+	if ($_SESSION[$IDENTITY] == $ADMIN) {
+		# code...
+		$Admin_home = "AdminWelcome.php";
+		Signin($Admin_home);
+	} else {
+		# code...
+		Signin();
+	}
+	
+	
+}
+?>
+
+<h1>Submission System<br/></h1>
+
+<form action = "<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method = "post">
+UserName: <input type="text" name = "<?php echo $USERNAME;  ?>" ><br/>
+Password: <input type="text" name = "<?php echo $PASSWD;    ?>" ><br/>
+<input type = "submit" value = "Sign in">
+</form>
+
+<?php
+
+//check UserName & Passwd right?
+if(isset($_POST[$USERNAME]) && ($_POST[$PASSWD]) )
+{
+	$username 		= deal_string($_POST[$USERNAME]);
+	$passwd 		= deal_passwd($_POST[$PASSWD]);
+
+	//connect to mysql and choose dataset Probability Theory
+	$con = mysqli_connect($SERVERNAME, $DBUSER, $DBPWD);
+	mysqli_select_db($con, $DBNAME);
+	if(!$con)
+		die('Could not connect: '.mysqli_connect_error($con));
+
+	//first check student dataset
+	$table 			= $TABLENAME;
+	$sql = "SELECT $USERNAME, $PASSWD 
+			FROM $table
+			WHERE $USERNAME = '$username' AND 
+				  $PASSWD 	= '$passwd'";
+	//echo $sql."<br>";
+	$result = mysqli_query($con, $sql);
+	if (mysqli_num_rows($result) == 0) {
+		# code...
+		//They are not student, let's see where they are admin
+		$table 		= $ADMINTABLENAME;
+		$sql = "SELECT $USERNAME, $PASSWD 
+				FROM $table
+				WHERE $USERNAME = '$username' AND 
+				 	  $PASSWD 	= '$passwd'";
+		$result = mysqli_query($con, $sql);
+
+		if ( mysqli_num_rows($result) == 0) {
+			# code...
+			//they are not student or admin
+			echo "Ivalid Password, please check.";
+			unset($_SESSION[$IDENTITY]);
+		} else {
+			# code...
+			//they are admin
+			$_SESSION[$IDENTITY] = $ADMIN;
+			$_SESSION[$USERNAME] = $username;	
+
+			$Admin_home = "AdminWelcome.php";
+			Signin($Admin_home);
+		}
+		
+
+	} else {
+		# code...
+		//they are student
+		$_SESSION[$IDENTITY] = $STUDENT;
+		$_SESSION[$USERNAME] = $username;
+		Signin();
+
+	}
+	
+}
+?>
+
+
+<h2>Notice:<br/></h2>
+<?php
+$notice_file = fopen($NOTICE_PATH, "r") or die("Unable to read in Notice!");
+while(!feof($notice_file))
+	echo fgets($notice_file)."<br>";
+fclose($notice_file);
+?>
+
+</body>
+</html>
