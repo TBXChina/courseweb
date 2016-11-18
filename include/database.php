@@ -14,7 +14,7 @@
     }
 
     //Execute sql
-    class ExecSQL {
+    class Database {
         public function __construct($dbParam) {
             $host   = $dbParam->host;
             $user   = $dbParam->user;
