@@ -22,9 +22,9 @@
             $dbname = $dbParam->dbname;
             $conn   = new mysqli($host, $user, $pwd, $dbname);
             if ($conn->connect_error) {
-                die("Connetct to host: ".$host." failed. Error Code = ".$conn->connect_error."<br/>");
+                die("Connetct to host: ".$host." failed. Error Code = ".$conn->connect_error."<br>\n");
             } else {
-                echo "connect to db: ".$host."::".$dbname."<br/>";
+                echo "connect to db: ".$host."::".$dbname."<br>\n";
             }
             $this->dbParam 	= $dbParam;
             $this->conn = $conn;
@@ -47,7 +47,7 @@
                     return false;
                 }
             } elseif ("select" == $sqlType) {
-                if (false == $rs) {
+                if (is_bool($rs) && false == $rs) {
                     return false;
                 }
                 $i = 0;
@@ -56,7 +56,8 @@
                 while ($row = $rs->fetch_array(MYSQLI_ASSOC)) {
                     $arr[$i] = $row;
                     $i = $i + 1;
-                }			
+                }
+                mysqli_free_result($rs);
                 return $arr;
             } else {
                 echo "SQL: ".$sqlstr." expression invalid.<br/>";
@@ -68,7 +69,7 @@
         public function __destruct() {
             if ($this->conn) {
                 $this->conn->close();
-                echo "close db";
+                echo "close db<br>\n";
             }
         }
 
