@@ -84,7 +84,6 @@
             }
             $sqlstr = rtrim($sqlstr, ",");
             $sqlstr .= ")";
-            echo $sqlstr."<br>";
             if ( true == $this->db->execute($sqlstr) ) {
                 return true;
             } else {
