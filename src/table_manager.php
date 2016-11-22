@@ -1,4 +1,5 @@
 <?php
+    include_once "../include/log.php";
     //Table manager
     class TableManager {
         private $db;  //the database you wanna to manage
@@ -12,14 +13,14 @@
         //return an array in which saved the result
         public function Query($prop/*property*/, $value) {
             if ( empty($prop) || empty($value) ) {
-                echo "Error in TableManager::Query, Empty var<br>\n";
+                Log::DebugEcho("Error in TableManager::Query, Empty var.");
                 return false;
             }
             $sqlstr = "SELECT * FROM $this->tableName
                        WHERE $prop = '$value'";
             $rs = $this->db->execute($sqlstr);
             if (is_bool($rs) && false == $rs) {
-                echo "Error in TableManager::Query, please check sql str<br>\n";
+                Log::DebugEcho("Error in TableManager::Query, please check sql str.");
                 $rs = Array();
             }
             return $rs;
@@ -35,12 +36,12 @@
                 empty($prop4modify)   ||
                 empty($newValue)
                ) {
-                echo "Error in TableManager::Update, Empty var<br>\n";
+                Log::DebugEcho("Error in TableManager::Update, Empty var.");
                 return false;
             }
             //first, make sure this record exists
             if (false == $this->Exist($prop4location, $value)) {
-                echo "Error in TableManager::Updata: the record don't exist<br>\n";
+                Log::DebugEcho("Error in TableManager::Updata: the record don't exist.";
                 return false;
             }
             //second, modify this record
@@ -49,7 +50,7 @@
             if ( true == $this->db->execute($sqlstr) ) {
                 return true;
             } else {
-                echo "Error in TableManager::Updata: updata the record failed<br>\n";
+                Log::DebugEcho"Error in TableManager::Updata: updata the record failed.");
                 return false;
             }
         }
@@ -60,20 +61,21 @@
                  0 == count($valueArray)||
                  !is_array($propArray ) ||
                  !is_array($valueArray)) {
-                echo "Error in TableManager::Insert, Empty var or not array.<br>\n";
+                Log::DebugEcho("Error in TableManager::Insert, Empty var or not array.");
                 return false;
             }
             if ( count($propArray) != count($valueArray) ) {
-                echo "Error in TableManager::Insert: the size of two array not equal.<br>\n";
+                Log::DebugEcho("Error in TableManager::Insert: ".
+                               "the size of two array not equal.");
                 return false;
             }
 
             $primaryProp  = $propArray[0];
             $primaryValue = $valueArray[0];
             if ( true == $this->Exist($primaryProp, $primaryValue) ) {
-                echo "Warning in TableManager::Insert: ".
+                Log::DebugEcho("Warning in TableManager::Insert: ".
                      "this record already exists, ".
-                     "no need to insert.<br>\n";
+                     "no need to insert.");
                 return  false;
             }
 
@@ -87,20 +89,20 @@
             if ( true == $this->db->execute($sqlstr) ) {
                 return true;
             } else {
-                echo "Error in TableManager::Insert: failed to insert.<br>\n";
+                Log::DebugEcho("Error in TableManager::Insert: failed to insert.");
                 return false;
             }
         }
 
         public function Delete($prop, $value) {
             if ( empty($prop) || empty($value) ) {
-                echo "Error in TableManager::Delete, Empty var<br>\n";
+                Log::DebugEcho("Error in TableManager::Delete, Empty var.");
                 return false;
             }
             if ( false == $this->Exist($prop, $value) ) {
-                echo "Error in TableManager::Delete, ".
-                     "this record doesn't exist. ".
-                     "Are you sure not kidding me?<br>\n";
+                Log::DebugEcho("Error in TableManager::Delete, ".
+                               "this record doesn't exist. ".
+                               "Are you sure not kidding me?");
                 return false;
             }
 
@@ -109,7 +111,7 @@
             if ($this->db->execute($sqlstr)) {
                 return true;
             } else {
-                echo "Error in TableManager::Delete: failed to delete.<br>\n";
+                Log::DebugEcho("Error in TableManager::Delete: failed to delete.");
                 return false;
             }
         }

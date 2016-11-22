@@ -1,14 +1,13 @@
+<table width="500" border="0" cellspacing="0" cellpadding="0">
+<form action="" method="post" enctype="multipart/form-data">
+    <tr>
+        <td>choose file: </td>
+        <td width="250"><input type="file" name="upfile"/></td>
+        <td width="100"><input type="submit" name="submit" value="upload"/></td>
+    </tr>
+</form>
+</table>
 <?php
-    include_once "../include/database.php";
-    include_once "table_manager.php";
-
-    $dbParam = new DBParam("127.0.0.1", "root", "tbx", "testDB");
-    $db = new Database($dbParam);
-
-    $manager = new TableManager($db, 'test');
-    if ( $manager->Delete("name", "abc") ) {
-        echo "good<br>";
-    } else {
-        echo "bad<br>";
-    }
+    include_once "../include/file.php";
+    File::Download("/home/tbx/workspace/php.ini");
 ?>

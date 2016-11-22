@@ -1,4 +1,5 @@
 <?php
+    include_once "log.php";
     //database parameter
     class DBParam {
         public $host;
@@ -24,7 +25,7 @@
             if ($conn->connect_error) {
                 die("Connetct to host: ".$host." failed. Error Code = ".$conn->connect_error."<br>\n");
             } else {
-                echo "connect to db: ".$host."::".$dbname."<br>\n";
+                Log::DebugEcho("connect to db: ".$host."::".$dbname);
             }
             $this->dbParam 	= $dbParam;
             $this->conn = $conn;
@@ -60,7 +61,7 @@
                 mysqli_free_result($rs);
                 return $arr;
             } else {
-                echo "SQL: ".$sqlstr." expression invalid.<br/>";
+                Log::DebugEcho("SQL: ".$sqlstr." expression invalid.");
                 return false;
             }
             return false;
@@ -76,14 +77,4 @@
         private $dbParam;
         private $conn;    //connect to the database
     }
-
-    /*
-    $dbParam = new DBParam("127.0.0.1", "root", "tbx", "testDB");
-    $execSQL = new ExecSQL($dbParam);
-    $rs = $execSQL->execute("select * from test");
-    echo $rs ? 1 : 0;
-    echo "<br/>";
-    print_r($rs);
-    echo "<br/>";
-    */
 ?>
