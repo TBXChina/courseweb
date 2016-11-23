@@ -11,13 +11,32 @@
         }
 
         //return an array in which saved the result
-        public function Query($prop/*property*/, $value) {
-            if ( empty($prop) || empty($value) ) {
-                Log::DebugEcho("Error in TableManager::Query, Empty var.");
+        public function Query($propArray/*property*/, $valueArray) {
+            if ( empty($propArray) || empty($valueArray) ) {
+                Log::DebugEcho("Error in TableManager::Query: ".
+                               "Empty var.");
                 return false;
             }
-            $sqlstr = "SELECT * FROM $this->tableName
-                       WHERE $prop = '$value'";
+            if ( !is_array($propArray) ) {
+                $propArray = Array($propArray);
+            }
+            if ( !is_array($valueArray) ) {
+                $valueArray = Array($valueArray);
+            }
+
+            if ( count($propArray) != count($valueArray) ) {
+                Log::DebugEcho("Error in TableManager::Query: ".
+                               "The size of prorArray and valueArray not equal");
+                return false;
+            }
+            $sqlstr = "SELECT * FROM $this->tableName WHERE";
+            $size = count($propArray);
+            for ( $i = 0; $i < $size; $i++) {
+                if ( 0 != $i ) {
+                    $sqlstr .= " AND";
+                }
+                $sqlstr .= " $propArray[$i] = '$valueArray[$i]'";
+            }
             $rs = $this->db->execute($sqlstr);
             if (is_bool($rs) && false == $rs) {
                 Log::DebugEcho("Error in TableManager::Query, please check sql str.");
@@ -26,8 +45,8 @@
             return $rs;
         }
 
-        public function Exist($prop, $value) {
-            return 0 != count($this->Query($prop, $value));
+        public function Exist($propArray, $valueArray) {
+            return 0 != count($this->Query($propArray, $valueArray));
         }
 
         public function Update($prop4location, $value, $prop4modify, $newValue) {
@@ -41,7 +60,7 @@
             }
             //first, make sure this record exists
             if (false == $this->Exist($prop4location, $value)) {
-                Log::DebugEcho("Error in TableManager::Updata: the record don't exist.";
+                Log::DebugEcho("Error in TableManager::Updata: the record don't exist.");
                 return false;
             }
             //second, modify this record
@@ -50,7 +69,7 @@
             if ( true == $this->db->execute($sqlstr) ) {
                 return true;
             } else {
-                Log::DebugEcho"Error in TableManager::Updata: updata the record failed.");
+                Log::DebugEcho("Error in TableManager::Updata: updata the record failed.");
                 return false;
             }
         }
