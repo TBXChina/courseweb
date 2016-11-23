@@ -1,5 +1,5 @@
 <?php
-    include_once "../include/log.php";
+    include_once "log.php";
     //Table manager
     class TableManager {
         private $db;  //the database you wanna to manage
