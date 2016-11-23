@@ -1,24 +1,24 @@
 <?php
-    //base class
     class User {
-        private $id;
-        private $name;
-        private $pwd; //password
-        private $level; //authority, admin has the highest level score
+        //unique, to identity each user
+        protected $id;
+        protected $role; //admin, student, or other person
+        protected $name;
+        protected $pwd;
 
-        //id is the primary key
         public function __construct($id) {
-            $this->id       = $id;
-            $this->name     = '';
-            $this->pwd      = '';
-            $this->level    = 0;
+            $this->id   = $id;
+            $this->role = "user";
+            $this->name = "";
+            $this->pwd  = "";
         }
 
-        public function SetId($id) {
-            $this->id = $id;
-        }
         public function GetId() {
             return $this->id;
+        }
+
+        public function GetRole() {
+            return $this->role;
         }
 
         public function SetName($name) {
@@ -34,12 +34,19 @@
         public function GetPwd() {
             return $this->pwd;
         }
+    }
 
-        public function SetLevel($level) {
-            $this->level = $level;
+    class Admin extends User {
+        public function __construct($id) {
+            parent::__construct($id);
+            $this->role = "admin";
         }
-        public function GetLevel() {
-            return $this->level;
+    }
+
+    class Student extends User {
+        public function __construct($id) {
+            parent::__construct($id);
+            $this->role = "student";
         }
     }
 ?>
