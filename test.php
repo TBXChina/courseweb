@@ -12,15 +12,17 @@
     echo "<br>";
     Log::DebugEcho($_SERVER['SERVER_ADDR']);
 */
+    include_once "include/configure.php";
     include_once "include/authentication.php";
     include_once "include/user.php";
-    $authen = new Authentication();
-    //$user = new Student(123);
-    //$authen->SetLegalRole($user);
-    $ad = new Admin(12344);
-    if ( $authen->Permission($ad) ) {
-        echo "Permisson";
-    } else {
-        echo "Not allow";
-    }
+    echo Configure::$STORE_DIR;
+    echo Configure::$AUTHOR;
+    echo Configure::$SESSION_VALID_TIME;
+    echo "<br>";
+    $auth = new Authentication();
+    $user = new Admin(12345);
+    if ($auth->Permission($user) )
+        echo "Permision<br>";
+    else
+        echo "Not Allow<br>";
 ?>    

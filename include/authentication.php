@@ -1,9 +1,16 @@
 <?php
+    include_once "configure.php";
     //User Authentication
     class Authentication {
-        static private $ROLE        = "AUTHENTICATION_ROLE";
-        static private $LAST_ACCESS = "AUTHENTICATION_LAST_ACCESS";
-        static private $VALID_TIME  = 10; /*seconds*/
+        static private $ROLE;
+        static private $LAST_ACCESS;
+        static private $VALID_TIME;
+
+        static public function Init() {
+            self::$ROLE         = "AUTHENTICATION_ROLE";
+            self::$LAST_ACCESS  = "AUTHENTICATION_LAST_ACCESS";
+            self::$VALID_TIME   = Configure::$SESSION_VALID_TIME;
+        }
 
         public function __construct() {
             session_start();
@@ -42,4 +49,5 @@
             }
         }
     }
+    Authentication::Init();
 ?>
