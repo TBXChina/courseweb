@@ -12,15 +12,15 @@
     echo "<br>";
     Log::DebugEcho($_SERVER['SERVER_ADDR']);
 */
+    include_once "include/authentication.php";
     include_once "include/user.php";
-    include_once "include/log.php";
-    $user = new Admin(123);
-    $user->SetName("tbx");
-    $user->SetPwd("aaa");
-    Log::DebugEcho($user->Getid());
-    Log::DebugEcho($user->GetRole());
-    Log::DebugEcho($user->GetName());
-    Log::DebugEcho($user->GetPwd());
-    
-    
+    $authen = new Authentication();
+    //$user = new Student(123);
+    //$authen->SetLegalRole($user);
+    $ad = new Admin(12344);
+    if ( $authen->Permission($ad) ) {
+        echo "Permisson";
+    } else {
+        echo "Not allow";
+    }
 ?>    
