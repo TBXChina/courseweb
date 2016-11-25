@@ -1,5 +1,6 @@
 <?php
     include_once "log.php";
+    include_once "configure.php";
     //database parameter
     class DBParam {
         public $host;
@@ -76,5 +77,17 @@
 
         private $dbParam;
         private $conn;    //connect to the database
+    }
+
+    class DatabaseFactory {
+        static public function Create() {
+            $host = Configure::$DBHOST;
+            $user = Configure::$DBUSER;
+            $pwd  = Configure::$DBPWD;
+            $name = Configure::$DBNAME;
+            $dbParam = new DBParam($host, $user, $pwd, $name);
+            $db = new Database($dbParam);
+            return $db;
+        }
     }
 ?>

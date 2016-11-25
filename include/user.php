@@ -49,4 +49,21 @@
             $this->role = "student";
         }
     }
+
+    class UserFactory {
+        static public function Create($role, $id) {
+            $user = null;
+            switch ($role) {
+                case "admin":
+                    $user = new Admin($id);
+                    break;
+                case "student":
+                    $user = new Student($id);
+                    break;
+                default:
+                    $user = new User($id);
+            }
+            return $user;
+        }
+    }
 ?>

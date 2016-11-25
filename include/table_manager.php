@@ -1,5 +1,7 @@
 <?php
     include_once "log.php";
+    include_once "configure.php";
+    include_once "database.php";
     //Table manager
     class TableManager {
         private $db;  //the database you wanna to manage
@@ -8,6 +10,10 @@
         public function __construct($db, $tableName) {
             $this->db           = $db;
             $this->tableName    = $tableName;
+        }
+
+        public function GetTableName() {
+            return $this->tableName;
         }
 
         //return an array in which saved the result
@@ -133,6 +139,15 @@
                 Log::DebugEcho("Error in TableManager::Delete: failed to delete.");
                 return false;
             }
+        }
+    }
+
+    class TableManagerFactory {
+        static public function Create() {
+            $db = DatabaseFactory::Create();
+            $tableName = Configure::$TABLENAME;
+            $manager = new TableManager($db, $tableName);
+            return $manager;
         }
     }
 ?>

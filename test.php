@@ -12,6 +12,7 @@
     echo "<br>";
     Log::DebugEcho($_SERVER['SERVER_ADDR']);
 */
+/*
     include_once "include/configure.php";
     include_once "include/authentication.php";
     include_once "include/user.php";
@@ -25,4 +26,10 @@
         echo "Permision<br>";
     else
         echo "Not Allow<br>";
+*/
+    include_once "include/user.php";
+    include_once "include/log.php";
+    $user = UserFactory::Create("student", 1234);
+    Log::DebugEcho($user->GetRole());
+    Log::DebugEcho($user->GetId());
 ?>    
