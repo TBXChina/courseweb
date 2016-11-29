@@ -25,6 +25,10 @@
         static public $UPLOAD_FILE_MAX; /*Byte*/
         static public $SESSION_VALID_TIME; /*second*/
 
+        //encode var
+        static public $SALT;
+
+        //Init
         static public function Init() {
             self::$AUTHOR               = "Brayan Tang";
             self::$COURSE               = "Probability Theory";
@@ -41,6 +45,7 @@
             self::$TABLENAME            = "test";
             self::$UPLOAD_FILE_MAX      = 20971520;
             self::$SESSION_VALID_TIME   = 10;
+            self::$SALT                 = "6Ut!4Q";
         }
     }
     Configure::Init();

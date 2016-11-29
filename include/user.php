@@ -2,23 +2,21 @@
     class User {
         //unique, to identity each user
         protected $id;
-        protected $role; //admin, student, or other person
         protected $name;
         protected $pwd;
 
+        static public function GetRole() {
+            return "user";
+        }
+
         public function __construct($id) {
             $this->id   = $id;
-            $this->role = "user";
             $this->name = "";
             $this->pwd  = "";
         }
 
         public function GetId() {
             return $this->id;
-        }
-
-        public function GetRole() {
-            return $this->role;
         }
 
         public function SetName($name) {
@@ -37,16 +35,22 @@
     }
 
     class Admin extends User {
+        static public function GetRole() {
+            return "admin";
+        }
+
         public function __construct($id) {
             parent::__construct($id);
-            $this->role = "admin";
         }
     }
 
     class Student extends User {
+        static public function GetRole() {
+            return "student";
+        }
+
         public function __construct($id) {
             parent::__construct($id);
-            $this->role = "student";
         }
     }
 
@@ -54,10 +58,10 @@
         static public function Create($role, $id) {
             $user = null;
             switch ($role) {
-                case "admin":
+                case Admin::GetRole():
                     $user = new Admin($id);
                     break;
-                case "student":
+                case Student::GetRole():
                     $user = new Student($id);
                     break;
                 default:

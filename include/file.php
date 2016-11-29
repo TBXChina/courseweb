@@ -63,6 +63,32 @@
             return true;
         }
 
+        //read a file, 
+        static public function ReadFile($path, $RETURN_IN_LINES = false) {
+            $path = File::Trim($path);
+            if ( !is_file($path) ) {
+                Log::DebugEcho("Error in File::ReadFile: ".
+                               "File not exist, can't read");
+                return false;
+            }
+            if ( true == $RETURN_IN_LINES ) {
+                $f = fopen($path, "r") or die ("Error inf File::ReadFile: ".
+                                               "Can't open file");
+                $lines = array();
+                while(!feof($f)) {
+                    $l = fgets($f);
+                    if ( $l != "\n" && !empty($l) )  {
+                        array_push($lines, trim($l));
+                    }
+                }
+                fclose($f);
+                return $lines;
+            } else {
+                $f_str = file_get_contents($path);
+                return $f_str;
+            }
+        }
+
         //write msg to file, mode is 'w' or 'a'
         static public function Write2File($msg, $path, $mode) {
             if ( 0 != strcasecmp($mode, "a") &&

@@ -27,9 +27,10 @@
     else
         echo "Not Allow<br>";
 */
-    include_once "include/user.php";
-    include_once "include/log.php";
-    $user = UserFactory::Create("student", 1234);
-    Log::DebugEcho($user->GetRole());
+/*
     Log::DebugEcho($user->GetId());
+*/
+    include_once "include/encode.php";
+    echo Encode::Hash("abc")."<br>";
+    echo Encode::Hash("abc1")."<br>";
 ?>    
