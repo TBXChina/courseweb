@@ -30,7 +30,12 @@
 /*
     Log::DebugEcho($user->GetId());
 */
-    include_once "include/encode.php";
-    echo Encode::Hash("abc")."<br>";
-    echo Encode::Hash("abc1")."<br>";
-?>    
+?>
+<!DOCTYPE html>
+<body>
+<?php
+    include_once "include/module.php";
+    $m = new LoginFormModule(2);
+    $m->Display();
+?>
+</body>

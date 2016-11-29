@@ -24,5 +24,13 @@
             return $users;
         }
 
+        //this function just for align html tag
+        static public function NSpaceStr($num) {
+            $str = "";
+            for ($i = 0; $i < $num; $i++) {
+                $str .= " ";
+            }
+            return $str;
+        }
     }
 ?>

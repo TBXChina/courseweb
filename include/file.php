@@ -29,6 +29,19 @@
             return $content;
         }
 
+        //mkdir, if already exists, do nothing
+        static public function Mkdir($path) {
+            $path = File::Trim($path);
+            if ( is_dir($path) ) {
+                return true;
+            }
+            if ( mkdir($path) ) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
         //support del a file or a directory
         static public function RM($path) {
             if ( false == file_exists($path) ) {
