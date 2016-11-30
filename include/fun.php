@@ -1,6 +1,7 @@
 <?php
     include_once "file.php";
     include_once "user.php";
+    include_once "encode.php";
 
     //some usefull function
     class Fun {
@@ -31,6 +32,28 @@
                 $str .= " ";
             }
             return $str;
+        }
+
+        //process the username
+        static public function ProcessUsername($username) {
+            $username = trim($username);
+            $username = stripslashes($username);
+            $username = htmlspecialchars($username);
+            $username = strtolower($username);
+            return $username;
+        }
+
+        //process the password
+        static public function ProcessPassword($password) {
+            $password = trim($password);
+            $password = stripslashes($password);
+            $password = htmlspecialchars($password);
+            //$password = Encode::Hash($password);
+            return $password;
+        }
+
+        static public function Byte2MB($size) {
+            return sprintf("%.2f", $size / 1024 / 1024);
         }
     }
 ?>

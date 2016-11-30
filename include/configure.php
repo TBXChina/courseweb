@@ -19,7 +19,8 @@
         static public $DBUSER;
         static public $DBPWD;
         static public $DBNAME;
-        static public $TABLENAME;
+        static public $USERTABLE;
+        static public $NEWSTABLE;
 
         //constraint
         static public $UPLOAD_FILE_MAX; /*Byte*/
@@ -42,7 +43,8 @@
             self::$DBUSER               = "root";
             self::$DBPWD                = "tbx";
             self::$DBNAME               = "testDB";
-            self::$TABLENAME            = "test";
+            self::$USERTABLE            = "test";
+            self::$NEWSTABLE            = "NewsTable";
             self::$UPLOAD_FILE_MAX      = 20971520;
             self::$SESSION_VALID_TIME   = 10;
             self::$SALT                 = "6Ut!4Q";

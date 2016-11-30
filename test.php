@@ -35,7 +35,7 @@
 <body>
 <?php
     include_once "include/module.php";
-    $m = new LoginFormModule(2);
+    $m = new HomeworkListModule(2, "/usr/local/apache2/htdocs/courseweb/include");
     $m->Display();
 ?>
 </body>

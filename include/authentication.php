@@ -19,13 +19,13 @@
             }
         }
 
-        public function SetLegalRole($user) {
-            $_SESSION[self::$ROLE] = $user->GetRole();
+        public function SetLegalRole($role) {
+            $_SESSION[self::$ROLE] = $role;
             $_SESSION[self::$LAST_ACCESS] = time();
         }
-        public function Permission($user) {
+        public function Permission($role) {
             if ( isset($_SESSION[self::$ROLE]) ) {
-                return $_SESSION[self::$ROLE] == $user->GetRole();
+                return $_SESSION[self::$ROLE] == $role;
             } else {
                 return false;
             }

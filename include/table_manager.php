@@ -17,12 +17,16 @@
         }
 
         //return an array in which saved the result
-        public function Query($propArray/*property*/, $valueArray) {
+        public function Query($propArray/*property*/ = array(),
+                              $valueArray            = array()) {
+            /*
+            // allow empty var now, to get all query results
             if ( empty($propArray) || empty($valueArray) ) {
                 Log::DebugEcho("Error in TableManager::Query: ".
                                "Empty var.");
                 return false;
             }
+            */
             if ( !is_array($propArray) ) {
                 $propArray = Array($propArray);
             }
@@ -35,10 +39,12 @@
                                "The size of prorArray and valueArray not equal");
                 return false;
             }
-            $sqlstr = "SELECT * FROM $this->tableName WHERE";
+            $sqlstr = "SELECT * FROM $this->tableName ";
             $size = count($propArray);
             for ( $i = 0; $i < $size; $i++) {
-                if ( 0 != $i ) {
+                if ( 0 == $i ) {
+                    $sqlstr .= " WHERE";
+                } else {
                     $sqlstr .= " AND";
                 }
                 $sqlstr .= " $propArray[$i] = '$valueArray[$i]'";
@@ -143,9 +149,8 @@
     }
 
     class TableManagerFactory {
-        static public function Create() {
+        static public function Create($tableName) {
             $db = DatabaseFactory::Create();
-            $tableName = Configure::$TABLENAME;
             $manager = new TableManager($db, $tableName);
             return $manager;
         }
