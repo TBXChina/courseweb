@@ -127,15 +127,6 @@
             }
 
             public function Display() {
-                /*
-                if ( isset($_POST[self::$DOWNLOAD]) && isset($_POST[self::$FILENAME]) ) {
-                    //Log::Echo2Web($_POST[self::$FILENAME]);
-                }
-                if ( isset($_POST[self::$DELETE]) && isset($_POST[self::$FILENAME]) ) {
-                    Log::Echo2Web($_POST[self::$FILENAME]);
-                }
-                */
-
                 $RETURN_VALUE_CONTAINT_SUBDIR = false;
                 $files = File::LS($this->homeDir, $RETURN_VALUE_CONTAINT_SUBDIR);
                 if ( 0 == count($files) ) {
@@ -175,11 +166,12 @@
             }
     }
 
-    //Download module, need point out which submit button, download what, and home dir
+    //Download module, need point out which download button, download what, and home dir
     class DownloadModule implements Module {
         private $downloadButton;
         private $fileName;
         private $homeDir;
+
         public function __construct($downloadButton, $fileName, $homeDir) {
             $this->downloadButton = $downloadButton;
             $this->fileName       = $fileName;
@@ -190,9 +182,38 @@
             if ( isset($_POST[$this->downloadButton]) ) {
                 if ( isset($_POST[$this->fileName]) ) {
                     $path = $this->homeDir."/".$_POST[$this->fileName];
-                    File::Download($path);
+                    if ( false == File::Download($path) ) {
+                        Log::Echo2Web("Download File Failed");
+                    }
                 } else {
                     Log::Echo2Web("You should choose a file to download");
+                }
+            }
+        }
+    }
+
+    //Delete module, need point out which delete button, delete what, and home dir
+    class DeleteModule implements Module {
+        private $deleteButton;
+        private $fileName;
+        private $homeDir;
+
+        public function __construct($deleteButton, $fileName, $homeDir) {
+            $this->deleteButton = $deleteButton;
+            $this->fileName     = $fileName;
+            $this->homeDir      = File::Trim($homeDir);
+        }
+
+        public function Display() {
+            if ( isset($_POST[$this->deleteButton]) ) {
+                if ( isset($_POST[$this->fileName]) ) {
+                    $path = $this->homeDir."/".$_POST[$this->fileName];
+                    //Log::Echo2Web($path);
+                    if ( false == File::RM($path) ) {
+                        Log::Echo2Web("Delete File Failed");
+                    }
+                } else {
+                    Log::Echo2Web("You Should choose a file to delete.");
                 }
             }
         }

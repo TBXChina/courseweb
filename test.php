@@ -1,9 +1,9 @@
 <?php
     include_once "include/module.php";
-    $homeDir = "/home/tbx/workspace/doc/";
-    $dm = new DownloadModule(HomeworkListModule::GetDownloadButton(),
-                             HomeworkListModule::GetFileName(),
-                             $homeDir);
+    $homeDir = "/home/tbx/workspace/doc";
+    $dm = new DeleteModule(HomeworkListModule::GetDeleteButton(),
+                           HomeworkListModule::GetFileName(),
+                           $homeDir);
     $dm->Display();
 ?>
 <!DOCTYPE html>

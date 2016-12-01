@@ -61,17 +61,14 @@
                             return false;
                         }
                     } else {
-                        //unlink($subpath);
-                        echo $subpath."<br>\n";
+                        unlink($subpath);
                     }
                 }
                 //delete current dir
-                //rmdir($path);
-                echo $path."<br>\n";
+                rmdir($path);
             } else {
                 //this is a file
-                //unlink($path);
-                echo $path."<br>\n";
+                unlink($path);
             }
             return true;
         }
