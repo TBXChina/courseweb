@@ -2,7 +2,7 @@
     include_once "log.php";
     //wrap file system operation
     class File {
-        static private function Trim($path) {
+        static public function Trim($path) {
             return rtrim(trim($path), '/');
         }
 
@@ -167,25 +167,28 @@
             return true;
         }
 
-        static public function Download($path) {
-            if ( !is_file($path) ) {
+        //A very Important point, you must have the permission to access the file... otherwise, you can't download the file in some cases...
+        static public function Download($file) {
+            if ( is_file($file) ) {
+                header('Content-Description: File Transfer');
+                header('Content-Type: application/octet-stream');
+                header('Content-Disposition: attachment; filename="'.basename($file).'"');
+                header('Expires: 0');
+                header('Cache-Control: must-revalidate');
+                header('Pragma: public');
+                header('Content-Length: ' . filesize($file));
+                if ( ob_get_level() ) {
+                    ob_end_clean();
+                }
+                readfile($file);
+                ob_flush();
+                flush();
+                return true;
+            } else {
                 Log::DebugEcho("Error in File::Download: ".
                                "Can't find file.");
                 return false;
             }
-            header('Content-Description: File Transfer');
-            header('Content-Type: application/octet-stream');
-            header('Content-Disposition: attachment; filename="'.basename($path).'"');
-            header('Expires: 0');
-            header('Cache-Control: must-revalidate');
-            header('Pragma: public');
-            header('Content-Length: ' . filesize($path));
-            if ( ob_get_level() ) {
-                ob_end_clean();
-            }
-            readfile($path);
-            fclose($path);
-            return true;
         }
     }
 ?>

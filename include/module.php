@@ -4,6 +4,7 @@
     include_once "table_manager.php";
     include_once "user.php";
     include_once "authentication.php";
+    include_once "file.php";
 
     interface Module {
         public function Display();
@@ -27,8 +28,8 @@
     //Login Form
     class LoginFormModule implements Module {
         private $spaceNum;
-        static private $USERNAME = "LoginForm_USERNAME";
-        static private $PASSWORD = "LoginForm_PASSWORD";
+        static private $USERNAME = "LoginForm_Username";
+        static private $PASSWORD = "LoginForm_Password";
 
         public function __construct($spaceNum) {
             $this->spaceNum = $spaceNum;
@@ -104,18 +105,36 @@
     class HomeworkListModule implements Module {
             private $spaceNum;
             private $homeDir;
-            static private $FILENAME = "HOMEWORKLIST_FILENAME";
-            static private $DELETE   = "HOMEWORKLIST_DELETE";
+            static private $FILENAME = "HomeworkList_FileName";
+            static private $DOWNLOAD = "HomeworkList_Download";
+            static private $DELETE   = "HomeworkList_Delete";
 
             public function __construct($spaceNum, $homeDir) {
                 $this->spaceNum = $spaceNum;
-                $this->homeDir  = $homeDir;
+                $this->homeDir  = File::Trim($homeDir);
+            }
+
+            static public function GetFileName() {
+                return self::$FILENAME;
+            }
+
+            static public function GetDownloadButton() {
+                return self::$DOWNLOAD;
+            }
+
+            static public function GetDeleteButton() {
+                return self::$DELETE;
             }
 
             public function Display() {
+                /*
+                if ( isset($_POST[self::$DOWNLOAD]) && isset($_POST[self::$FILENAME]) ) {
+                    //Log::Echo2Web($_POST[self::$FILENAME]);
+                }
                 if ( isset($_POST[self::$DELETE]) && isset($_POST[self::$FILENAME]) ) {
                     Log::Echo2Web($_POST[self::$FILENAME]);
                 }
+                */
 
                 $RETURN_VALUE_CONTAINT_SUBDIR = false;
                 $files = File::LS($this->homeDir, $RETURN_VALUE_CONTAINT_SUBDIR);
@@ -148,9 +167,34 @@
                 }
                 $str   .= $prefix."    </table><br>\n";
                 $str   .= $prefix."    <input type = \"submit\" name = \"".
-                          self::$DELETE."\" value = \"Download\">\n";
+                          self::$DOWNLOAD."\" value = \"Download\">\n";
+                $str   .= $prefix."    <input type = \"submit\" name = \"".
+                          self::$DELETE."\" value = \"Delete\">\n";
                 $str   .= $prefix."</form>\n";
                 Log::Echo2Web($str);
             }
+    }
+
+    //Download module, need point out which submit button, download what, and home dir
+    class DownloadModule implements Module {
+        private $downloadButton;
+        private $fileName;
+        private $homeDir;
+        public function __construct($downloadButton, $fileName, $homeDir) {
+            $this->downloadButton = $downloadButton;
+            $this->fileName       = $fileName;
+            $this->homeDir        = File::Trim($homeDir);
+        }
+
+        public function Display() {
+            if ( isset($_POST[$this->downloadButton]) ) {
+                if ( isset($_POST[$this->fileName]) ) {
+                    $path = $this->homeDir."/".$_POST[$this->fileName];
+                    File::Download($path);
+                } else {
+                    Log::Echo2Web("You should choose a file to download");
+                }
+            }
+        }
     }
 ?>
