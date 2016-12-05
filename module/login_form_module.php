@@ -34,9 +34,9 @@
             }
             //display the form
             $prefix = Fun::NSpaceStr($this->spaceNum);
-            $str    = $prefix."<form action = ".
+            $str    = $prefix."<form action = \"".
                       htmlspecialchars($_SERVER["PHP_SELF"]).
-                      " method = \"post\">\n";
+                      "\" method = \"post\">\n";
             $str   .= $prefix."   Username: <input type = \"text\" name = \"".
                        self::$USERNAME.
                        "\" placeholder = \"Student ID\" required><br>\n";

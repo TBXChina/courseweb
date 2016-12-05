@@ -116,7 +116,7 @@
         }
 
         //upload file, saveName no need to contain postfix, only name is ok
-        static public function UploadFile($fileName, $saveDir, $saveName = "/") {
+        static public function UploadFile($fileName, $saveDir, $saveName = null) {
             if ( empty($_FILES[$fileName]) ) {
                 Log::DebugEcho("Error in File::UploadFile ".
                                "No file upload.");
@@ -139,7 +139,7 @@
                                "save dir doesn't exist.");
                 return false;
             }
-            if ( 0 == strcmp($saveName, "/") ) {
+            if ( is_null($saveName) ) {
                 $saveName = $fileinfo["name"];
             } else {
                 $name = $fileinfo["name"];
