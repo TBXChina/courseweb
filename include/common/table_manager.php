@@ -1,7 +1,7 @@
 <?php
-    include_once "log.php";
-    include_once "configure.php";
-    include_once "database.php";
+    include_once "include/configure.php";
+    include_once "include/common/log.php";
+    include_once "include/common/database.php";
     //Table manager
     class TableManager {
         private $db;  //the database you wanna to manage
@@ -49,6 +49,7 @@
                 }
                 $sqlstr .= " $propArray[$i] = '$valueArray[$i]'";
             }
+            Log::DebugEcho($sqlstr);
             $rs = $this->db->execute($sqlstr);
             if (is_bool($rs) && false == $rs) {
                 Log::DebugEcho("Error in TableManager::Query, please check sql str.");

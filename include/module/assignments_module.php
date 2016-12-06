@@ -1,9 +1,9 @@
 <?php
-    include_once "module.php";
-    include_once "include/log.php";
-    include_once "include/fun.php";
-    include_once "include/file.php";
-    include_once "include/user.php";
+    include_once "include/module/module.php";
+    include_once "include/common/log.php";
+    include_once "include/common/fun.php";
+    include_once "include/common/file.php";
+    include_once "include/common/user.php";
 
     //Show the asssignment
     class AssignmentsModule implements Module {

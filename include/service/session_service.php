@@ -1,11 +1,11 @@
 <?php
-    include_once "module.php";
-    include_once "include/log.php";
-    include_once "include/authentication.php";
+    include_once "include/service/service.php";
+    include_once "include/common/log.php";
+    include_once "include/common/authentication.php";
 
     //session module, directly concern with authentication
-    class SessionModule implements Module {
-        public function Display() {
+    class SessionService implements Service {
+        public function Run() {
             $authentication = new Authentication();
             //$authentication->SetLegalRole(Admin::GetRole());
             if ( $authentication->Permission(Admin::GetRole()) ) {

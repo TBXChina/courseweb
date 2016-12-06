@@ -1,9 +1,9 @@
 <?php
-    include_once "module.php";
+    include_once "include/module/module.php";
     include_once "include/configure.php";
-    include_once "include/log.php";
-    include_once "include/fun.php";
-    include_once "include/table_manager.php";
+    include_once "include/common/log.php";
+    include_once "include/common/fun.php";
+    include_once "include/common/table_manager.php";
 
     //Login Form
     class LoginFormModule implements Module {

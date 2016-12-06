@@ -1,7 +1,7 @@
 <?php
-    include_once "file.php";
-    include_once "user.php";
-    include_once "encode.php";
+    include_once "include/common/file.php";
+    include_once "include/common/user.php";
+    include_once "include/common/encode.php";
 
     //some usefull function
     class Fun {

@@ -1,6 +1,6 @@
 <?php
-    include_once "log.php";
-    include_once "configure.php";
+    include_once "include/configure.php";
+    include_once "include/common/log.php";
     //database parameter
     class DBParam {
         public $host;

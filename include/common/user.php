@@ -6,12 +6,12 @@
         protected $pwd;
 
         static public function GetRole() {
-            return "user";
+            return "Guest";
         }
 
         public function __construct($id) {
             $this->id   = $id;
-            $this->name = "";
+            $this->name = "Anonymity";
             $this->pwd  = "";
         }
 

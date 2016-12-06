@@ -1,10 +1,10 @@
 <?php
-    include_once "module.php";
-    include_once "include/log.php";
-    include_once "include/file.php";
+    include_once "include/service/service.php";
+    include_once "include/common/log.php";
+    include_once "include/common/file.php";
 
     //Delete module, need point out which delete button, delete what, and home dir
-    class DeleteModule implements Module {
+    class DeleteService implements Service {
         private $deleteButton;
         private $fileName;
         private $homeDir;
@@ -15,7 +15,7 @@
             $this->homeDir      = File::Trim($homeDir);
         }
 
-        public function Display() {
+        public function Run() {
             if ( isset($_POST[$this->deleteButton]) ) {
                 if ( isset($_POST[$this->fileName]) ) {
                     $path = $this->homeDir."/".$_POST[$this->fileName];

@@ -1,5 +1,6 @@
 <?php
-    include_once "log.php";
+    include_once "include/common/log.php";
+
     //wrap file system operation
     class File {
         static public function Trim($path) {

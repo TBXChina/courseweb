@@ -1,10 +1,10 @@
 <?php
-    include_once "module.php";
-    include_once "include/log.php";
-    include_once "include/file.php";
+    include_once "include/service/service.php";
+    include_once "include/common/log.php";
+    include_once "include/common/file.php";
 
     //upload module, need point out which upload button, upload what, and save where
-    class UploadModule implements Module {
+    class UploadService implements Service {
         private $uploadButton;
         private $fileName;
         private $saveDir;
@@ -15,7 +15,7 @@
             $this->saveDir      = File::Trim($saveDir);
         }
 
-        public function Display() {
+        public function Run() {
             if ( isset($_POST[$this->uploadButton]) ) {
                 if ( isset($_FILES[$this->fileName]) ) {
                     if ( false == File::UploadFile($this->fileName,

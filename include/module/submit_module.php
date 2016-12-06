@@ -1,18 +1,16 @@
 <?php
-    include_once "module.php";
-    include_once "include/log.php";
-    include_once "include/fun.php";
+    include_once "include/module/module.php";
+    include_once "include/common/log.php";
+    include_once "include/common/fun.php";
 
     //submit what you want
     class SubmitModule implements Module {
         private $spaceNum;
-        private $saveDir;
         static private $FILENAME = "Submit_FileName";
         static private $UPLOAD   = "Submit_Upload";
 
-        public function __construct($spaceNum, $saveDir) {
+        public function __construct($spaceNum) {
             $this->spaceNum = $spaceNum;
-            $this->saveDir  = $saveDir;
         }
 
         static public function GetFileName() {

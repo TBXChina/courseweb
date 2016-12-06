@@ -1,5 +1,5 @@
 <?php
-    //display a module, or start up a function
+    //display a module
     interface Module {
         public function Display();
     }
