@@ -1,15 +1,17 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <body>
 <?php
-    include_once "include/module/submit_module.php";
-    include_once "include/service/upload_service.php";
-    $saveDir = "/home/tbx/workspace/doc";
-    $m = new SubmitModule(2);
+    include_once "include/module/login_form_module.php";
+    include_once "include/service/login_service.php";
+    $m = new LoginFormModule(2);
     $m->Display();
 
-    $us = new UploadService(SubmitModule::GetUploadButton(),
-                            SubmitModule::GetFileName(),
-                            $saveDir);
-    $us->Run();
+    $ls = new LoginService(LoginFormModule::GetLoginButton(),
+                           LoginFormModule::GetUsername(),
+                           LoginFormModule::GetPassword());
+    $ls->Run();
 ?>
 </body>

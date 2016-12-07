@@ -3,16 +3,20 @@
         //unique, to identity each user
         protected $id;
         protected $name;
-        protected $pwd;
-
-        static public function GetRole() {
-            return "Guest";
-        }
+        protected $password;
 
         public function __construct($id) {
             $this->id   = $id;
             $this->name = "Anonymity";
             $this->pwd  = "";
+        }
+
+        public function __destruct() {
+            echo "user destroy<br>\n";
+        }
+
+        static public function GetRole() {
+            return "Guest";
         }
 
         public function GetId() {
@@ -26,11 +30,11 @@
             return $this->name;
         }
 
-        public function SetPwd($pwd) {
-            $this->pwd = $pwd;
+        public function SetPassword($pwd) {
+            $this->password = $pwd;
         }
-        public function GetPwd() {
-            return $this->pwd;
+        public function GetPassword() {
+            return $this->password;
         }
     }
 
