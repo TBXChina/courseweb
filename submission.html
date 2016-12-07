@@ -18,34 +18,33 @@
 <script type="text/javascript" src="js/move-top.js"></script>
 <script type="text/javascript" src="js/easing.js"></script>
 
-
-        <!-- stylesheets -->
-        
-        <link rel="stylesheet" href="css/font_icon/css/pe-icon-7-stroke.css">
-        <link rel="stylesheet" href="css/font_icon/css/helper.css">
-        
-        
+<!-- stylesheets -->
+<link rel="stylesheet" href="css/font_icon/css/pe-icon-7-stroke.css">
+<link rel="stylesheet" href="css/font_icon/css/helper.css">
+<!--start-smoth-scrolling-->
 <script type="text/javascript">
 			jQuery(document).ready(function($) {
-				$(".scroll").click(function(event){		
+				$(".scroll").click(function(event){
 					event.preventDefault();
 					$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
 				});
 			});
 		</script>
-<!--start-smoth-scrolling-->
+<!--end-smoth-scrolling-->
 
 
 <meta name="renderer" content="webkit">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Submission</title>
-	<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
-	<link href="css/style_about.css" rel='stylesheet' type='text/css' />
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="keywords" content="Probability Theory Submission System" 
-	/>
-	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Submission</title>
+<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+<link href="css/style_about.css" rel='stylesheet' type='text/css' />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Probability Theory Submission System"/>
+	<script type="application/x-javascript">
+  addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+  function hideURLbar(){ window.scrollTo(0,1); }
+  </script>
 	<!----webfonts---->
 		<!-- <link href='http://fonts.googleapis.com/css?family=Oswald:100,400,300,700' rel='stylesheet' type='text/css'> -->
 		<link href='css/googleapis.css' rel='stylesheet' type='text/css'>
@@ -61,7 +60,7 @@
 <!--/script-->
 <script type="text/javascript">
 			jQuery(document).ready(function($) {
-				$(".scroll").click(function(event){		
+				$(".scroll").click(function(event){
 					event.preventDefault();
 					$('html,body').animate({scrollTop:$(this.hash).offset().top},900);
 				});
@@ -94,9 +93,9 @@
 					 });
 				</script>
 				<!-- /script-for-menu -->
-			</div>	
+			</div>
 			<div class="clearfix"> </div>
-		</div>	
+		</div>
 	</div>
 	<!--//header-->
 
@@ -117,29 +116,28 @@
 							new UISearch( document.getElementById( 'sb-search' ) );
 						</script>
 	<!--//search-scripts-->
-	
+
 
 <div class="single">
 	 <div class="container">
-		  <div class="col-md-8 single-main">				 
+		  <div class="col-md-8 single-main">
 			  <div class="single-grid">
-					<img src="images/1.jpg" alt="cover image"/>			 								
+					<img src="images/6.jpg" alt="cover image"/>
 			  </div>
 			 <ul class="comment-list"  id="submit">
 		  		   <h5 class="post-author_head" style="color:#2ad2c9;font-size: 25pt;">Submit homework</h5>
 		  		   <li>
 		  		   <div class="desc">
-		  		   <form enctype="multipart/form-data" 
-						action = "/SubmissionSystem/Welcome.php" 
+		  		   <form enctype="multipart/form-data"
+						action = "/SubmissionSystem/Welcome.php"
 						method = "post">
 						<p>Choose No.</p>
-						<input type="radio" name = "Select" value = "1" required> 1&nbsp&nbsp&nbsp<input type="radio" name = "Select" value = "2" required> 2&nbsp&nbsp&nbsp<input type="radio" name = "Select" value = "3" required> 3&nbsp&nbsp&nbsp	
+						<input type="radio" name = "Select" value = "1" required> 1&nbsp&nbsp&nbsp<input type="radio" name = "Select" value = "2" required> 2&nbsp&nbsp&nbsp<input type="radio" name = "Select" value = "3" required> 3&nbsp&nbsp&nbsp
 						<p>Assignment to submit.</p>
 						<input type="file" name="file" id="file" required=""/>
 						<br/>
-						<input type="submit" name = "SubmitHomework" value = "Upload" class="button green"/>			
+						<input type="submit" name = "SubmitHomework" value = "Upload" class="button green"/>
 					</form>
-
 
 					<!-- implement upload function -->
 										<!-- upload  -->
@@ -149,104 +147,123 @@
 							<li>Size < 20.00 MB </li>
 							<li>Type is pdf/zip</li>
 							<li>Uploaded file will be renamed.</li>
-						</ul> 
+						</ul>
 					</div>
-						
+
 		  		   </div>
 		  		   <div class="clearfix"></div>
 		  		   </li>
 		  	  </ul>
 
-
-
-		  	  		
 		  	  <ul class="comment-list"  id="list">
 		  		   <h5 class="post-author_head" style="color:#2ad2c9;font-size: 25pt;">Your homework lists</h5>
 		  		   <!-- implement delete function -->
 		  		   		  		   <li>
-		  		   <form action = "/SubmissionSystem/Welcome.php" 
+		  		   <form action = "/SubmissionSystem/Welcome.php"
 		  		          method = "post">
-		  		          
+
 		  		        <table border = "1" border-spacing = "100" >
 						<tr>
 							<td align = "center" ><p>Name</p></td>
 							<td align = "center"><p>Upload Time</p></td>
 							<td align = "center"><p>Size MB</p></td>
-							<tr><td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="radio" 
-			   name = "fileName" 
+							<tr><td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="radio"
+			   name = "fileName"
 			   value = "mg1423021_No_3.pdf"
 			   required>&nbsp&nbspmg1423021_No_3.pdf&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td><td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp2016-05-20 21:24:05&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td><td align = "center">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp0.39&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td></tr>						</table>
 						<br>
 						<input type = "submit" name = "Download" value = "Download" class="button green">
 						<input type = "submit" name = "Delete"   value = "Delete" class="button red">
-		  		   </form>		  		
+		  		   </form>
 		  		   </li>
 		  	  </ul>
 
 		  	  <ul class="comment-list"  id="assignments">
 		  	  	<div>
 					 <h3 style="color:#2ad2c9;font-size: 25pt;">Assignments</h3><br/>
-					 <form action = "/SubmissionSystem/Welcome.php" 
+					 <form action = "/SubmissionSystem/Welcome.php"
 					 	   method = "post">
 					 	 <ul>
-					 	 <li><input type="radio" 
-			   name = "fileName" 
+					 	 <li><input type="radio"
+			   name = "fileName"
 			   value = "1.《概率论与随机过程》大作业1.pdf"
-			   required>1.《概率论与随机过程》大作业1.pdf</li><li><input type="radio" 
-			   name = "fileName" 
+			   required>1.《概率论与随机过程》大作业1.pdf</li><li><input type="radio"
+			   name = "fileName"
 			   value = "2.《概率论与随机过程》大作业2.pdf"
-			   required>2.《概率论与随机过程》大作业2.pdf</li><li><input type="radio" 
-			   name = "fileName" 
+			   required>2.《概率论与随机过程》大作业2.pdf</li><li><input type="radio"
+			   name = "fileName"
 			   value = "3.《概率论与随机过程》大作业3.pdf"
-			   required>3.《概率论与随机过程》大作业3.pdf</li>						 </ul>
+			   required>3.《概率论与随机过程》大作业3.pdf</li>
+            </ul>
 						<br>
-						<input type = "submit" name = "RequirmentDownload" value = "Download" class="button green">
-					 </form>
-
-				 </div>
-		  	  </ul>
+						<input type = "submit" name = "RequirmentDownload" value = "Download"
+            class="button green"/>
+				  </form>
+         </div>
+	     </ul>
 		  </div>
 
 			  <div class="col-md-4 side-content">
 				 <div class="recent">
 					 <h1 style="color:#2ad2c9;font-size: 25pt;">Hello, MG1423021</h1><br>
 					 <h3>Your Identity is Student</h3>
-					 	<form action = "/SubmissionSystem/Welcome.php" 
+					 	<form action = "/SubmissionSystem/Welcome.php"
 					 	   method = "post">
 						<input type = "submit" name = "Signout" value = "Sign Out" class="button blue small"/>
 						</form>
 						<br>
 						<h3>Change Password </h3>
 						<form action = "/SubmissionSystem/Welcome.php" method = "post">
-						<input type = "password" 
+						<input type = "password"
 							   name = "NewPassWD"
 							   placeholder = "New Password"
-							   required style="line-height: 30px;"> 
+							   required style="line-height: 30px;">
 						<input type="submit" Name = "ChangePassWD" value = "Change" class="button red small"/>
 						</form>
-
+          </div>
 						<!-- php implement change password function -->
-										 </div>
+
 				 <div class="archives">
 					 <h3 style="color:#2ad2c9;font-size: 25pt;">Recent News</h3>
 					 <ul>
-		 		 	 <li><b>2016-06-06</b>	<br/>第三次大作业截止时间提前至6月10日，请大家抓紧时间提交大作业。
-<br></li><li><b>2016-05-19</b><br/>	第三次大作业已经发布，截止时间是6月18日。
-<br></li><li><b>2016-03-23</b>	<br/>该系统只发布概率论大作业，需要概率论课件和ppt的同学请下课后到讲台自行拷贝。
-<br></li><li><b>2016-03-21</b>	<br/>使用360浏览器的同学建议使用极速模式（地址栏最右边有个按钮可以切换。
-<br></li><li><b>2016-03-20</b><br/>	浏览效果比较好的是Chrome，Firefox， Edge。
-<br></li><li><b>2016-03-15</b><br/>	第二次大作业已经发布，截止日期是4月10日。
-<br></li><li><b>2016-03-15</b>	<br/>第一次大作业已经发布，截止日期是3月31日。
-<br></li><li><b>2016-03-13</b><br/>	用户名和初始密码就是学号，修改后的密码是大小写敏感的。
-<br></li><li><b>2016-03-13</b><br/>	本系统不开放注册，有少量同学的学号没有导入系统的，请邮件我们；忘记密码的，请课上联系助教或者直接到电子楼305实验室。
-<br></li><li><b>2016-03-13</b>	<br/>因时间关系，没有实现更多的功能。任何问题、交流或者发现了bug，请联系我们：probability2016@163.com
-<br></li>		 		 	 </ul>
-				 </div>
-				 
-			  </div>
-			  <div class="clearfix"></div>
-		  </div>
-	  </div>
+		 		 	 <li><b>2016-06-06</b><br/>
+             第三次大作业截止时间提前至6月10日，请大家抓紧时间提交大作业。<br>
+           </li>
+           <li><b>2016-05-19</b><br/>
+             第三次大作业已经发布，截止时间是6月18日。<br>
+           </li>
+           <li><b>2016-03-23</b><br/>
+             该系统只发布概率论大作业，需要概率论课件和ppt的同学请下课后到讲台自行拷贝。<br>
+           </li>
+           <li><b>2016-03-21</b><br/>
+             使用360浏览器的同学建议使用极速模式（地址栏最右边有个按钮可以切换。<br>
+           </li>
+           <li><b>2016-03-20</b><br/>
+             浏览效果比较好的是Chrome，Firefox， Edge。<br>
+           </li>
+           <li><b>2016-03-15</b><br/>
+             第二次大作业已经发布，截止日期是4月10日。<br>
+           </li>
+           <li><b>2016-03-15</b><br/>
+             第一次大作业已经发布，截止日期是3月31日。<br>
+           </li>
+           <li><b>2016-03-13</b><br/>
+             用户名和初始密码就是学号，修改后的密码是大小写敏感的。<br>
+           </li>
+           <li><b>2016-03-13</b><br/>
+             本系统不开放注册，有少量同学的学号没有导入系统的，请邮件我们；
+             忘记密码的，请课上联系助教或者直接到电子楼305实验室。<br>
+           </li>
+           <li><b>2016-03-13</b><br/>
+             因时间关系，没有实现更多的功能。任何问题、交流或者发现了bug，
+             请联系我们：probability2016@163.com<br>
+           </li>
+         </ul>
+				</div>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	</div>
 </div>
 
 
@@ -276,16 +293,16 @@
 								  			containerID: 'toTop', // fading element id
 											containerHoverID: 'toTopHover', // fading element hover id
 											scrollSpeed: 1200,
-											easingType: 'linear' 
+											easingType: 'linear'
 								 		};
 										*/
-										
+
 										$().UItoTop({ easingType: 'easeOutQuart' });
-										
+
 									});
 								</script>
 		<a href="#home" id="toTop" class="scroll" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
 	</div>
-	<!--footer-end-->				 
+	<!--footer-end-->
 </body>
 </html>
