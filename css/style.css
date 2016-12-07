@@ -3,7 +3,7 @@ html, body{
     font-size: 100%;
 	background:	#fff;
 	font-family: 'Titillium Web', sans-serif;
- 
+
 }
 body a{
 	transition: 0.5s all ease;
@@ -13,7 +13,7 @@ body a{
 	-ms-transition: 0.5s all ease;
 }
 h1,h2,h3,h4,h5,h6{
-	margin:0;			   
+	margin:0;
 }
 p{
 	margin:0;
@@ -60,7 +60,7 @@ span.menu {
 .top-nav ul li{
   list-style-type:none;
   display: inline-block;
-} 
+}
 /* Effect 15: scale down, reveal */
 *,
 *:after,
@@ -126,7 +126,7 @@ span.menu2{
   list-style-type:none;
   display: inline-block;
   margin: 0 1.2em;
-} 
+}
 .bottom-nav  ul li a{
     color: #555555;
   text-decoration: none;
@@ -251,7 +251,7 @@ span.menu2{
 .banner-top h2{
 	font-size:30px;
 	font-weight:600;
-	margin:15px 0 0 0; 
+	margin:15px 0 0 0;
 	color:#ff0030;
 }
 .banner-top p{
@@ -554,7 +554,7 @@ ul.callbacks_tabs.callbacks2_tabs .callbacks_here a:after {
 ul.callbacks_tabs.callbacks2_tabs {
   top: 109%;
 }
-/*--Slider-Part-Ends-Here--*/	
+/*--Slider-Part-Ends-Here--*/
 /*--banner-ends--*/
 /*--services-starts--*/
 .services{
@@ -718,7 +718,7 @@ a.play-icon span {
 }
 /*----*/
 .circliful {
-    position: relative; 
+    position: relative;
 }
 .circle-text, .circle-info, .circle-text-half, .circle-info-half {
     width: 100%;
@@ -752,7 +752,7 @@ a.play-icon span {
 }
 span.circles-text,span.circles-number {
   	color: #fff;
-  	background:#00ccff; 
+  	background:#00ccff;
 }
 span.circles-text {
   padding: 20px 19px 14px 3px;
@@ -1111,13 +1111,13 @@ span.circles-number {
   	width:150px;
   	height:80px;
 }
-.feature-right ul li span.six, .feature-right ul li span.seven, 
+.feature-right ul li span.six, .feature-right ul li span.seven,
 .feature-right ul li span.eght, .feature-right ul li span.nine,
  .feature-right ul li span.ten {
   left: -15.5%;
 }
 .feature-left ul li span.five, .feature-left ul li span.four,
- .feature-left ul li span.three, .feature-left ul li span.two, 
+ .feature-left ul li span.three, .feature-left ul li span.two,
  .feature-left ul li span.one {
   left: 76.4%;
 }
@@ -1408,7 +1408,7 @@ p.m_5 {
 			z-index:500;
 			padding:5px 8px;
 		}
-			
+
 .portfolio .text-category {
 				display:block;
 				font-size:9px;
@@ -1739,7 +1739,7 @@ h3.sngl {
   	margin-top:1em;
 }
 .recent-one:nth-child(2){
- 	margin-top:1.5em;	
+ 	margin-top:1.5em;
 }
 /*--single-ends*/
 /*--progress-starts--*/
@@ -1905,8 +1905,10 @@ h3.sngl {
   font-family: 'Droid Serif', serif;
 }
 
+
 .recent_news_list {
-  margin-left: 500px;
+  margin-left: 20em;
+  margin-right: 10em;
 }
 
 /*--Recent news end here--*/
@@ -2051,7 +2053,7 @@ h3.sngl {
 @media (max-width:1440px){
 .callbacks_nav {
   	left: -9%;
-}	
+}
 .callbacks_nav.next {
   	right: -9%;
 }
@@ -2084,7 +2086,7 @@ h3.sngl {
 .callbacks_nav {
   	left: -7%;
   	top: 25%;
-}	
+}
 .banner-top h1 {
   	font-size: 46px;
 }
@@ -2128,7 +2130,7 @@ h3.sngl {
 }
 .pricing {
   	padding: 5em 0px;
-}	
+}
 .price-one h4 {
   	padding: 23px 0px;
   	font-size: 45px;
@@ -2210,7 +2212,7 @@ h3.sngl {
 }
 .sb-icon-search {
   	background: #fff url('../images/search-2.png') no-repeat 24px 17px;
-}	
+}
 .sb-search-submit {
   	background: #fff url('../images/search-2.png') no-repeat 24px 17px;
 }
@@ -2248,9 +2250,9 @@ h3.sngl {
   	left: -2%;
   	top: 30%;
 }
-.services-top h3, .work-top h3, .experties-top h3, .analyze-top h3, 
-.pricing-top h3, .taril-text h3, .team-top h3, .features-top h3, 
-.testimonials-top h3, .project-top h3, .blog-top h3, .progress-top h3, 
+.services-top h3, .work-top h3, .experties-top h3, .analyze-top h3,
+.pricing-top h3, .taril-text h3, .team-top h3, .features-top h3,
+.testimonials-top h3, .project-top h3, .blog-top h3, .progress-top h3,
 .customers-top h3, .contact-top h3 {
   font-size: 33px;
 }
@@ -2390,7 +2392,7 @@ ul.navig li a {
   	font-size: 17px;
   	padding-bottom: 7px;
     margin: 0 2px;
-}	
+}
 .navigation {
   	margin: 7px 1.5em 0px 0px;
 }
@@ -2579,7 +2581,7 @@ span.circles-text {
   	padding: 4em 0px;
 }
 .feature-left ul li span.five, .feature-left ul li span.four,
- .feature-left ul li span.three, .feature-left ul li span.two, 
+ .feature-left ul li span.three, .feature-left ul li span.two,
  .feature-left ul li span.one {
   	left: 74.4%;
 }
@@ -2679,7 +2681,7 @@ ul.callbacks_tabs.callbacks2_tabs li a:after {
 }
 .contact {
   	padding: 4em 0px;
-}	
+}
 .contact-left iframe {
   	width: 85%;
   	height: 250px;
@@ -2772,7 +2774,7 @@ ul.callbacks_tabs.callbacks2_tabs li a:after {
 }
 .single-left img {
   	width: 90%;
-}	
+}
 .header {
   	padding: 1.3em 0 2.9em 0px;
 }
@@ -2787,7 +2789,7 @@ ul.callbacks_tabs.callbacks2_tabs li a:after {
 }
 .sb-icon-search {
   	background: #fff url('../images/search-2.png') no-repeat 22px 15px;
-}	
+}
 .sb-icon-search, .sb-search-submit {
   	width: 54px;
 }
@@ -3142,7 +3144,7 @@ ul.navig li a {
 }
 .cmts-main-right {
   	padding: 0 10px;
-}	
+}
 .comments {
   	margin-top: 1.5em;
 }
@@ -3233,7 +3235,7 @@ ul.navig li a {
   min-height: 340px;
 }
 .services-top h3, .work-top h3, .experties-top h3, .analyze-top h3,
- .pricing-top h3, .taril-text h3, .team-top h3, .features-top h3, 
+ .pricing-top h3, .taril-text h3, .team-top h3, .features-top h3,
  .testimonials-top h3, .project-top h3, .blog-top h3, .progress-top h3,
   .customers-top h3, .contact-top h3 {
   font-size: 26px;
@@ -3371,7 +3373,7 @@ a.play-icon span {
   top: 30%;
 }
 .feature-right ul li span.seven {
- top: 29.5%;	
+ top: 29.5%;
 }
 .feature-left ul li span.three{
   top: 51%;
@@ -3382,8 +3384,8 @@ a.play-icon span {
 .price-one {
   margin: 0 auto 1.5em;
 }
-.feature-right ul li span.six, .feature-right ul li span.seven, 
-.feature-right ul li span.eght, .feature-right ul li span.nine, 
+.feature-right ul li span.six, .feature-right ul li span.seven,
+.feature-right ul li span.eght, .feature-right ul li span.nine,
 .feature-right ul li span.ten {
   left: -15.8%;
 }
@@ -3519,7 +3521,7 @@ ul.callbacks_tabs.callbacks2_tabs li a:after {
 }
 .sb-search.sb-search-open, .no-js .sb-search {
   width: 50%;
-}	
+}
 .sb-search-input {
   height: 33px;
   font-size: 14px;
@@ -3555,9 +3557,9 @@ ul.callbacks_tabs.callbacks2_tabs li a:after {
 .banner-main {
   margin-top: 15%;
 }
-.services-top h3, .work-top h3, .experties-top h3, .analyze-top h3, 
-.pricing-top h3, .taril-text h3, .team-top h3, .features-top h3, 
-.testimonials-top h3, .project-top h3, .blog-top h3, .progress-top h3, 
+.services-top h3, .work-top h3, .experties-top h3, .analyze-top h3,
+.pricing-top h3, .taril-text h3, .team-top h3, .features-top h3,
+.testimonials-top h3, .project-top h3, .blog-top h3, .progress-top h3,
 .customers-top h3, .contact-top h3 {
   font-size: 24px;
 }
@@ -3580,7 +3582,7 @@ ul.callbacks_tabs.callbacks2_tabs li a:after {
 .services-bottom {
   margin-top: 15%;
 }
-.project, .features, .blog, .progres, .customers, .contact, .team, 
+.project, .features, .blog, .progres, .customers, .contact, .team,
 .trail, .pricing, .analyze, .experties, .work, .services {
   padding: 2em 0px;
 }
@@ -3699,7 +3701,7 @@ span.circles-text {
   margin-top: 25px;
 }
 .feature-right{
-	margin-top:25px;	
+	margin-top:25px;
 }
 .test-bottom img:nth-child(1) {
   width: 24%;
@@ -3771,7 +3773,7 @@ ul.callbacks_tabs.callbacks2_tabs {
   background-position: -168px 0px;
 }
 .progress-bottom ul li span.p-2,.progress-bottom ul li span.p-3,.progress-bottom ul li span.p-5 {
- 	margin-bottom:20px;	
+ 	margin-bottom:20px;
 }
 .customers-bottom ul li {
   width: 32.79%;
@@ -3792,7 +3794,7 @@ ul.callbacks_tabs.callbacks2_tabs {
   width: 90%;
 }
 .contact-right input[type="text"]{
-	margin: 0px auto 11px;	
+	margin: 0px auto 11px;
 }
 .contact-right form input[type=submit] {
   padding: 4px 33px;
@@ -3817,7 +3819,7 @@ ul.navig li a {
 }
 .head {
   padding: 0 10px;
-}	
+}
 .sb-search.sb-search-open, .no-js .sb-search {
   width: 62%;
 }
@@ -3864,9 +3866,9 @@ ul.navig {
 .banner {
   min-height: 240px;
 }
-.services-top h3, .work-top h3, .experties-top h3, .analyze-top h3, 
-.pricing-top h3, .taril-text h3, .team-top h3, .features-top h3, 
-.testimonials-top h3, .project-top h3, .blog-top h3, .progress-top h3, 
+.services-top h3, .work-top h3, .experties-top h3, .analyze-top h3,
+.pricing-top h3, .taril-text h3, .team-top h3, .features-top h3,
+.testimonials-top h3, .project-top h3, .blog-top h3, .progress-top h3,
 .customers-top h3, .contact-top h3 {
   font-size: 20px;
   line-height: 1.3em;
@@ -3889,11 +3891,11 @@ ul.navig {
   margin: 8px auto 0;
   font-size: 13px;
 }
-.project, .features, .blog, .progres, .customers, .contact, .team, .trail, 
+.project, .features, .blog, .progres, .customers, .contact, .team, .trail,
 .pricing, .analyze, .experties, .work, .services {
   padding: 1.5em 0px;
 }
-.services-top span, .work-top span, .experties-top span, .pricing-top span, 
+.services-top span, .work-top span, .experties-top span, .pricing-top span,
 .team-top span, .features-top span, .testimonials-top span, .project-top span,
  .blog-top span, .progress-top span, .customers-top span, .contact-top span {
   margin: 7px auto 0;
