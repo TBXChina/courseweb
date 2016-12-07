@@ -8,7 +8,7 @@
         public function __construct($id) {
             $this->id   = $id;
             $this->name = "Anonymity";
-            $this->pwd  = "";
+            $this->password  = "";
         }
 
         public function __destruct() {
