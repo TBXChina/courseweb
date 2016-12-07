@@ -23,12 +23,12 @@
 <link rel="stylesheet" href="css/font_icon/css/helper.css">
 <!--start-smoth-scrolling-->
 <script type="text/javascript">
-			jQuery(document).ready(function($) {
-				$(".scroll").click(function(event){
-					event.preventDefault();
-					$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
-				});
-			});
+	jQuery(document).ready(function($) {
+		$(".scroll").click(function(event){
+			event.preventDefault();
+			$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+		});
+	});
 		</script>
 <!--end-smoth-scrolling-->
 
@@ -59,12 +59,12 @@
 <script type="text/javascript" src="js/easing.js"></script>
 <!--/script-->
 <script type="text/javascript">
-			jQuery(document).ready(function($) {
-				$(".scroll").click(function(event){
-					event.preventDefault();
-					$('html,body').animate({scrollTop:$(this.hash).offset().top},900);
-				});
-			});
+	jQuery(document).ready(function($) {
+		$(".scroll").click(function(event){
+			event.preventDefault();
+			$('html,body').animate({scrollTop:$(this.hash).offset().top},900);
+		});
+	});
 </script>
 <!---->
 </head>
@@ -86,11 +86,11 @@
 				</ul>
 				<!-- script-for-menu -->
 				 <script>
-				   $( "span.menu" ).click(function() {
+				 $( "span.menu" ).click(function() {
 					 $( "ul.nav1" ).slideToggle( 300, function() {
-					 // Animation complete.
-					  });
+						 // Animation complete.
 					 });
+				 });
 				</script>
 				<!-- /script-for-menu -->
 			</div>
@@ -103,10 +103,10 @@
 	<!-- script-for-menu -->
 	<!-- script-for-menu -->
 		 <script>
-				$("span.menu").click(function(){
-					$(" ul.navig").slideToggle("slow" , function(){
-					});
-				});
+		 $("span.menu").click(function(){
+			 $(" ul.navig").slideToggle("slow" , function(){
+			 });
+		 });
 		 </script>
 		 <!-- script-for-menu -->
 	<!--search-scripts-->
@@ -203,67 +203,67 @@
 	     </ul>
 		  </div>
 
-			  <div class="col-md-4 side-content">
-				 <div class="recent">
-					 <h1 style="color:#2ad2c9;font-size: 25pt;">Hello, MG1423021</h1><br>
-					 <h3>Your Identity is Student</h3>
-					 	<form action = "/SubmissionSystem/Welcome.php"
-					 	   method = "post">
-						<input type = "submit" name = "Signout" value = "Sign Out" class="button blue small"/>
-						</form>
-						<br>
-						<h3>Change Password </h3>
-						<form action = "/SubmissionSystem/Welcome.php" method = "post">
-						<input type = "password"
-							   name = "NewPassWD"
-							   placeholder = "New Password"
-							   required style="line-height: 30px;">
-						<input type="submit" Name = "ChangePassWD" value = "Change" class="button red small"/>
-						</form>
-          </div>
-						<!-- php implement change password function -->
-
-				 <div class="archives">
-					 <h3 style="color:#2ad2c9;font-size: 25pt;">Recent News</h3>
-					 <ul>
-		 		 	 <li><b>2016-06-06</b><br/>
-             第三次大作业截止时间提前至6月10日，请大家抓紧时间提交大作业。<br>
-           </li>
-           <li><b>2016-05-19</b><br/>
-             第三次大作业已经发布，截止时间是6月18日。<br>
-           </li>
-           <li><b>2016-03-23</b><br/>
-             该系统只发布概率论大作业，需要概率论课件和ppt的同学请下课后到讲台自行拷贝。<br>
-           </li>
-           <li><b>2016-03-21</b><br/>
-             使用360浏览器的同学建议使用极速模式（地址栏最右边有个按钮可以切换。<br>
-           </li>
-           <li><b>2016-03-20</b><br/>
-             浏览效果比较好的是Chrome，Firefox， Edge。<br>
-           </li>
-           <li><b>2016-03-15</b><br/>
-             第二次大作业已经发布，截止日期是4月10日。<br>
-           </li>
-           <li><b>2016-03-15</b><br/>
-             第一次大作业已经发布，截止日期是3月31日。<br>
-           </li>
-           <li><b>2016-03-13</b><br/>
-             用户名和初始密码就是学号，修改后的密码是大小写敏感的。<br>
-           </li>
-           <li><b>2016-03-13</b><br/>
-             本系统不开放注册，有少量同学的学号没有导入系统的，请邮件我们；
-             忘记密码的，请课上联系助教或者直接到电子楼305实验室。<br>
-           </li>
-           <li><b>2016-03-13</b><br/>
-             因时间关系，没有实现更多的功能。任何问题、交流或者发现了bug，
-             请联系我们：probability2016@163.com<br>
-           </li>
-         </ul>
-				</div>
+			<div class="col-md-4 side-content">
+				<div class="recent">
+					<h1 style="color:#2ad2c9;font-size: 25pt;">Hello, MG1423021</h1><br>
+					<h3>Your Identity is Student</h3>
+					<form action = "/SubmissionSystem/Welcome.php"
+					method = "post">
+					<input type = "submit" name = "Signout" value = "Sign Out" class="button blue small"/>
+				</form>
+				<br>
+				<h3>Change Password </h3>
+				<form action = "/SubmissionSystem/Welcome.php" method = "post">
+					<input type = "password"
+					name = "NewPassWD"
+					placeholder = "New Password"
+					required style="line-height: 30px;">
+					<input type="submit" Name = "ChangePassWD" value = "Change" class="button red small"/>
+				</form>
 			</div>
-			<div class="clearfix"></div>
+			<!-- php implement change password function -->
+
+			<div class="archives">
+				<h3 style="color:#2ad2c9;font-size: 25pt;">Recent News</h3>
+				<ul>
+					<li><b>2016-06-06</b><br/>
+						第三次大作业截止时间提前至6月10日，请大家抓紧时间提交大作业。<br>
+					</li>
+					<li><b>2016-05-19</b><br/>
+						第三次大作业已经发布，截止时间是6月18日。<br>
+					</li>
+					<li><b>2016-03-23</b><br/>
+						该系统只发布概率论大作业，需要概率论课件和ppt的同学请下课后到讲台自行拷贝。<br>
+					</li>
+					<li><b>2016-03-21</b><br/>
+						使用360浏览器的同学建议使用极速模式（地址栏最右边有个按钮可以切换。<br>
+					</li>
+					<li><b>2016-03-20</b><br/>
+						浏览效果比较好的是Chrome，Firefox， Edge。<br>
+					</li>
+					<li><b>2016-03-15</b><br/>
+						第二次大作业已经发布，截止日期是4月10日。<br>
+					</li>
+					<li><b>2016-03-15</b><br/>
+						第一次大作业已经发布，截止日期是3月31日。<br>
+					</li>
+					<li><b>2016-03-13</b><br/>
+						用户名和初始密码就是学号，修改后的密码是大小写敏感的。<br>
+					</li>
+					<li><b>2016-03-13</b><br/>
+						本系统不开放注册，有少量同学的学号没有导入系统的，请邮件我们；
+						忘记密码的，请课上联系助教或者直接到电子楼305实验室。<br>
+					</li>
+					<li><b>2016-03-13</b><br/>
+						因时间关系，没有实现更多的功能。任何问题、交流或者发现了bug，
+						请联系我们：probability2016@163.com<br>
+					</li>
+				</ul>
+			</div>
 		</div>
+		<div class="clearfix"></div>
 	</div>
+</div>
 </div>
 
 
@@ -273,35 +273,19 @@
 		<div class="container">
 			<div class="footer-text">
 				<div class="col-md-6 footer-left">
-					<ul>
-						<li><a href="#"><span class="fb"> </span></a></li>
-						<li><a href="#"><span class="t"> </span></a></li>
-						<li><a href="#"><span class="g"> </span></a></li>
-						<li><a href="#"><span class="in"> </span></a></li>
-					</ul>
-				</div>
-				<div class="col-md-6 footer-left">
 					<p>Copyright &copy; 2016.Visg All rights reserved.</p>
 				</div>
 				<div class="clearfix"></div>
 			</div>
 		</div>
 		<script type="text/javascript">
-									$(document).ready(function() {
-										/*
-										var defaults = {
-								  			containerID: 'toTop', // fading element id
-											containerHoverID: 'toTopHover', // fading element hover id
-											scrollSpeed: 1200,
-											easingType: 'linear'
-								 		};
-										*/
-
-										$().UItoTop({ easingType: 'easeOutQuart' });
-
-									});
-								</script>
-		<a href="#home" id="toTop" class="scroll" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+		$(document).ready(function() {
+			$().UItoTop({ easingType: 'easeOutQuart' });
+		});
+		</script>
+		<a href="#home" id="toTop" class="scroll" style="display: block;">
+			<span id="toTopHover" style="opacity: 1;"> </span>
+		</a>
 	</div>
 	<!--footer-end-->
 </body>
