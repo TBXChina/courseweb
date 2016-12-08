@@ -1,4 +1,5 @@
 <?php
+    include_once "include/common/web.php";
     session_start();
 ?>
 <!DOCTYPE html>

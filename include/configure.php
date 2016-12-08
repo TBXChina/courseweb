@@ -5,6 +5,7 @@
 
         //course info
         static public $COURSE;
+        static public $COURSEDIRNAME;
         static public $URL;
 
         //some important dir
@@ -33,7 +34,8 @@
         static public function Init() {
             self::$AUTHOR               = "Brayan Tang";
             self::$COURSE               = "Probability Theory";
-            self::$URL                  = "http://visg.nju.edu.cn";
+            self::$COURSEDIRNAME        = "courseweb";
+            self::$URL                  = "http://127.0.0.1/".self::$COURSEDIRNAME;
             self::$ROOT_DIR             = "/usr/local/apache2/htdocs/courseweb";
             self::$STORE_DIR            = "/home/tbx/".self::$COURSE;
             self::$ADMIN_DIR            = self::$STORE_DIR."/Admin";

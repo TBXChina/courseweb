@@ -41,13 +41,8 @@
                     $user = UserFactory::Create($rs[0]["role"], $rs[0]["id"]);
                     $user->SetName($rs[0]["name"]);
                     $user->SetPassword($rs[0]["password"]);
-                    header("Locaton: /courseweb/session.php");
-/*
-                    $_SESSION["id"] = $rs[0]["id"];
-                    $_SESSION["name"] = $rs[0]["name"];
-                    $_SESSION["password"] = $rs[0]["password"];
-                    $_SESSION["role"]    = $rs[0]["role"];
-*/
+                    $_SESSION["USER"] = $user;
+                    header("Location: /courseweb/session.php");
                 } else {
                     Log::Echo2Web("Login failed");
                 }

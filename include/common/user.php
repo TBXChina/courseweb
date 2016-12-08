@@ -1,18 +1,18 @@
 <?php
+    include_once "include/configure.php";
+
     class User {
         //unique, to identity each user
         protected $id;
         protected $name;
         protected $password;
+        protected $homepage;
 
         public function __construct($id) {
-            $this->id   = $id;
-            $this->name = "Anonymity";
+            $this->id        = $id;
+            $this->name      = "Anonymity";
             $this->password  = "";
-        }
-
-        public function __destruct() {
-            echo "user destroy<br>\n";
+            $this->homepage  = Configure::$URL;
         }
 
         static public function GetRole() {
@@ -36,6 +36,10 @@
         public function GetPassword() {
             return $this->password;
         }
+
+        public function GetHomepage() {
+            return $this->homepage;
+        }
     }
 
     class Admin extends User {
@@ -45,6 +49,7 @@
 
         public function __construct($id) {
             parent::__construct($id);
+            $this->homepage = Configure::$URL."/console.php";
         }
     }
 
@@ -55,6 +60,7 @@
 
         public function __construct($id) {
             parent::__construct($id);
+            $this->homepage = Configure::$URL."/console.php";
         }
     }
 
