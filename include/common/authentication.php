@@ -16,8 +16,8 @@
             if ( !session_id() ) {
                 session_start();
             }
-            if ( self::Timeout() ) {
-                self::Destroy();
+            if ( $this->Timeout() ) {
+                $this->Destroy();
             }
         }
 
@@ -45,7 +45,7 @@
         }
 
         public function GetLegalUser() {
-            if ( Permision() ) {
+            if ( $this->Permission() ) {
                 return $_SESSION[self::$USER];
             } else {
                 return null;

@@ -7,6 +7,8 @@
         static public $COURSE;
         static public $COURSEDIRNAME;
         static public $URL;
+        static public $LOGINPAGE;
+        static public $CONSOLEPAGE;
 
         //some important dir
         static public $ROOT_DIR;
@@ -35,7 +37,9 @@
             self::$AUTHOR               = "Brayan Tang";
             self::$COURSE               = "Probability Theory";
             self::$COURSEDIRNAME        = "courseweb";
-            self::$URL                  = "http://127.0.0.1/".self::$COURSEDIRNAME;
+            self::$URL                  = "http://127.0.0.1/";
+            self::$LOGINPAGE            = "/".self::$COURSEDIRNAME."/test.php";
+            self::$CONSOLEPAGE          = "/".self::$COURSEDIRNAME."/console.php";
             self::$ROOT_DIR             = "/usr/local/apache2/htdocs/courseweb";
             self::$STORE_DIR            = "/home/tbx/".self::$COURSE;
             self::$ADMIN_DIR            = self::$STORE_DIR."/Admin";

@@ -5,6 +5,7 @@
     include_once "include/common/fun.php";
     include_once "include/common/table_manager.php";
     include_once "include/common/user.php";
+    include_once "include/common/authentication.php";
 
     //login service and decide the identity
     class LoginService implements Service {
@@ -41,8 +42,10 @@
                     $user = UserFactory::Create($rs[0]["role"], $rs[0]["id"]);
                     $user->SetName($rs[0]["name"]);
                     $user->SetPassword($rs[0]["password"]);
-                    $_SESSION["USER"] = $user;
-                    header("Location: /courseweb/session.php");
+                    //$_SESSION["USER"] = $user;
+                    $au = new Authentication();
+                    $au->SetLegalUser($user);
+                    header("Location: /courseweb/console.php");
                 } else {
                     Log::Echo2Web("Login failed");
                 }

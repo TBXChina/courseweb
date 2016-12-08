@@ -1,6 +1,10 @@
 <?php
     include_once "include/common/web.php";
     session_start();
+    include_once "include/service/session_service.php";
+    $url = $_SERVER["PHP_SELF"];
+    $s = new SessionService($url);
+    $s->Run();
 ?>
 <!DOCTYPE html>
 <body>
