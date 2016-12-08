@@ -62,12 +62,8 @@
         }
 
         private function Destroy() {
-            if ( isset($_SESSION[self::$USER]) ) {
-                unset($_SESSION[self::$USER]);
-            }
-            if ( isset($_SESSION[self::$LAST_ACCESS]) ) {
-                unset($_SESSION[self::$LAST_ACCESS]);
-            }
+            $_SESSION = array();
+            session_destroy();
         }
     }
     Authentication::Init();

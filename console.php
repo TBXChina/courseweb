@@ -12,4 +12,5 @@
     Log::Echo2Web($user->GetName());
     Log::Echo2Web($user->GetPassword());
     Log::Echo2Web($user->GetRole());
+    Log::Echo2Web($user->GetHomepage());
 ?>

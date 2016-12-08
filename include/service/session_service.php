@@ -17,11 +17,11 @@
         public function Run() {
             $authentication = new Authentication();
             if ( $authentication->Permission() ) {
+                $this->user = $authentication->GetLegalUser();
                 //you have logined, so jump to console page
                 if ($this->url != Configure::$CONSOLEPAGE) {
                     Web::Jump2Web(Configure::$CONSOLEPAGE);
                 }
-                $this->user = $authentication->GetLegalUser();
             } else {
                 //if you are not login, jump to the log page
                 if ( $this->url != Configure::$LOGINPAGE ) {

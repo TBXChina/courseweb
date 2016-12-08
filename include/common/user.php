@@ -49,7 +49,7 @@
 
         public function __construct($id) {
             parent::__construct($id);
-            $this->homepage = Configure::$URL."/console.php";
+            $this->homepage = Configure::$CONSOLEPAGE;
         }
     }
 
@@ -60,7 +60,7 @@
 
         public function __construct($id) {
             parent::__construct($id);
-            $this->homepage = Configure::$URL."/console.php";
+            $this->homepage = Configure::$CONSOLEPAGE;
         }
     }
 
