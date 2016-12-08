@@ -18,7 +18,7 @@ transition: 0.5s all ease;
 -ms-transition: 0.5s all ease;
 }
 h1,h2,h3,h4,h5,h6{
-	margin:0;			   
+	margin:0;
 }footer-left
 p{
 	margin:0;
@@ -115,7 +115,7 @@ color:#00aeff;
 margin-right:0.7em;
 display:inline-block;
 text-decoration:none;
-font-family: 'Oswald', sans-serif;	
+font-family: 'Oswald', sans-serif;
 font-weight:400;
 text-transform:uppercase;
 }
@@ -908,4 +908,12 @@ height: 135px;
 .content-form h3 {
 font-size: 1.1em;
 }
+
+.top-nav ul.nav1 li a {
+  margin: 0 10px;
+}
+
+.recent h1 {
+  color:#2ad2c9;
+  font-size: 25pt;
 }
