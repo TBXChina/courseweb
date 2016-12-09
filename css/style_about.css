@@ -294,54 +294,7 @@ line-height: 1.8em;
 font-weight: 400;
 margin-bottom: 1em;
 }
-.contact-details form input[type="text"], .contact-details textarea {
-width: 30%;
-margin-right: 4%;
-padding: 12px;
-border: 1px solid #E2E0ED;
-font-size: 1em;
-margin-bottom: 2em;
-color: #C2C1CB;
-background: #fff;
-outline: none;
-font-weight: 400;
-font-family: 'Lato', sans-serif;
-transition: 0.5s all ease;
--webkit-transition: 0.5s all ease;
--moz-transition: 0.5s all ease;
--o-transition: 0.5s all ease;
--ms-transition: 0.5s all ease;
-}
-.contact-details form input[type="password"], .contact-details textarea {
-width: 30%;
-margin-right: 4%;
-padding: 12px;
-border: 1px solid #E2E0ED;
-font-size: 1em;
-margin-bottom: 2em;
-color: #C2C1CB;
-background: #fff;
-outline: none;
-font-weight: 400;
-font-family: 'Lato', sans-serif;
-transition: 0.5s all ease;
--webkit-transition: 0.5s all ease;
--moz-transition: 0.5s all ease;
--o-transition: 0.5s all ease;
--ms-transition: 0.5s all ease;
-}
-.contact-details form input[type="text"]:hover, .contact-details textarea:hover{
-border: 1px solid #00aeff;
-}
-.contact-details textarea {
-resize: none;
-height: 200px;
-width: 98%;
-margin-right: 0%;
-}
-.contact-details form input[type="text"]:nth-child(2),.contact-details form input[type="text"]:nth-child(4){
-margin-right:0%;
-}
+
 .contact-map iframe {
 width: 100%;
 height: 200px;
@@ -368,32 +321,11 @@ color:#7C7C7C;
 .company_address p a:hover{
 color:#00aeff;
 }
-.contact-details {
-margin-top: 2em;
-}
+
 .contact-map {
 padding:0;
 }
-.contact-details form input[type="submit"] {
-font-weight: 400;
-color:#00aeff;
-outline: none;
-border: 1px solid #00aeff;
-font-size: 1em;
-padding: 0.6em 3em;
-background:transparent;
-font-family: 'Source Sans Pro', sans-serif;
-transition: 0.5s all;
--webkit-transition: 0.5s all;
--moz-transition: 0.5s all;
--o-transition: 0.5s all;
--ms-transition: 0.5s all;
-}
-.contact-details form input[type="submit"]:hover{
-border: 1px solid #00aeff;
-background:#00aeff;
-color:#fff;
-}
+
 /*----*/
 .single-grid p {
 font-family: 'Lato', sans-serif;
@@ -438,49 +370,7 @@ font-family: 'Lato', sans-serif;
 .desc p a:hover{
 color: #848484;
 }
-.content-form form input[type="text"], .content-form form textarea {
-padding: 10px 15px;
-width: 30%;
-color: #333;
-font-size: 1em;
-border: 1px solid #F6F1DE;
-font-family: 'Lato', sans-serif;
-outline: none;
-display: block;
-margin: 10px 0;
-}
-.content-form form textarea {
-height: 200px;
-resize: none;
-}
-.content-form form input[type="submit"] {
-color: #fff;
-background: #00aeff;
-padding: 0.4em 1.5em;
-text-decoration: none;
-font-size: 0.9em;
-display: inline-block;
-margin-top: 1em;
-border: none;
-outline: none;
-border: 1px solid  #00aeff;
-transition: 0.5s all ease;
--webkit-transition: 0.5s all ease;
--moz-transition: 0.5s all ease;
--o-transition: 0.5s all ease;
--ms-transition: 0.5s all ease;
-}
-.content-form form input[type="submit"]:hover{
-background: transparent;
-color:#00aeff;
-}
-.content-form h3 {
-color: #00aeff;
-margin-bottom: 1em;
-text-decoration: none;
-display: block;
-font-family: 'Oswald', sans-serif;
-}
+
 /*----responsive-menu-start---*/
 @media(max-width:1440px){
 .man-info {
@@ -642,20 +532,7 @@ font-size: 0.85em;
 overflow: hidden;
 height: 48px;
 }
-.contact-details form input[type="text"], .contact-details textarea {
-width: 100%;
-margin-right: 0;
-padding: 10px;
-font-size: 0.85em;
-margin-bottom: 1em;
-}
-.contact-details textarea {
-height: 170px;
-}
-.contact-details form input[type="submit"] {
-font-size: 0.83em;
-padding: 0.6em 2em;
-}
+
 .contact-map h4, .company_address h4 {
 font-size: 1.1em;
 }
@@ -670,9 +547,6 @@ padding: 1.5em;
 margin: 2em 0;
 }
 
-.content-form h3{
-font-size:1.2em;
-}
 .content-grid-info{
   margin-bottom: 2em;
 }
@@ -756,12 +630,7 @@ font-size: 0.75em;
 padding: 4px 0;
 margin-left: 1em;
 }
-.contact-details {
-margin-top: 1em;
-}
-.contact-details form input[type="submit"] {
-margin-bottom: 1em;
-}
+
 .single-grid p {
 font-size: 0.85em;
 overflow: hidden;
@@ -865,18 +734,7 @@ font-size: 0.77em;
 height: 51px;
 line-height: 1.5em;
 }
-.contact-details form input[type="text"], .contact-details textarea {
-padding: 6px;
-font-size: 0.8em;
-margin-bottom: 0.6em;
-}
-.contact-details textarea {
-height: 135px;
-}
-.contact-details form input[type="submit"] {
-font-size: 0.8em;
-padding: 0.5em 2em;
-}
+
 .contact-map h4, .company_address h4 {
 font-size: 1em;
 }
@@ -897,16 +755,6 @@ font-size: 1em;
 .desc p {
 font-size: 0.8em;
 margin-top: 0em;
-}
-.content-form form input[type="text"], .content-form form textarea {
-padding: 6px 10px;
-font-size: 0.8em;
-}
-.content-form form textarea {
-height: 135px;
-}
-.content-form h3 {
-font-size: 1.1em;
 }
 
 
