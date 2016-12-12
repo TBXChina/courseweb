@@ -129,6 +129,7 @@
                     Log::DebugEcho("Error in File::UploadFile: ".
                                    "You haven't choose any file.");
                 } else {
+                    Log::DebugEcho($fileinfo["error"]);
                     Log::DebugEcho("Error in File::UploadFile: ".
                                    "Upload File Failed.");
                 }
@@ -152,8 +153,8 @@
             }
             $path = $saveDir."/".$saveName;
             if ( is_file($path) ) {
-                Log::DebugEcho("Error in File::UploadFile ".
-                               "File already Exists.");
+                Log::Echo2Web("Upload File Error: ".
+                               "File already Exists, you may delete ahead.");
                 return false;
             }
             //move file to destination

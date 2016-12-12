@@ -1,5 +1,6 @@
 <?php
     include_once "include/configure.php";
+    include_once "include/common/user.php";
     //User Authentication
     class Authentication {
         static private $USER;

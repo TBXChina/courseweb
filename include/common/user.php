@@ -1,5 +1,6 @@
 <?php
     include_once "include/configure.php";
+    include_once "include/common/file.php";
 
     class User {
         //unique, to identity each user
@@ -7,12 +8,15 @@
         protected $name;
         protected $password;
         protected $homepage;
+        protected $storeDir;
 
         public function __construct($id) {
             $this->id        = $id;
             $this->name      = "Anonymity";
             $this->password  = "";
             $this->homepage  = Configure::$URL;
+            $this->storeDir  = File::Trim(Configure::$STORE_DIR)."/".$this->id;
+            File::Mkdir($this->storeDir);
         }
 
         static public function GetRole() {
@@ -40,6 +44,10 @@
         public function GetHomepage() {
             return $this->homepage;
         }
+
+        public function GetStoreDir() {
+            return $this->storeDir;
+        }
     }
 
     class Admin extends User {
@@ -49,7 +57,7 @@
 
         public function __construct($id) {
             parent::__construct($id);
-            $this->homepage = Configure::$CONSOLEPAGE;
+            $this->homepage = Configure::$ADMINCONSOLEPAGE;
         }
     }
 

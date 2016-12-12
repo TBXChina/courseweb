@@ -9,6 +9,7 @@
         static public $URL;
         static public $LOGINPAGE;
         static public $CONSOLEPAGE;
+        static public $ADMINCONSOLEPAGE;
 
         //some important dir
         static public $ROOT_DIR;
@@ -40,6 +41,7 @@
             self::$URL                  = "http://127.0.0.1/";
             self::$LOGINPAGE            = "/".self::$COURSEDIRNAME."/test.php";
             self::$CONSOLEPAGE          = "/".self::$COURSEDIRNAME."/console.php";
+            self::$ADMINCONSOLEPAGE     = "/".self::$COURSEDIRNAME."/adminconsole.php";
             self::$ROOT_DIR             = "/usr/local/apache2/htdocs/courseweb";
             self::$STORE_DIR            = "/home/tbx/".self::$COURSE;
             self::$ADMIN_DIR            = self::$STORE_DIR."/Admin";

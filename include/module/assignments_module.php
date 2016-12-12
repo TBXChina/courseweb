@@ -8,16 +8,16 @@
     //Show the asssignment
     class AssignmentsModule implements Module {
         private $spaceNum;
-        private $homeDir;
+        private $assignDir;
         private $user;
         static private $FILENAME = "AssignmentModule_FileName";
         static private $DOWNLOAD = "AssignmentModule_Download";
         static private $DELETE   = "AssignmentModule_Delete";
 
-        public function __construct($spaceNum, $homeDir, $user) {
-            $this->spaceNum = $spaceNum;
-            $this->homeDir  = File::Trim($homeDir);
-            $this->user     = $user;
+        public function __construct($spaceNum, $assignDir, $user) {
+            $this->spaceNum   = $spaceNum;
+            $this->assignDir  = File::Trim($assignDir);
+            $this->user       = $user;
         }
 
         static public function GetFileName() {
@@ -34,7 +34,7 @@
 
         public function Display() {
             $RETURN_VALUE_CONTAIN_SUBDIR = false;
-            $files = File::LS($this->homeDir, $RETURN_VALUE_CONTAIN_SUBDIR);
+            $files = File::LS($this->assignDir, $RETURN_VALUE_CONTAIN_SUBDIR);
             if ( 0 == count($files) ) {
                 return ;
             }
