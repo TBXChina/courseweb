@@ -11,5 +11,9 @@
         static public function Echo2Web($msg) {
             echo $msg."<br>\n";
         }
+
+        static public function RawEcho($msg) {
+            echo $msg;
+        }
     }
 ?>

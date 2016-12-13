@@ -7,5 +7,17 @@
             $url = $relativePath;
             header("Location: $url");
         }
+
+        static public function GetLoginPage() {
+            return Configure::$LOGINPAGE;
+        }
+
+        static public function GetConsolePage() {
+            return Configure::$CONSOLEPAGE;
+        }
+
+        static public function GetAdminConsolePage() {
+            return Configure::$ADMINCONSOLEPAGE;
+        }
     }
 ?>

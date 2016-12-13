@@ -39,7 +39,7 @@
             self::$COURSE               = "Probability Theory";
             self::$COURSEDIRNAME        = "courseweb";
             self::$URL                  = "http://127.0.0.1/";
-            self::$LOGINPAGE            = "/".self::$COURSEDIRNAME."/test.php";
+            self::$LOGINPAGE            = "/".self::$COURSEDIRNAME."/index.php";
             self::$CONSOLEPAGE          = "/".self::$COURSEDIRNAME."/console.php";
             self::$ADMINCONSOLEPAGE     = "/".self::$COURSEDIRNAME."/adminconsole.php";
             self::$ROOT_DIR             = "/usr/local/apache2/htdocs/courseweb";
