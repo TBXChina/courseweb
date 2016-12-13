@@ -18,8 +18,8 @@ $(function(){
   $(".comment-list").find("h3").css("padding","20px");
   $(".comment-list").find("h3").eq(1).css("padding","30px");
   //Distribute New Assignment part
-  var AssignmentInput = $("#submit").find("input");
-  AssignmentInput.eq(AssignmentInput.length-1).addClass("button green");
+  var DistributeInput = $("#distribute").find("input");
+  DistributeInput.eq(DistributeInput.length-1).addClass("button green");
   //Add News in Login Page part
   var ListInput = $("#list").find("input");
   ListInput.eq(ListInput.length-1).addClass("button green");

@@ -1,34 +1,20 @@
 $(function(){
-  $("#askSubmit").on("click",function(e){
+  //top nav slow move
+  $(".top-nav ul.nav1 li a").click(function(e){
     e.preventDefault();
-    var offsetH = $("#submit").offset().top;
-    $("body").animate({"scrollTop":offsetH},1000);
-  });
-  $("#askList").on("click",function(e){
-    e.preventDefault();
-    var offsetH = $("#list").offset().top;
+    var href = $(this).attr("href");
+    var offsetH = $(href).offset().top;
     $("body").animate({"scrollTop":offsetH},1600);
   });
-  $("#askAssignments").on("click",function(e){
-    e.preventDefault();
-    var offsetH = $("#assignments").offset().top;
-    $("body").animate({"scrollTop":offsetH},1600);
-  });
-
+  //cover image
   $(".askLogIn").on("click",function(e){
     e.preventDefault();
     var offsetH = $("#log_in").offset().top;
     $("body").animate({"scrollTop":offsetH},1000);
-  });
-  $(".askRecentNews").on("click",function(e){
-    e.preventDefault();
-    var offsetH = $("#recent_news").offset().top;
-    $("body").animate({"scrollTop":offsetH},1200);
   });
   $(".askContact").on("click",function(e){
     e.preventDefault();
     var offsetH = $("#contact").offset().top;
     $("body").animate({"scrollTop":offsetH},1600);
   });
-
 })
