@@ -8,6 +8,10 @@
             header("Location: $url");
         }
 
+        static public function GetCurrentPage() {
+            return htmlspecialchars($_SERVER["PHP_SELF"]);
+        }
+
         static public function GetLoginPage() {
             return Configure::$LOGINPAGE;
         }

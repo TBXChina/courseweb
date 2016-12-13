@@ -1,6 +1,6 @@
 <?php
     class Log {
-        static private $switch = true;
+        static private $switch = false;
 
         static public function DebugEcho($msg) {
             if ( true == Log::$switch ) {

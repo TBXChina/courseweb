@@ -31,15 +31,15 @@
         public function Display() {
             //display the form
             $prefix = Fun::NSpaceStr($this->spaceNum);
-            $str    = "\n".$prefix."<form action = \"".
+            $str    = $prefix."<form action = \"".
                       htmlspecialchars($_SERVER["PHP_SELF"]).
                       "\" method = \"post\">\n";
             $str   .= $prefix."   <input type = \"text\" name = \"".
                        self::$USERNAME.
-                       "\" placeholder = \"Username: Student ID\" required><br>\n";
+                       "\" placeholder = \"Username: Student ID\" required>\n";
             $str   .= $prefix."   <input type = \"password\" name = \"".
                       self::$PASSWORD.
-                      "\" placeholder = \"Password: Default Password is your Student ID\" required><br>\n";
+                      "\" placeholder = \"Password: Default password is your Student ID\" required>\n";
             $str   .= $prefix."   <input type = \"submit\" name = \"".
                       self::$LOGIN."\" value = \"Log in\">\n";
             $str   .= $prefix."</form>";

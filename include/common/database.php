@@ -32,6 +32,13 @@
             $this->conn = $conn;
         }
 
+        public function __destruct() {
+            if ($this->conn) {
+                $this->conn->close();
+                Log::DebugEcho("Close DB");
+            }
+        }
+
         //execute any sql str
         //return true/false, or the result set according to the sql str;
         public function execute($sqlstr) {
@@ -66,13 +73,6 @@
                 return false;
             }
             return false;
-        }
-
-        public function __destruct() {
-            if ($this->conn) {
-                $this->conn->close();
-                echo "close db<br>\n";
-            }
         }
 
         private $dbParam;

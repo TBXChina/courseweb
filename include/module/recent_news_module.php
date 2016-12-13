@@ -22,7 +22,6 @@
             if ( is_bool($rs) && false == $rs ) {
                 Log::Echo2Web("Error happened in Recent News.");
             }
-            print_r($rs);
             $prefix = Fun::NSpaceStr($this->spaceNum);
             $str    = $prefix."<ul>\n";
             $size   = count($rs);
@@ -32,7 +31,7 @@
                         $rs[$i][self::$NEWSTABLE_MSG]."<br>\n";
                 $str .= $prefix."   </li>\n";
             }
-            $str   .= $prefix."</ul>\n";
+            $str   .= $prefix."</ul>";
             Log::Echo2Web($str);
         }
     }

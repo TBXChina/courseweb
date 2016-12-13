@@ -30,15 +30,12 @@
                 }
                 $name = Fun::ProcessUsername($_POST[$this->username]);
                 $pwd  = Fun::ProcessPassword($_POST[$this->password]);
-                Log::Echo2Web($name);
-                Log::Echo2Web($pwd);
                 //query user table
                 $tableManager = TableManagerFactory::Create(Configure::$USERTABLE);
                 $propArray  = Array("id", "password");
                 $valueArray = Array($name, $pwd);
                 $rs = $tableManager->Query($propArray, $valueArray);
                 if ( !empty($rs) && 1 == count($rs) ) {
-                    Log::Echo2Web("Login success");
                     $user = UserFactory::Create($rs[0]["role"], $rs[0]["id"]);
                     $user->SetName($rs[0]["name"]);
                     $user->SetPassword($rs[0]["password"]);

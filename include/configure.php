@@ -1,11 +1,14 @@
 <?php
     //configure
     class Configure {
-        static public $AUTHOR;
+        static public $AUTHORS;
 
         //course info
         static public $COURSE;
-        static public $COURSEDIRNAME;
+        static public $COURSE_DIR_NAME;
+        static public $COURSE_EMAIL;
+
+        //web info
         static public $URL;
         static public $LOGINPAGE;
         static public $CONSOLEPAGE;
@@ -35,13 +38,14 @@
 
         //Init
         static public function Init() {
-            self::$AUTHOR               = "Brayan Tang";
+            self::$AUTHORS              = "Brayan Tang, QQ Lee";
             self::$COURSE               = "Probability Theory";
-            self::$COURSEDIRNAME        = "courseweb";
-            self::$URL                  = "http://127.0.0.1/";
-            self::$LOGINPAGE            = "/".self::$COURSEDIRNAME."/index.php";
-            self::$CONSOLEPAGE          = "/".self::$COURSEDIRNAME."/console.php";
-            self::$ADMINCONSOLEPAGE     = "/".self::$COURSEDIRNAME."/adminconsole.php";
+            self::$COURSE_DIR_NAME      = "courseweb";
+            self::$COURSE_EMAIL         = "probability2017@163.com";
+            self::$URL                  = "http://127.0.0.1/".self::$COURSE_DIR_NAME;
+            self::$LOGINPAGE            = "/".self::$COURSE_DIR_NAME."/index.php";
+            self::$CONSOLEPAGE          = "/".self::$COURSE_DIR_NAME."/console.php";
+            self::$ADMINCONSOLEPAGE     = "/".self::$COURSE_DIR_NAME."/adminconsole.php";
             self::$ROOT_DIR             = "/usr/local/apache2/htdocs/courseweb";
             self::$STORE_DIR            = "/home/tbx/".self::$COURSE;
             self::$ADMIN_DIR            = self::$STORE_DIR."/Admin";
