@@ -47,10 +47,17 @@ body a:hover{
   letter-spacing: 0.5px;
 }
 .copyrights{text-indent:-9999px;height:0;line-height:0;font-size:0;overflow:hidden;}
+/*
 .top-nav {
   float:right;
-  width: 42%;
+  width: 52%;
 }
+*/
+.top-nav {
+  position: absolute;
+  right: 25%;
+}
+
 span.menu {
   display: none;
 }
@@ -72,7 +79,7 @@ span.menu {
 .top-nav ul li a {
   position: relative;
   display: inline-block;
-  margin: 0 8px;
+  margin: 0 10px;
   color: #fff;
   text-decoration: none;
   letter-spacing: 1.5px;
@@ -1851,6 +1858,20 @@ h3.sngl {
   border-radius: 5px;
   margin-right: 10px;
 }
+.contact-right input[type="password"] {
+  font-size: 1em;
+  font-weight: 500;
+  color: #000;
+  padding: 10px;
+  float: left;
+  width: 40%;
+  border: 1px solid #999;
+  outline: none;
+  -webkit-appearance: none;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
 
 .contact-right input[type="submit"] {
   font-size: 1em;

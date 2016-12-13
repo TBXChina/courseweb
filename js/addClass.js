@@ -1,4 +1,7 @@
 $(function(){
+  //username
+  var username = $(".contact-right").find("input").eq(0);
+  username.addClass("name");
   //UpLoad
   var upLoadInput = $(".desc form").find("input").eq(4);
   upLoadInput.addClass("button green");
