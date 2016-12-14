@@ -15,8 +15,8 @@
             $this->name      = "Anonymity";
             $this->password  = "";
             $this->homepage  = Configure::$URL;
-            $this->storeDir  = File::Trim(Configure::$STORE_DIR)."/".$this->id;
-            File::Mkdir($this->storeDir);
+            $this->storeDir  = File::Trim(Configure::$SHARED_DIR)."/".$this->id;
+            //File::Mkdir($this->storeDir);
         }
 
         static public function GetRole() {
@@ -58,6 +58,8 @@
         public function __construct($id) {
             parent::__construct($id);
             $this->homepage = Configure::$ADMINCONSOLEPAGE;
+            $this->storeDir  = File::Trim(Configure::$ADMIN_DIR)."/".$this->id;
+            File::Mkdir($this->storeDir);
         }
     }
 
@@ -69,6 +71,8 @@
         public function __construct($id) {
             parent::__construct($id);
             $this->homepage = Configure::$CONSOLEPAGE;
+            $this->storeDir  = File::Trim(Configure::$STUDENT_DIR)."/".$this->id;
+            File::Mkdir($this->storeDir);
         }
     }
 

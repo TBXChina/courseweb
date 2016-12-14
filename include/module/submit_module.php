@@ -52,16 +52,15 @@
                         self::$saveFileName."\" value = \"".
                         $this->user->GetId()."_No_".$i."\" required>$i\n";
             }
-            $str     .= $prefix."    Assignment to submit.<br>\n";
+            $str     .= $prefix."    <p>Assignment to submit.</p><br>\n";
             $str     .= $prefix."    <input type = \"file\" name = \"".
                         self::$FILENAME.
                         "\" required><br>\n";
             $str     .= $prefix."    <input type = \"submit\" name = \"".
                         self::$UPLOAD.
                         "\" value = \"Upload\">\n";
-            $str     .= $prefix."</form>";
-            Log::Echo2Web($str);
-            UploadService::EchoUploadLimits();
+            $str     .= $prefix."</form>\n";
+            Log::RawEcho($str);
         }
     }
 ?>

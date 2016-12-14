@@ -39,7 +39,7 @@
                    $prefix."    <li>Only support pdf/zip Document Type</li>\n".
                    $prefix."    <li>Uploaded file will be renamed</li>\n".
                    $prefix."</ul>\n";
-            Log::Echo2Web($str);
+            Log::RawEcho($str);
         }
 
         static public function UploadLimitsStr() {
@@ -57,7 +57,7 @@
                         $saveName = $_POST[$this->saveFileName];
                     }
                     if ( false == $this->UploadLimits() ) {
-                        Log::Echo2Web("Violate the upload limits");
+                        Log::Echo2Web(self::UploadLimitsStr()."<br>\nUpload Failed");
                         return false;
                     }
                     if ( false == File::UploadFile($this->fileName,

@@ -27,8 +27,8 @@
             $size   = count($rs);
             for ( $i = ($size - 1); $i >= 0; $i-- ) {
                 $str .= $prefix."   <li>\n";
-                $str .= $prefix."       ".$rs[$i][self::$NEWSTABLE_TIME].". ".
-                        $rs[$i][self::$NEWSTABLE_MSG]."<br>\n";
+                $str .= $prefix."       <b>".$rs[$i][self::$NEWSTABLE_TIME]."</b><br>\n";
+                $str .= $prefix."       <p>". $rs[$i][self::$NEWSTABLE_MSG]."</p>\n";
                 $str .= $prefix."   </li>\n";
             }
             $str   .= $prefix."</ul>";

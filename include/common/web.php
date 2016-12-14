@@ -4,8 +4,9 @@
     class Web {
         static public function Jump2Web($relativePath) {
             //$url = Configure::$URL."/".$relativePath;
-            $url = $relativePath;
-            header("Location: $url");
+            //$url = $relativePath;
+            //header("Location: $url");
+            Log::RawEcho("<script>location.href='$relativePath'</script>");
         }
 
         static public function GetCurrentPage() {

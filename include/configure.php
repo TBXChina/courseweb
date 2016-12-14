@@ -48,9 +48,9 @@
             self::$ADMINCONSOLEPAGE     = "/".self::$COURSE_DIR_NAME."/adminconsole.php";
             self::$ROOT_DIR             = "/usr/local/apache2/htdocs/courseweb";
             self::$STORE_DIR            = "/home/tbx/".self::$COURSE;
-            self::$ADMIN_DIR            = self::$STORE_DIR."/Admin";
-            self::$STUDENT_DIR          = self::$STORE_DIR."/Student";
-            self::$SHARED_DIR           = self::$STORE_DIR."/Shared";
+            self::$ADMIN_DIR            = self::$STORE_DIR."/admin";
+            self::$STUDENT_DIR          = self::$STORE_DIR."/student";
+            self::$SHARED_DIR           = self::$STORE_DIR."/shared";
             self::$DBHOST               = "127.0.0.1";
             self::$DBUSER               = "root";
             self::$DBPWD                = "tbx";
