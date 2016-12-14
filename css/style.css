@@ -1940,30 +1940,19 @@ h3.sngl {
 /*--real contact start here--*/
 
 #contact {
-    color: #fff;
-
+  position: absolute;
+  top: 1650px;
+  width: 100%;
+  height: 620px;
+  filter: brightness(0.3);
 }
 
-
-.mapWrap {
+#text {
+    color: #FFF;
     position: relative;
-    min-height: 600px;
-}
-#googleMap {
-    position: absolute !important;
-    top: 0;
-    left: 0;
-    height: 100%;
-}
-#contact-area {
-    background: rgba(0, 0, 0, 0.7);
-    width: 100%;
-    position: relative;
-    padding: 80px 0px 60px 0px;
-}
-
-.moreDetails {
-    color: #fff;
+    left: -220px;
+    padding-top: 60px;
+    width: 600px;
 }
 .con-title {
     font-weight: 300;
@@ -1974,6 +1963,8 @@ h3.sngl {
 .moreDetails p {
     font-size: 16px;
 }
+
+
 .address {
     list-style: none;
     margin: 0;
@@ -2012,6 +2003,10 @@ h3.sngl {
 
 /*--footer-starts--*/
 .footer{
+  position: fixed;
+  width: 100%;
+  height: 60px;
+  bottom: 0;
 	padding:1.5em 0px;
 	background:#11191b;
 }
@@ -2024,23 +2019,11 @@ h3.sngl {
 	display:inline-block;
 	margin-right:3px;
 }
-.footer-left ul li span.fb{
-	background-position:-280px -70px;
-}
-.footer-left ul li span.t{
-	background-position:-350px -70px;
-}
-.footer-left ul li span.g{
-	background-position:-420px -70px;
-}
-.footer-left ul li span.in{
-	background-position:-490px -70px;
-}
+
 .footer-left p {
   	color: #fff;
   	font-size: 18px;
   	font-weight: 400;
-  	margin-top: 5.5%;
   	text-align: right;
 }
 .footer-left p a{
