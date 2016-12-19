@@ -38,14 +38,14 @@
 
         //Init
         static public function Init() {
-            self::$AUTHORS              = "Brayan Tang, QQ Lee";
+            self::$AUTHORS              = "Brayan Tang, QQ Lee, ZYQ";
             self::$COURSE               = "Probability Theory";
             self::$COURSE_DIR_NAME      = "courseweb";
             self::$COURSE_EMAIL         = "probability2017@163.com";
             self::$URL                  = "http://127.0.0.1/".self::$COURSE_DIR_NAME;
             self::$LOGINPAGE            = "/".self::$COURSE_DIR_NAME."/index.php";
             self::$CONSOLEPAGE          = "/".self::$COURSE_DIR_NAME."/console.php";
-            self::$ADMINCONSOLEPAGE     = "/".self::$COURSE_DIR_NAME."/adminconsole.php";
+            self::$ADMINCONSOLEPAGE     = "/".self::$COURSE_DIR_NAME."/admin.php";
             self::$ROOT_DIR             = "/usr/local/apache2/htdocs/courseweb";
             self::$STORE_DIR            = "/home/tbx/".self::$COURSE;
             self::$ADMIN_DIR            = self::$STORE_DIR."/admin";
