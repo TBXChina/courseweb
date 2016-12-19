@@ -1908,14 +1908,14 @@ h3.sngl {
 /*--contact end here--*/
 
 
-
-
 /*--Recent news begin here--*/
 .recent_news {
   padding: 4em 0em 5em 0em;
   background: #f0f8ff;
   font-size: 1.3em;
   margin:0 auto;
+  height: 610px;
+  overflow: hidden;
 }
 .recent_news h3 {
   font-size: 2.4em;
