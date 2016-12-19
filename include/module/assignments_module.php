@@ -59,7 +59,7 @@
                           self::$DELETE."\" value = \"Delete\">\n";
             }
             $str       .= $prefix."</form>\n";
-            Log::Echo2Web($str);
+            Log::RawEcho($str);
         }
     }
 ?>

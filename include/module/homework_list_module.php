@@ -32,10 +32,11 @@
         public function Display() {
             $RETURN_VALUE_CONTAIN_SUBDIR = false;
             $files = File::LS($this->homeDir, $RETURN_VALUE_CONTAIN_SUBDIR);
+            $prefix      = Fun::NSpaceStr($this->spaceNum);
             if ( 0 == count($files) ) {
+                Log::Echo2Web($prefix."<p>No homework available.</p>");
                 return;
             }
-            $prefix      = Fun::NSpaceStr($this->spaceNum);
             $str         = $prefix."<form action = \"".
                            htmlspecialchars($_SERVER["PHP_SELF"]).
                            "\" method = \"post\">\n";
@@ -65,7 +66,7 @@
             $str   .= $prefix."    <input type = \"submit\" name = \"".
                       self::$DELETE."\" value = \"Delete\">\n";
             $str   .= $prefix."</form>\n";
-            Log::Echo2Web($str);
+            Log::RawEcho($str);
         }
     }
 ?>

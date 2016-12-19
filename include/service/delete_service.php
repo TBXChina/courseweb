@@ -22,11 +22,15 @@
                     //Log::Echo2Web($path);
                     if ( false == File::RM($path) ) {
                         Log::Echo2Web("Delete File Failed");
+                        return false;
                     }
+                    return true;
                 } else {
                     Log::Echo2Web("You Should choose a file to delete.");
+                    return false;
                 }
             }
+            return null;
         }
     }
 

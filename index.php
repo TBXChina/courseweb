@@ -28,14 +28,14 @@
     <link rel="stylesheet" href="css/owl.carousel.css" type='text/css'/>
     <link rel="stylesheet" href="css/owl.theme.css" type='text/css'/>
     <link rel="stylesheet" href="css/animate.css" type='text/css'/>
-    <link rel="stylesheet" href="css/style_contact.css" type='text/css'/>
+    <!-- <link rel="stylesheet" href="css/style_contact.css" type='text/css'/> -->
     <link rel='stylesheet' href='css/googleFont.css' type='text/css'/>
 
     <!-- scripts-->
     <script src="js/jquery-2.1.3.min.js" type="text/javascript"></script>
     <script src="js/modernizr.js" type="text/javascript"></script>
     <script src="js/bootstrap.min.js" type="text/javascript"></script>
-    <script src="js/googleAPI.js" type="text/javascript"></script>
+    <!-- <script src="js/googleAPI.js" type="text/javascript"></script> -->
     <script src="js/move-top.js" type="text/javascript"></script>
     <script src="js/easing.js" type="text/javascript"></script>
     <script src="js/interactive.js" type="text/javascript"></script>
@@ -45,6 +45,7 @@
     <script src="js/owl.carousel.js" type="text/javascript"></script>
     <script src="js/script.js" type="text/javascript"></script>
     <script src="js/slow_move.js" type="text/javascript"></script>
+    <script type="text/javascript" src = "http://webapi.amap.com/maps?v=1.3&key=e36412affa2229780f8d052a3249de45"></script>
 </head>
 
 <body>
@@ -150,59 +151,70 @@
 </div>
 <!--recent news end here-->
 
-<!--real_contact start here-->
-<section id="navigation"></section>
+<!-- map -->
+<div id="contact">
+    <script>
+        var map = new AMap.Map('contact', {
+                  zoom: 17,
+                  center: [118.9615169379,32.1108455072] //Panzhonglai Building Longitude and Latitude
+                  });
+
+        var marker = new AMap.Marker({
+                     position: [118.9615169379,32.1108455072],
+                     map: map
+                     });
+
+        //scale rule
+        AMap.plugin(['AMap.ToolBar', 'AMap.Scale'], function(){
+                   var toolBar = new AMap.ToolBar();
+                   var scale   = new AMap.Scale();
+                   map.addControl(toolBar);
+                   map.addControl(scale);
+                   });
+    </script>
+</div>
+
 <!-- Contact Area -->
-<section id="contact" class="mapWrap">
-    <div id="googleMap" style="width:100%;"></div>
-    <div id="contact-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12">
-                </div>
-                <div class="col-sm-6">
-                    <div class="moreDetails">
-                        <h2 class="con-title">Contact Us</h2>
-                        <p>Authors: <?php Log::RawEcho(Configure::$AUTHORS); ?></p>
-                        <ul class="address">
-                            <li>
-                                <i class="pe-7s-map-marker"></i>
-                                <span>
-                                    305 Room, Panzhonglai Building,<br>
-                                    163, Xianlin Avenue,<br>
-                                    Nanjing, Jiangsu Province, China<br>
-                                </span>
-                            </li>
-                            <li>
-                                <i class="pe-7s-mail"></i>
-                                <span>
-                                    <?php Log::RawEcho(Configure::$COURSE_EMAIL."\n"); ?>
-                                </span>
-                            </li>
-                            <li>
-                                <i class="pe-7s-phone"></i>
-                                <span>
-                                    +1-202-555-0144
-                                </span>
-                            </li>
-                            <li>
-                                <i class="pe-7s-global"></i>
-                                <span>
-                                    <a href="<?php Log::RawEcho(Configure::$URL); ?>">
-                                        <?php
-                                            Log::RawEcho(Configure::$URL."\n");
-                                        ?>
-                                    </a>
-                                </span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div><!-- container -->
-    </div><!-- contact-area -->
-</section><!-- contact -->
-<!--real_contact end here-->
+<div class="container" id="text">
+    <div>
+        <div class="moreDetails">
+            <h2 class="con-title">Contact Us</h2>
+            <p>Authors: <?php Log::RawEcho(Configure::$AUTHORS); ?></p>
+            <ul class="address">
+                <li>
+                    <i class="pe-7s-map-marker"></i>
+                    <span>
+                        305 Room, Panzhonglai Building,<br>
+                        163, Xianlin Avenue,<br>
+                        Nanjing, Jiangsu Province, China<br>
+                    </span>
+                </li>
+                <li>
+                    <i class="pe-7s-mail"></i>
+                    <span>
+                        <?php Log::RawEcho(Configure::$COURSE_EMAIL."\n"); ?>
+                    </span>
+                </li>
+                <li>
+                    <i class="pe-7s-phone"></i>
+                    <span>
+                        +1-202-555-0144
+                    </span>
+                </li>
+                <li>
+                    <i class="pe-7s-global"></i>
+                    <span>
+                        <a href="<?php Log::RawEcho(Configure::$URL); ?>">
+                        <?php
+                            Log::RawEcho(Configure::$URL."\n");
+                        ?>
+                        </a>
+                    </span>
+                </li>
+            </ul>
+        </div><!-- moreDetails -->
+    </div><!-- row -->
+</div><!-- container -->
 
 <!--footer-starts-->
 <div class="footer">
