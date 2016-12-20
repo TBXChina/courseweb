@@ -34,7 +34,7 @@
             $prefix = Fun::NSpaceStr($spaceNum);
             $str = $prefix."<b>* Notices:</b>\n".
                    $prefix."<ul>\n".
-                   $prefix."    <li>Size < ".
+                   $prefix."    <li>Size &lt; ".
                    Fun::Byte2MB(Configure::$UPLOAD_FILE_MAX)." MB</li>\n".
                    $prefix."    <li>Only support pdf/zip Document Type</li>\n".
                    $prefix."    <li>Uploaded file will be renamed</li>\n".

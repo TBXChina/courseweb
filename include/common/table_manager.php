@@ -58,8 +58,41 @@
             return $rs;
         }
 
+        public function TableRows($propArray = array(), $valueArray = array()) {
+            if ( !is_array($propArray) ) {
+                $propArray = Array($propArray);
+            }
+            if ( !is_array($valueArray) ) {
+                $valueArray = Array($valueArray);
+            }
+
+            if ( count($propArray) != count($valueArray) ) {
+                Log::DebugEcho("Error in TableManager::Query: ".
+                               "The size of prorArray and valueArray not equal");
+                return false;
+            }
+            $sqlstr = "SELECT count(*) FROM $this->tableName ";
+            $size = count($propArray);
+            for ( $i = 0; $i < $size; $i++) {
+                if ( 0 == $i ) {
+                    $sqlstr .= " WHERE";
+                } else {
+                    $sqlstr .= " AND";
+                }
+                $sqlstr .= " $propArray[$i] = '$valueArray[$i]'";
+            }
+            Log::DebugEcho($sqlstr);
+            $rs = $this->db->execute($sqlstr);
+            if (is_bool($rs) && false == $rs) {
+                Log::DebugEcho("Error in TableManager::Query, please check sql str.");
+                $rs = Array();
+                return -1;
+            }
+            return $rs[0]["count(*)"];
+        }
+
         public function Exist($propArray, $valueArray) {
-            return 0 != count($this->Query($propArray, $valueArray));
+            return 0 < $this->TableRows($propArray, $valueArray);
         }
 
         public function Update($prop4location, $value, $prop4modify, $newValue) {
@@ -105,7 +138,7 @@
             $primaryProp  = $propArray[0];
             $primaryValue = $valueArray[0];
             if ( true == $this->Exist($primaryProp, $primaryValue) ) {
-                Log::DebugEcho("Warning in TableManager::Insert: ".
+                Log::Echo2Web("Warning in TableManager::Insert: ".
                      "this record already exists, ".
                      "no need to insert.");
                 return  false;

@@ -84,9 +84,21 @@
                         <div class="desc">
                             <?php
                                 include_once "include/module/distribute_module.php";
+                                include_once "include/service/upload_service.php";
                                 Log::RawEcho("<!-- Distribute Module -->\n");
+                                //start up upload service
+                                $saveDir = Configure::$ASSIGNMENTDIR;
+                                $uploadService = new UploadService(DistributeModule::GetUploadButton(),
+    DistributeModule::GetFileName(),
+    DistributeModule::GetSaveFileName(),
+    $saveDir);
+                                if ( $uploadService->Run() ) {
+                                    Log::Echo2Web("<p>Upload success</p>");
+                                }
+                                //display the form
                                 $distributeModule = new DistributeModule(28);
                                 $distributeModule->Display();
+
                             ?>
 
                             <div class = "man-info">
@@ -103,69 +115,60 @@
                 </ul>
 
                 <ul class="comment-list comment-border"  id="addnews">
-                <h3 class="post-author_head">Add News in Login Page</h3>
-                <!-- implement delete function -->
-                <li>
-                        <form action = "/SubmissionSystem/AdminWelcome.php" method = "post">
-                            <textarea name="msg" rows= "5" cols = "80"></textarea><br/><br/>
-                            <input type = "submit" name = "AddNotice" value = "Add"/>
-                        </form>
-                </li>
-              </ul>
+                    <h3 class="post-author_head">Add News in Login Page</h3>
+                    <li>
+                        <?php
+                            include_once "include/module/add_news_module.php";
+                            include_once "include/service/add_news_service.php";
+                            Log::RawEcho("<!-- Add News Module -->\n");
+                            $newsTextRows = 5;
+                            $newsTextCols = 60;
+                            $addNewsModule = new AddNewsModule(24, $newsTextRows, $newsTextCols);
+                            $addNewsModule->Display();
+
+                            //start up add news service
+                            $addNewsService = new AddNewsService(AddNewsModule::GetAddButton(),
+                                                                 AddNewsModule::GetNewsText());
+                            $rs = $addNewsService->Run();
+                            if ( !is_null($rs) ) {
+                                if ( true == $rs ) {
+                                    Log::Echo2Web("<p>Add News Success</p>");
+                                } else {
+                                    Log::Echo2Web("<p>Add News Fail</p>");
+                                }
+                            }
+                        ?>
+                    </li>
+                </ul>
 
                 <ul class="comment-list comment-border" id="export">
-                         <h3 class="post-author_head">Export Submitted Homework</h3>
-                         <li>
-                         <div class="desc">
-                             <form enctype="multipart/form-data"
-                                action = "/SubmissionSystem/AdminWelcome.php"
-                                method = "post">
-                                <p>Choose No.</p>
-                                <input type="radio" name = "Select" value = "1" required/>
-                                 1&nbsp&nbsp&nbsp
-                                <input type="radio" name = "Select" value = "2" required/>
-                                 2&nbsp&nbsp&nbsp
-                                <input type="radio" name = "Select" value = "3" required/>
-                                  3&nbsp&nbsp&nbsp
-                                <p>Homework to export</p>
-                                <br/>
-                                <input type="submit" name = "ExportHomework" value = "Export"/>
-                            </form>
-                         </div>
-                         <div class="clearfix"></div>
-                         </li>
-                    </ul>
+                    <h3 class="post-author_head">Export Submitted Homework</h3>
+                    <li>
+                        <div class="desc">
+                            <?php
+                                include_once "include/module/export_homework_module.php";
+                                Log::RawEcho("<!-- Export Module -->\n");
+                                $exportHomeworkModule = new ExportHomeworkModule(28);
+                                $exportHomeworkModule->Display();
+                            ?>
+                        </div>
+                        <div class="clearfix"></div>
+                    </li>
+                </ul>
 
 
-            <ul class="comment-list comment-border"  id="assignments">
+                <ul class="comment-list comment-border"  id="assignments">
                     <h3>Assignments</h3><br/>
-              <div>
-                     <form action = "/SubmissionSystem/Welcome.php" method = "post">
-                         <ul>
-                           <li>
-                                 <input type="radio" name = "fileName"
-                                       value = "1.《概率论与随机过程》大作业1.pdf" required>
-                                         1.《概率论与随机过程》大作业1.pdf
-                             </li>
-                             <li>
-                                 <input type="radio"
-                                       name = "fileName"
-                                       value = "2.《概率论与随机过程》大作业2.pdf" required>
-                                         2.《概率论与随机过程》大作业2.pdf
-                             </li>
-                             <li>
-                                    <input type="radio"
-                                       name = "fileName"
-                                       value = "3.《概率论与随机过程》大作业3.pdf" required>
-                                         3.《概率论与随机过程》大作业3.pdf
-                            </li>
-            </ul>
-                        <br>
-                        <input type = "submit" name = "RequirmentDownload" value = "Download"/>
-                        <input type = "submit" name = "RequirmentDelete" value = "Delete"/>
-                  </form>
-         </div>
-         </ul>
+                    <div>
+                        <?php
+                            include_once "include/module/assignments_module.php";
+                            Log::RawEcho("<!-- Assignments Module -->\n");
+                            $assignmentDir = Configure::$ASSIGNMENTDIR;
+                            $assignmentsModule = new AssignmentsModule(24, $assignmentDir, $user);
+                            $assignmentsModule->Display();
+                        ?>
+                    </div>
+                </ul>
              <ul class="comment-list comment-extra"  id="extra">
                  <div class="content-form" id="query">
                     <h3>Query Submitted Homework</h3>

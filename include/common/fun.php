@@ -34,6 +34,14 @@
             return $str;
         }
 
+        //process the common str
+        static public function ProcessStr($str) {
+            $str = trim($str);
+            $str = stripslashes($str);
+            $str = htmlspecialchars($str);
+            return $str;
+        }
+
         //process the username
         static public function ProcessUsername($username) {
             $username = trim($username);

@@ -1,5 +1,6 @@
 <?php
     include_once "include/module/module.php";
+    include_once "include/configure.php";
     include_once "include/common/log.php";
     include_once "include/common/fun.php";
     include_once "include/common/web.php";
@@ -16,7 +17,7 @@
 
         public function __construct($spaceNum) {
             $this->spaceNum = $spaceNum;
-            $this->assignDir = File::Trim(Configure::$ADMIN_DIR)."/Assignment";
+            $this->assignDir = Configure::$ASSIGNMENTDIR;
             File::Mkdir($this->assignDir);
         }
 
@@ -32,17 +33,12 @@
             return self::$SAVEFILENAME;
         }
 
-        public function GetAssignDir() {
-            return $this->assignDir;
-        }
-
         public function Display() {
             $prefix = Fun::NSpaceStr($this->spaceNum);
             $RETURN_VALUE_CONTAIN_SUBDIR = false;
             $files = File::LS($this->assignDir, $RETURN_VALUE_CONTAIN_SUBDIR);
             $str      = $prefix."<form enctype = \"multipart/form-data\" action = \"".
-                        Web::GetCurrentPage().
-                        "\" method = \"post\">\n";
+                        Web::GetCurrentPage()."\" method = \"post\">\n";
             $str     .= $prefix."    <p>This is No.</p>\n";
             $size = count($files);
             for ( $i = 1; $i <= $size; $i++ ) {

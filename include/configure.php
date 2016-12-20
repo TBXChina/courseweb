@@ -20,6 +20,7 @@
         static public $ADMIN_DIR;
         static public $STUDENT_DIR;
         static public $SHARED_DIR;
+        static public $ASSIGNMENTDIR;
 
         //some important var about database
         static public $DBHOST;
@@ -51,6 +52,7 @@
             self::$ADMIN_DIR            = self::$STORE_DIR."/admin";
             self::$STUDENT_DIR          = self::$STORE_DIR."/student";
             self::$SHARED_DIR           = self::$STORE_DIR."/shared";
+            self::$ASSIGNMENTDIR        = self::$ADMIN_DIR."/Assignment";
             self::$DBHOST               = "127.0.0.1";
             self::$DBUSER               = "root";
             self::$DBPWD                = "tbx";
