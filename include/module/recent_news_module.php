@@ -31,8 +31,8 @@
                 $str .= $prefix."       <p>". $rs[$i][self::$NEWSTABLE_MSG]."</p>\n";
                 $str .= $prefix."   </li>\n";
             }
-            $str   .= $prefix."</ul>";
-            Log::Echo2Web($str);
+            $str   .= $prefix."</ul>\n";
+            Log::RawEcho($str);
         }
     }
 ?>

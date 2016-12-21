@@ -30,15 +30,16 @@
             $user   = $this->user;
             $prefix = Fun::NSpaceStr($this->spaceNum);
             $str    = $prefix."<h1>Hello, ".
-                      $user->GetName()."</h1><br>\n";
+                      $user->GetName()."</h1>\n";
             $str   .= $prefix."<h3>Your Identity is ".
-                      $user->GetRole()."</h3><br>\n";
+                      $user->GetRole()."</h3>\n";
             $str   .= $prefix."<form action = \"".
                       htmlspecialchars($_SERVER["PHP_SELF"]).
                       "\" method = \"post\">\n";
             $str   .= $prefix."    <input type = \"submit\" name = \"".
                       self::$signOut."\" value = \"Sign out\">\n";
-            $str   .= $prefix."</form><br>\n";
+            $str   .= $prefix."</form>\n";
+            $str   .= $prefix."<h3>Change your password</h3>\n";
             $str   .= $prefix."<form action = \"".
                       htmlspecialchars($_SERVER["PHP_SELF"]).
                       "\" method = \"post\">\n";
@@ -46,8 +47,8 @@
                       self::$newPassword."\" placeholder = \"New Password\" required>\n";
             $str   .= $prefix."    <input type = \"submit\" name = \"".
                       self::$changePWD."\" value = \"Change\">\n";
-            $str   .= $prefix."</form>";
-            Log::Echo2Web($str);
+            $str   .= $prefix."</form>\n";
+            Log::RawEcho($str);
         }
     }
 ?>
