@@ -43,7 +43,7 @@
         static public function Init() {
             self::$AUTHORS              = "Brayan Tang, QQ Lee, Joe Zheng";
             self::$VERSION              = "0.8";
-            self::$COURSE               = "Probability Theory";
+            self::$COURSE               = "ProbabilityTheory";
             self::$COURSE_DIR_NAME      = "courseweb";
             self::$COURSE_EMAIL         = "probability2017@163.com";
             self::$URL                  = "http://127.0.0.1/".self::$COURSE_DIR_NAME;

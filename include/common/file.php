@@ -43,6 +43,13 @@
             }
         }
 
+        //if file not exist, won't copy
+        static public function CopyFile($src/*source file*/, $dst/*destination file */) {
+            if ( is_file($src) ) {
+                return copy($src, $dst);
+            }
+        }
+
         //support del a file or a directory
         static public function RM($path) {
             if ( false == file_exists($path) ) {
@@ -75,7 +82,7 @@
         }
 
         //read a file, 
-        static public function ReadFile($path, $RETURN_IN_LINES = false) {
+        static public function ReadFileContent($path, $RETURN_IN_LINES = false) {
             $path = File::Trim($path);
             if ( !is_file($path) ) {
                 Log::DebugEcho("Error in File::ReadFile: ".

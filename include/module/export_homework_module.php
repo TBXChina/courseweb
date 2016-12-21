@@ -18,6 +18,14 @@
             $this->assignDir = Configure::$ASSIGNMENTDIR;
         }
 
+        static public function GetExportButton() {
+            return self::$EXPORT;
+        }
+
+        static public function GetHomeworkNo() {
+            return self::$NO;
+        }
+
         public function Display() {
             $prefix = Fun::NspaceStr($this->spaceNum);
             $RETURN_VALUE_CONTAIN_SUBDIR = false;

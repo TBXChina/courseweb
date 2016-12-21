@@ -3,9 +3,8 @@
     include_once "include/common/log.php";
     include_once "include/common/web.php";
     include_once "include/service/session_service.php";
-    include_once "include/module/homework_list_module.php";
-    include_once "include/service/download_service.php";
-    include_once "include/module/assignments_module.php";
+    include_once "include/module/export_homework_module.php";
+    include_once "include/service/export_homework_service.php";
 
     /*
     $sessionService = new SessionService(Web::GetCurrentPage());
@@ -18,6 +17,12 @@
     */
     $user = UserFactory::Create("admin", 0);
     $user->SetName("testAdmin");
+
+    //services
+    //1. export service
+    $exportHomeworkService = new ExportHomeworkService(ExportHomeworkModule::GetExportButton(),
+                                                       ExportHomeworkModule::GetHomeworkNo());
+    $exportHomeworkService->Run();
 ?>
 <!DOCTYPE html>
 <html>
@@ -150,6 +155,9 @@
                                 Log::RawEcho("<!-- Export Module -->\n");
                                 $exportHomeworkModule = new ExportHomeworkModule(28);
                                 $exportHomeworkModule->Display();
+
+                                //start up export, will cause download, so need to start on the top
+                                /*export code*/
                             ?>
                         </div>
                         <div class="clearfix"></div>

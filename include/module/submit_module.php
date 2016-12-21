@@ -4,7 +4,7 @@
     include_once "include/common/fun.php";
     include_once "include/common/user.php";
     include_once "include/common/web.php";
-    //include_once "include/service/upload_service.php";
+    include_once "include/common/homework.php";
 
     //submit what you want
     class SubmitModule implements Module {
@@ -47,10 +47,12 @@
                         "\" method = \"post\">\n";
             $str      .= $prefix."    <p>Choose No.</p>\n";
             $size = count($files);
+            $with_document_type = false;
             for ( $i = 1; $i <= $size; $i++ ) {
+                $homework = new Homework($this->user->GetId(), $i);
                 $str .= $prefix."    <input type = \"radio\" name = \"".
                         self::$SAVEFILENAME."\" value = \"".
-                        $this->user->GetId()."_No_".$i."\" required>$i\n";
+                        $homework->GetHomeworkName($with_document_type)."\" required>$i\n";
             }
             $str     .= $prefix."    <p>Assignment to submit.</p><br>\n";
             $str     .= $prefix."    <input type = \"file\" name = \"".

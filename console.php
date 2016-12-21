@@ -16,10 +16,10 @@
         Web::Jump2Web(Web::GetLoginPage());
     }
     */
-    $user = UserFactory::Create("student", 1);
+    $user = UserFactory::Create("student", 4);
     $user->SetName("testName");
 
-    //download service
+    //services
     //1. homework list download
     $homeDir = $user->GetStoreDir();
     $downloadService_4_homeworlist = new DownloadService(HomeworkListModule::GetDownloadButton(),
@@ -95,7 +95,7 @@
                                     include_once "include/module/submit_module.php";
                                     include_once "include/service/upload_service.php";
                                     Log::RawEcho("<!-- Submit Form -->\n");
-                                    $assignDir = Configure::$SHARED_DIR."/assign";
+                                    $assignDir = Configure::$ASSIGNMENTDIR;
                                     $submitModule = new SubmitModule(32, $assignDir, $user);
                                     $submitModule->Display();
 
