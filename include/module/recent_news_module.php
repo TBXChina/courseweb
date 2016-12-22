@@ -25,6 +25,10 @@
             $prefix = Fun::NSpaceStr($this->spaceNum);
             $str    = $prefix."<ul>\n";
             $size   = count($rs);
+            if ( 0 == $size ) {
+                Log::Echo2Web($prefix."<p>No news now</p>");
+                return;
+            }
             for ( $i = ($size - 1); $i >= 0; $i-- ) {
                 $str .= $prefix."   <li>\n";
                 $str .= $prefix."       <b>".$rs[$i][self::$NEWSTABLE_TIME]."</b><br>\n";

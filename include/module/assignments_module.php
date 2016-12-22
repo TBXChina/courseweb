@@ -33,12 +33,13 @@
         }
 
         public function Display() {
+            $prefix     = Fun::NSpaceStr($this->spaceNum);
             $RETURN_VALUE_CONTAIN_SUBDIR = false;
             $files = File::LS($this->assignDir, $RETURN_VALUE_CONTAIN_SUBDIR);
             if ( 0 == count($files) ) {
-                return ;
+                Log::Echo2Web($prefix."<p>No Assignment Available.</p>");
+                return;
             }
-            $prefix     = Fun::NSpaceStr($this->spaceNum);
             $str        = $prefix."<form action = \"".
                           htmlspecialchars($_SERVER["PHP_SELF"]).
                           "\" method = \"post\">\n";

@@ -1,6 +1,8 @@
 <?php
     include_once "include/configure.php";
     include_once "include/common/file.php";
+    include_once "include/common/table_manager.php";
+    include_once "include/common/log.php";
 
     class User {
         //unique, to identity each user
@@ -48,6 +50,15 @@
         public function GetStoreDir() {
             return $this->storeDir;
         }
+
+        public function Show() {
+            Log::Echo2Web($this->id);
+            Log::Echo2Web($this->name);
+            Log::Echo2Web($this->password);
+            Log::Echo2Web($this->homepage);
+            Log::Echo2Web($this->storeDir);
+            Log::Echo2Web($this->GetRole());
+        }
     }
 
     class Admin extends User {
@@ -90,6 +101,24 @@
                     $user = new User($id);
             }
             return $user;
+        }
+
+        //query the talbe, and return the user
+        static public function Query($userID) {
+            //because create user, so we must user the usertable
+            $tableManager = TableManagerFactory::Create(Configure::$USERTABLE);
+            //primary key is id
+            $propArray = Array("id");
+            $valueArray = Array($userID);
+            $rs = $tableManager->Query($propArray, $valueArray);
+            if ( 1 == count($rs) ) {
+                $user = UserFactory::Create($rs[0]["role"], $rs[0]["id"]);
+                $user->SetName($rs[0]["name"]);
+                $user->SetPassword($rs[0]["password"]);
+                return $user;
+            } else {
+                return null;
+            }
         }
     }
 ?>

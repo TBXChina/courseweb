@@ -9,7 +9,7 @@
     class LoginFormModule implements Module {
         private $spaceNum;
         static private $LOGIN    = "LoginForm_Login";
-        static private $USERNAME = "LoginForm_Username";
+        static private $USERID = "LoginForm_UserID";
         static private $PASSWORD = "LoginForm_Password";
 
         public function __construct($spaceNum) {
@@ -20,8 +20,8 @@
             return self::$LOGIN;
         }
 
-        static public function GetUsername() {
-            return self::$USERNAME;
+        static public function GetUserID() {
+            return self::$USERID;
         }
 
         static public function GetPassword() {
@@ -35,7 +35,7 @@
                       htmlspecialchars($_SERVER["PHP_SELF"]).
                       "\" method = \"post\">\n";
             $str   .= $prefix."   <input type = \"text\" name = \"".
-                       self::$USERNAME.
+                       self::$USERID.
                        "\" placeholder = \"Username: Student ID\" required>\n";
             $str   .= $prefix."   <input type = \"password\" name = \"".
                       self::$PASSWORD.

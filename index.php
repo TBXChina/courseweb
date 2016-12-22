@@ -123,7 +123,7 @@
                 //start up login service
                 Log::RawEcho("   <!-- Login Form -->\n");
                 $loginService = new LoginService(LoginFormModule::GetLoginButton(),
-                                                 LoginFormModule::GetUsername(),
+                                                 LoginFormModule::GetUserID(),
                                                  LoginFormModule::GetPassword());
                 $loginService->Run();
                 //display the Login Form

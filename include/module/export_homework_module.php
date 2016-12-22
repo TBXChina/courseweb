@@ -32,6 +32,7 @@
             $files = File::LS($this->assignDir, $RETURN_VALUE_CONTAIN_SUBDIR);
             if ( 0 == count($files) ) {
                 Log::Echo2Web($prefix."<p>No Homework to export because you haven't distribute any assignment.</p>");
+                return;
             }
 
             $str = $prefix."<form action = \"".
