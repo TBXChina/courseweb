@@ -179,10 +179,31 @@
 
                 <ul class="comment-list comment-extra"  id="extra">
                     <?php
-                        include_once "include/module/user_manager_module.php";
+                        include_once "include/module/query_homework_module.php";
+                        include_once "include/service/query_homework_service.php";
+                        include_once "include/module/change_user_password_module.php";
+                        include_once "include/module/insert_user_module.php";
+                        include_once "include/module/delete_user_module.php";
+                        include_once "include/module/reset_system_module.php";
                         Log::RawEcho("<!-- user manager module -->\n");
-                        $userManageModule = new UserManagerModule(20, $user);
-                        $userManageModule->Display();
+                        //query
+                        $queryHomeworkModule = new QueryHomeworkModule(20);
+                        $queryHomeworkModule->Display();
+                        $queryHomeworkService = new QueryHomeworkService(QueryHomeworkModule::GetQueryButton(),
+                                                                         QueryHomeworkModule::GetUserID());
+                        $queryHomeworkService->Run();
+                        //change user password
+                        $changUserPasswordModule = new ChangeUserPasswordModule(20);
+                        $changUserPasswordModule->Display();
+                        //insert user
+                        $insertUserModule = new InsertUserModule(20);
+                        $insertUserModule->Display();
+                        //delete user
+                        $deleteUserModule = new DeleteUserModule(20);
+                        $deleteUserModule->Display();
+                        //reset system
+                        $resetSystemModule = new ResetSystemModule(20, $user);
+                        $resetSystemModule->Display();
                     ?>
                 </ul>
             </div><!-- col-md-8 single-main -->
