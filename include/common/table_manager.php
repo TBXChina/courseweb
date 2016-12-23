@@ -126,7 +126,7 @@
                  0 == count($valueArray)||
                  !is_array($propArray ) ||
                  !is_array($valueArray)) {
-                Log::DebugEcho("Error in TableManager::Insert, Empty var or not array.");
+                Log::Echo2Web("Error in TableManager::Insert, Empty var or not array.");
                 return false;
             }
             if ( count($propArray) != count($valueArray) ) {
@@ -138,8 +138,7 @@
             $primaryProp  = $propArray[0];
             $primaryValue = $valueArray[0];
             if ( true == $this->Exist($primaryProp, $primaryValue) ) {
-                Log::Echo2Web("Warning in TableManager::Insert: ".
-                     "this record already exists, ".
+                Log::Echo2Web("Warning: this record already exists, ".
                      "no need to insert.");
                 return  false;
             }
@@ -154,7 +153,7 @@
             if ( true == $this->db->execute($sqlstr) ) {
                 return true;
             } else {
-                Log::DebugEcho("Error in TableManager::Insert: failed to insert.");
+                Log::Echo2Web("Error in TableManager::Insert: failed to insert.");
                 return false;
             }
         }

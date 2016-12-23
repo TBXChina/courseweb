@@ -7,18 +7,18 @@
     class DownloadService implements Service {
         private $downloadButton;
         private $fileName;
-        private $homeDir;
+        private $storeDir;
 
-        public function __construct($downloadButton, $fileName, $homeDir) {
+        public function __construct($downloadButton, $fileName, $storeDir) {
             $this->downloadButton = $downloadButton;
             $this->fileName       = $fileName;
-            $this->homeDir        = File::Trim($homeDir);
+            $this->storeDir        = File::Trim($storeDir);
         }
 
         public function Run() {
             if ( isset($_POST[$this->downloadButton]) ) {
                 if ( isset($_POST[$this->fileName]) ) {
-                    $path = $this->homeDir."/".$_POST[$this->fileName];
+                    $path = $this->storeDir."/".$_POST[$this->fileName];
                     if ( false == File::Download($path) ) {
                         Log::Echo2Web("Download File Failed");
                     }

@@ -64,4 +64,26 @@
             return sprintf("%.2f", $size / 1024 / 1024);
         }
     }
+
+    //this class to store info, and pass to next page
+    class Info2NextPage {
+        public function __construct() {
+            if ( !session_id() ) {
+                session_start();
+            }
+        }
+
+        public function SetInfo($name, $info) {
+            $_SESSION[$name] = $info;
+        }
+
+        public function GetInfo($name) {
+            if ( isset($_SESSION[$name]) ) {
+                $info = $_SESSION[$name];
+                return $info;
+            } else {
+                return null;
+            }
+        }
+    }
 ?>

@@ -2,10 +2,14 @@
     include_once "include/common/user.php";
     include_once "include/common/log.php";
     include_once "include/common/web.php";
-    include_once "include/service/session_service.php";
+    include_once "include/common/fun.php";
     include_once "include/module/export_homework_module.php";
+    include_once "include/service/session_service.php";
+    include_once "include/service/download_service.php";
     include_once "include/service/export_homework_service.php";
-
+    include_once "include/service/query_homework_service.php";
+    //temp
+    session_start();
     /*
     $sessionService = new SessionService(Web::GetCurrentPage());
     $sessionService->Run();
@@ -23,6 +27,17 @@
     $exportHomeworkService = new ExportHomeworkService(ExportHomeworkModule::GetExportButton(),
                                                        ExportHomeworkModule::GetHomeworkNo());
     $exportHomeworkService->Run();
+
+    //2. download for query students' homework
+    //get the storeDir
+    $info2NextPage = new Info2NextPage();
+    $storeDir = $info2NextPage->GetInfo(QueryHomeworkService::GetStoreDir());
+    if ( !is_null($storeDir) ) {
+        $downloadService_4_queryhomework = new DownloadService(QueryHomeworkService::GetDownloadButton(),
+                                                               QueryHomeworkService::GetFileName(),
+                                                               $storeDir);
+        $downloadService_4_queryhomework->Run();
+    }
 ?>
 <!DOCTYPE html>
 <html>
@@ -179,25 +194,54 @@
 
                 <ul class="comment-list comment-extra"  id="extra">
                     <?php
+                        include_once "include/service/delete_service.php";
                         include_once "include/module/query_homework_module.php";
                         include_once "include/service/query_homework_service.php";
                         include_once "include/module/change_user_password_module.php";
+                        include_once "include/service/change_user_password_service.php";
                         include_once "include/module/insert_user_module.php";
+                        include_once "include/service/insert_user_service.php";
                         include_once "include/module/delete_user_module.php";
                         include_once "include/module/reset_system_module.php";
                         Log::RawEcho("<!-- user manager module -->\n");
                         //query
                         $queryHomeworkModule = new QueryHomeworkModule(20);
                         $queryHomeworkModule->Display();
-                        $queryHomeworkService = new QueryHomeworkService(QueryHomeworkModule::GetQueryButton(),
+                        $queryHomeworkService = new QueryHomeworkService(20,
+                                                                         QueryHomeworkModule::GetQueryButton(),
                                                                          QueryHomeworkModule::GetUserID());
                         $queryHomeworkService->Run();
+                        //query download and delete service, download start at the top, here is delete service
+                        $info2NextPage = new Info2NextPage();
+                        $storeDir = $info2NextPage->GetInfo(QueryHomeworkService::GetStoreDir());
+                        $deleteService_4_queryhomework = new DeleteService(QueryHomeworkService::GetDeleteButton(),
+                                                                           QueryHomeworkService::GetFileName(),
+                                                                           $storeDir);
+                        if ( true == $deleteService_4_queryhomework->Run() ) {
+                            Log::Echo2Web("<p>Delete File success.</p>");
+                        }
                         //change user password
-                        $changUserPasswordModule = new ChangeUserPasswordModule(20);
-                        $changUserPasswordModule->Display();
+                        $changeUserPasswordModule = new ChangeUserPasswordModule(20);
+                        $changeUserPasswordModule->Display();
+                        //service
+                        $changeUserPasswordService = new ChangeUserPasswordService(ChangeUserPasswordModule::GetChangePasswordButton(),
+                                                                                   ChangeUserPasswordModule::GetUserID(),
+                                                                                   ChangeUserPasswordModule::GetUserPassword());
+                        if ( true == $changeUserPasswordService->Run() ) {
+                            Log::Echo2Web("Change user password success.");
+                        }
                         //insert user
                         $insertUserModule = new InsertUserModule(20);
                         $insertUserModule->Display();
+                        //service
+                        $insertUserService = new InsertUserService(InsertUserModule::GetImportButton(),
+                                                                   InsertUserModule::GetUserId(),
+                                                                   InsertUserModule::GetUserName(),
+                                                                   InsertUserModule::GetUserPassword(),
+                                                                   InsertUserModule::GetUserRole());
+                        if ( true == $insertUserService->Run() ) {
+                            Log::Echo2Web("Insert new user success.");
+                        }
                         //delete user
                         $deleteUserModule = new DeleteUserModule(20);
                         $deleteUserModule->Display();

@@ -7,18 +7,18 @@
     class DeleteService implements Service {
         private $deleteButton;
         private $fileName;
-        private $homeDir;
+        private $storeDir;
 
-        public function __construct($deleteButton, $fileName, $homeDir) {
+        public function __construct($deleteButton, $fileName, $storeDir) {
             $this->deleteButton = $deleteButton;
             $this->fileName     = $fileName;
-            $this->homeDir      = File::Trim($homeDir);
+            $this->storeDir      = File::Trim($storeDir);
         }
 
         public function Run() {
             if ( isset($_POST[$this->deleteButton]) ) {
                 if ( isset($_POST[$this->fileName]) ) {
-                    $path = $this->homeDir."/".$_POST[$this->fileName];
+                    $path = $this->storeDir."/".$_POST[$this->fileName];
                     //Log::Echo2Web($path);
                     if ( false == File::RM($path) ) {
                         Log::Echo2Web("Delete File Failed");
