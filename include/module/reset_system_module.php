@@ -10,6 +10,7 @@
         private $user;
 
         static private $RESETBUTTON = "ResetSystem_Reset";
+        static private $USER = "ResetSytem_user";
 
         public function __construct($spaceNum, $user) {
             $this->spaceNum = $spaceNum;
@@ -20,18 +21,25 @@
             return self::$RESETBUTTON;
         }
 
+        static public function GetUser() {
+            return self::$USER;
+        }
+
         public function Display() {
             $prefix = Fun::NSpaceStr($this->spaceNum);
             //reset sytem
             if ( Admin::GetRole() == $this->user->GetRole() &&
-                 "root" == $this->user->GetId() ) {
+                 0 == strcmp("root",$this->user->GetId()) ) {
                 $str  = $prefix."<h3>Reset All System<br><span>Waring: It is very dangerous, use very carefully!</span></h3>\n";
                 $str .= $prefix."<form action = \"".
-                        Web::GetCurrentPage()."\" method = \"post\">\n";
+                        Web::GetInitializationPage()."\" method = \"post\">\n";
                 $str .= $prefix."    <input type = \"submit\" name = \"".
                         self::$RESETBUTTON."\" value = \"Reset System\">\n";
                 $str .= $prefix."</form>\n";
                 Log::RawEcho($str);
+                //info 2 next page
+                $info2NextPage = new PassInfoBetweenPage();
+                $info2NextPage->SetInfo(self::$USER, $this->user);
             }
         }
     }

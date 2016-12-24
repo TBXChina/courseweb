@@ -24,5 +24,9 @@
         static public function GetAdminConsolePage() {
             return Configure::$ADMINCONSOLEPAGE;
         }
+
+        static public function GetInitializationPage() {
+            return Configure::$INITIALIZATIONPAGE;
+        }
     }
 ?>

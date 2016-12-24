@@ -75,7 +75,7 @@
                         Log::RawEcho($str);
 
                         //register the user's store dir for the next page
-                        $info2NextPage = new Info2NextPage();
+                        $info2NextPage = new PassInfoBetweenPage();
                         $info2NextPage->SetInfo(self::$STODEDIR, $user->GetStoreDir());
                     } else {
                         Log::Echo2Web("null");

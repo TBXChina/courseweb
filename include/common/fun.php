@@ -66,7 +66,7 @@
     }
 
     //this class to store info, and pass to next page
-    class Info2NextPage {
+    class PassInfoBetweenPage {
         public function __construct() {
             if ( !session_id() ) {
                 session_start();

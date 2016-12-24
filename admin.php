@@ -19,8 +19,9 @@
         Web::Jump2Web(Web::GetLoginPage());
     }
     */
-    $user = UserFactory::Create("admin", 0);
+    $user = UserFactory::Create("admin", "root");
     $user->SetName("testAdmin");
+    $user->SetPassword("root");
 
     //services
     //1. export service
@@ -30,8 +31,8 @@
 
     //2. download for query students' homework
     //get the storeDir
-    $info2NextPage = new Info2NextPage();
-    $storeDir = $info2NextPage->GetInfo(QueryHomeworkService::GetStoreDir());
+    $infoFromPrePage = new PassInfoBetweenPage();
+    $storeDir = $infoFromPrePage->GetInfo(QueryHomeworkService::GetStoreDir());
     if ( !is_null($storeDir) ) {
         $downloadService_4_queryhomework = new DownloadService(QueryHomeworkService::GetDownloadButton(),
                                                                QueryHomeworkService::GetFileName(),
@@ -202,6 +203,7 @@
                         include_once "include/module/insert_user_module.php";
                         include_once "include/service/insert_user_service.php";
                         include_once "include/module/delete_user_module.php";
+                        include_once "include/service/delete_user_service.php";
                         include_once "include/module/reset_system_module.php";
                         Log::RawEcho("<!-- user manager module -->\n");
                         //query
@@ -212,8 +214,8 @@
                                                                          QueryHomeworkModule::GetUserID());
                         $queryHomeworkService->Run();
                         //query download and delete service, download start at the top, here is delete service
-                        $info2NextPage = new Info2NextPage();
-                        $storeDir = $info2NextPage->GetInfo(QueryHomeworkService::GetStoreDir());
+                        $infoFromPrePage = new PassInfoBetweenPage();
+                        $storeDir = $infoFromPrePage->GetInfo(QueryHomeworkService::GetStoreDir());
                         $deleteService_4_queryhomework = new DeleteService(QueryHomeworkService::GetDeleteButton(),
                                                                            QueryHomeworkService::GetFileName(),
                                                                            $storeDir);
@@ -245,6 +247,12 @@
                         //delete user
                         $deleteUserModule = new DeleteUserModule(20);
                         $deleteUserModule->Display();
+                        //service
+                        $deleteUserService = new DeleteUserService(DeleteUserModule::GetDeleteUserButton(),
+                                                                   DeleteUserModule::GetUserId());
+                        if ( true == $deleteUserService->Run() ) {
+                            Log::Echo2Web("Delete user success");
+                        }
                         //reset system
                         $resetSystemModule = new ResetSystemModule(20, $user);
                         $resetSystemModule->Display();

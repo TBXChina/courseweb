@@ -50,7 +50,7 @@
             self::$LOGINPAGE            = "/".self::$COURSE_DIR_NAME."/index.php";
             self::$CONSOLEPAGE          = "/".self::$COURSE_DIR_NAME."/console.php";
             self::$ADMINCONSOLEPAGE     = "/".self::$COURSE_DIR_NAME."/admin.php";
-            self::$INITIALIZATIONPAGE   = "/".self::$COURSE_DIR_NAME."/include/common/initialization.php";
+            self::$INITIALIZATIONPAGE   = "/".self::$COURSE_DIR_NAME."/initialization.php";
             self::$ROOT_DIR             = "/usr/local/apache2/htdocs/courseweb";
             self::$STORE_DIR            = "/home/tbx/".self::$COURSE;
             self::$ADMIN_DIR            = self::$STORE_DIR."/admin";
