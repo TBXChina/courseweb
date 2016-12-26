@@ -15,5 +15,13 @@
         static public function RawEcho($msg) {
             echo $msg;
         }
+
+        static public function EchoByStatus($status, $trueMsg, $falseMsg) {
+            if ( true == $status ) {
+                Log::Echo2Web($trueMsg);
+            } else {
+                Log::Echo2Web($falseMsg);
+            }
+        }
     }
 ?>

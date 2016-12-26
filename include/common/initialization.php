@@ -29,10 +29,39 @@
             }
             Log::Echo2Web("Authentication  success.");
 
+            //check out the necessary root dir
+            if ( !is_dir(Configure::$STORE_DIR) ) {
+                Log::Echo2Web("Root Store Dir: ".
+                               Configure::$STORE_DIR.
+                              " Should be created handly, and chmod");
+                return false;
+            }
+
             //clear the specified dir
             File::RM(Configure::$ADMIN_DIR);
             File::RM(Configure::$STUDENT_DIR);
             File::RM(Configure::$SHARED_DIR);
+
+            //create the necessary dir and file
+            //admin
+            Log::EchoByStatus(true == File::Mkdir(Configure::$ADMIN_DIR),
+                                                  "Create Dir: ".Configure::$ADMIN_DIR,
+                                                  "fail to create Dir: ".Configure::$ADMIN_DIR);
+            //student
+            Log::EchoByStatus(true == File::Mkdir(Configure::$STUDENT_DIR),
+                                                  "Create Dir: ".Configure::$STUDENT_DIR,
+                                                  "fail to create Dir: ".Configure::$STUDENT_DIR);
+            //shared are
+            Log::EchoByStatus(true == File::Mkdir(Configure::$SHARED_DIR),
+                                                  "Create Dir: ".Configure::$SHARED_DIR,
+                                                  "fail to create Dir: ".Configure::$SHARED_DIR);
+            //assignment
+            Log::EchoByStatus(true == File::Mkdir(Configure::$ASSIGNMENTDIR),
+                                                  "Create Dir: ".Configure::$ASSIGNMENTDIR,
+                                                  "fail to create Dir: ".Configure::$ASSIGNMENTDIR);
+
+            //database drop the older one and create a new
+            $host
         }
     }
 ?>

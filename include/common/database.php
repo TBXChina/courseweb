@@ -39,6 +39,60 @@
             }
         }
 
+        //create new DB
+        static public function CreateDatabase($dbParam) {
+            $host   = $dbParam->host;
+            $user   = $dbParam->user;
+            $pwd    = $dbParam->pwd;
+            $dbname = $dbParam->dbname; //new database name
+            $conn   = new mysqli($host, $user, $pwd);
+            if ($conn->connect_error) {
+                die("Connetct to host: ".$host." failed. Error Code = ".$conn->connect_error."<br>\n");
+            } else {
+                Log::DebugEcho("connect to db: ".$host."::".$dbname);
+            }
+            $sql = "create database $dbname";
+            $rs = $conn->query($sql);
+            if ($conn) {
+                $conn->close();
+                Log::DebugEcho("Close DB");
+            }
+            if ( true == $rs ) {
+                Log::DebugEcho("New Database: ".$dbname." created.");
+                return true;
+            } else {
+                Log::DebugEcho("Fail to create new Database: ".$dbname);
+                return false;
+            }
+        }
+
+        //drop current DB
+        static public function DropDatabase($dbParam) {
+            $host   = $dbParam->host;
+            $user   = $dbParam->user;
+            $pwd    = $dbParam->pwd;
+            $dbname = $dbParam->dbname; //database you want to drop
+            $conn   = new mysqli($host, $user, $pwd);
+            if ($conn->connect_error) {
+                die("Connetct to host: ".$host." failed. Error Code = ".$conn->connect_error."<br>\n");
+            } else {
+                Log::DebugEcho("connect to db: ".$host."::".$dbname);
+            }
+            $sql = "drop database if exists $dbname";
+            $rs = $conn->query($sql);
+            if ($conn) {
+                $conn->close();
+                Log::DebugEcho("Close DB");
+            }
+            if ( true == $rs ) {
+                Log::DebugEcho("Database: ".$dbname." has dropped.");
+                return true;
+            } else {
+                Log::DebugEcho("Fail to drop Database: ".$dbname);
+                return false;
+            }
+        }
+
         //execute any sql str
         //return true/false, or the result set according to the sql str;
         public function execute($sqlstr) {
