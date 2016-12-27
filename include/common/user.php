@@ -9,15 +9,17 @@
         protected $id;
         protected $name;
         protected $password;
+        protected $last_access_time;
         protected $homepage;
         protected $storeDir;
 
         public function __construct($id) {
-            $this->id        = $id;
-            $this->name      = "Anonymity";
-            $this->password  = "";
-            $this->homepage  = Configure::$URL;
-            $this->storeDir  = File::Trim(Configure::$SHARED_DIR)."/".$this->id;
+            $this->id               = $id;
+            $this->name             = "Anonymity";
+            $this->password         = "";
+            $this->last_access_time = "";
+            $this->homepage         = Configure::$URL;
+            $this->storeDir         = File::Trim(Configure::$SHARED_DIR)."/".$this->id;
             //File::Mkdir($this->storeDir);
         }
 
@@ -43,6 +45,13 @@
             return $this->password;
         }
 
+        public function SetLastAccessTime($t) {
+            $this->last_access_time = $t;
+        }
+        public function GetLastAccessTime() {
+            return $this->last_access_time;
+        }
+
         public function GetHomepage() {
             return $this->homepage;
         }
@@ -52,12 +61,13 @@
         }
 
         public function Show() {
-            Log::Echo2Web($this->id);
-            Log::Echo2Web($this->name);
-            Log::Echo2Web($this->password);
-            Log::Echo2Web($this->homepage);
-            Log::Echo2Web($this->storeDir);
-            Log::Echo2Web($this->GetRole());
+            Log::Echo2Web("Id: ".$this->id);
+            Log::Echo2Web("Name: ".$this->name);
+            Log::Echo2Web("Password: ".$this->password);
+            Log::Echo2Web("Last_Access_Time: ".$this->last_access_time);
+            Log::Echo2Web("Homepage: ".$this->homepage);
+            Log::Echo2Web("Store_Dir: ".$this->storeDir);
+            Log::Echo2Web("Role: ".$this->GetRole());
         }
     }
 
@@ -70,7 +80,9 @@
             parent::__construct($id);
             $this->homepage = Configure::$ADMINCONSOLEPAGE;
             $this->storeDir  = File::Trim(Configure::$ADMIN_DIR)."/".$this->id;
-            File::Mkdir($this->storeDir);
+            if ( is_dir(Configure::$ADMIN_DIR) ) {
+                File::Mkdir($this->storeDir);
+            }
         }
     }
 
@@ -83,7 +95,9 @@
             parent::__construct($id);
             $this->homepage = Configure::$CONSOLEPAGE;
             $this->storeDir  = File::Trim(Configure::$STUDENT_DIR)."/".$this->id;
-            File::Mkdir($this->storeDir);
+            if ( is_dir(Configure::$STUDENT_DIR) ) {
+                File::Mkdir($this->storeDir);
+            }
         }
     }
 
@@ -115,6 +129,7 @@
                 $user = UserFactory::Create($rs[0]["role"], $rs[0]["id"]);
                 $user->SetName($rs[0]["name"]);
                 $user->SetPassword($rs[0]["password"]);
+                $user->SetLastAccessTime($rs[0]["last_access_time"]);
                 return $user;
             } else {
                 return null;

@@ -1,19 +1,30 @@
 <!DOCTYPE html>
 <body>
 <?php
-    include_once "include/configure.php";
-    include_once "include/common/database.php";
+    include_once "include/new_configure.php";
+    include_once "include/common/fun.php";
+    include_once "include/common/user.php";
+    $separator = " ";
+    $studentUsers = Fun::ImportUser(Student::GetRole(),
+                                       NewConfigure::$STUDENTNAMELISTFILE,
+                                         $separator);
+    $adminUsers  = Fun::ImportUser(Admin::GetRole(),
+                                   NewConfigure::$ADMINNAMELISTFILE,
+                                   $separator);
+    foreach ($studentUsers as $s) {
+        $s->Show();
+        Log::Echo2Web("============");
+    }
 
-    $host = Configure::$DBHOST;
-    $user = Configure::$DBUSER;
-    $pwd  = Configure::$DBPWD;
-    $name = "NEWTESTNAME";
-    $dbParam = new DBParam($host, $user, $pwd, $name);
-    //if ( true == Database::CreateDatabase($dbParam) ) {
-    if ( true == Database::DropDatabase($dbParam) ) {
-        Log::Echo2Web("good");
-    } else {
-        Log::Echo2Web("bad");
+    Log::Echo2Web("Next admin");
+    foreach ($adminUsers as $s) {
+        $s->Show();
+        Log::Echo2Web("============");
+    }
+
+    $a = array();
+    if (empty($a)) {
+        Log::Echo2Web("empty");
     }
 ?>
 </body>

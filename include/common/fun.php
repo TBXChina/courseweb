@@ -2,13 +2,18 @@
     include_once "include/common/file.php";
     include_once "include/common/user.php";
     include_once "include/common/encode.php";
+    include_once "include/common/log.php";
 
     //some usefull function
     class Fun {
         //name.list format: id/separaotor/name
         static public function ImportUser($role, $namelistFile, $separator) {
             $RETURN_IN_LINES = true;
-            $lines = File::ReadFile($namelistFile, $RETURN_IN_LINES);
+            $lines = File::ReadFileContent($namelistFile, $RETURN_IN_LINES);
+            if ( is_bool($lines) && false == $lines ) {
+                Log::Echo2Web("Can't Read file");
+                return array();
+            }
             $users = array();
             foreach( $lines as $l ) {
                 $arr = explode($separator, $l);
@@ -19,7 +24,8 @@
                     $name = trim($arr[1]);
                 }
                 $u = UserFactory::Create($role, $id);
-                $u->SetName($name);
+                $u->SetName(Fun::ProcessUsername($name));
+                $u->SetPassword(Fun::ProcessPassword($id));
                 array_push($users, $u);
             }
             return $users;

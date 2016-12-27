@@ -16,6 +16,19 @@
             return $this->tableName;
         }
 
+        //create the new table according to the tableSql
+        public function CreateNewTable($tableSql) {
+            $sql = "create table if not exists ".$this->tableName.
+                   " (".$tableSql.")";
+            Log::Echo2Web($sql);
+            $rs = $this->db->execute($sql);
+            if ( true == $rs ) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
         //return an array in which saved the result
         public function Query($propArray/*property*/ = array(),
                               $valueArray            = array()) {

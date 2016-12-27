@@ -3,7 +3,7 @@
     1. *when you reset your system, the new configure, is here. After reseting, don't forget to replace the old configre as the new configure;
     2. *obviously, if you don't want change anything, just copy the old configure, and rename the class name as NewConfigure.
     */
-    class Configure {
+    class NewConfigure {
         static public $AUTHORS;
         static public $VERSION;
 
@@ -75,5 +75,5 @@
             self::$SALT                 = "6Ut!4Q";
         }
     }
-    Configure::Init();
+    NewConfigure::Init();
 ?>

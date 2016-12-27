@@ -21,6 +21,7 @@
                 Log::Echo2Web($trueMsg);
             } else {
                 Log::Echo2Web($falseMsg);
+                exit(0);
             }
         }
     }
