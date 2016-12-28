@@ -192,6 +192,11 @@
                 return false;
             }
         }
+
+        public function Execute($sqlstr) {
+            $rs = $this->db->execute($sqlstr);
+            return $rs;
+        }
     }
 
     class TableManagerFactory {

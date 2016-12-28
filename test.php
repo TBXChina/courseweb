@@ -1,30 +1,13 @@
 <!DOCTYPE html>
 <body>
 <?php
-    include_once "include/new_configure.php";
-    include_once "include/common/fun.php";
-    include_once "include/common/user.php";
-    $separator = " ";
-    $studentUsers = Fun::ImportUser(Student::GetRole(),
-                                       NewConfigure::$STUDENTNAMELISTFILE,
-                                         $separator);
-    $adminUsers  = Fun::ImportUser(Admin::GetRole(),
-                                   NewConfigure::$ADMINNAMELISTFILE,
-                                   $separator);
-    foreach ($studentUsers as $s) {
-        $s->Show();
-        Log::Echo2Web("============");
-    }
+    include_once "include/configure.php";
+    include_once "include/common/table_manager.php";
 
-    Log::Echo2Web("Next admin");
-    foreach ($adminUsers as $s) {
-        $s->Show();
-        Log::Echo2Web("============");
-    }
-
-    $a = array();
-    if (empty($a)) {
-        Log::Echo2Web("empty");
-    }
+    echo date("Y-m-d H:i:s", "1482932697");
+    $tableManager = TableManagerFactory::Create(Configure::$USERTABLE);
+    $sql = "select * from UserTable where not last_access_time =''";
+    $rs = $tableManager->Execute($sql);
+    print_r($rs);
 ?>
 </body>

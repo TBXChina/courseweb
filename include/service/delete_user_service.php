@@ -3,6 +3,7 @@
     include_once "include/service/service.php";
     include_once "include/common/table_manager.php";
     include_once "include/common/user.php";
+    include_once "include/common/file.php";
 
     class DeleteUserService implements Service {
         private $deleteButton;
@@ -25,7 +26,11 @@
                         return false;
                     }
 
-                    //delete
+                    //delete his/her file and account
+                    if ( false == File::RM($user->GetStoreDir()) ) {
+                        Log::Echo2Web("Delete User's file Error.");
+                        return false;
+                    }
                     $prop = self::$table_id;
                     $value = $id;
                     //open table

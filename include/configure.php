@@ -71,7 +71,7 @@
             self::$USERTABLE            = "UserTable";
             self::$NEWSTABLE            = "NewsTable";
             self::$UPLOAD_FILE_MAX      = 20971520;
-            self::$SESSION_VALID_TIME   = 10;
+            self::$SESSION_VALID_TIME   = 1000;
             self::$SALT                 = "6Ut!4Q";
         }
     }

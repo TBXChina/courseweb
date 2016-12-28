@@ -12,10 +12,11 @@
         private $userPWD;
         private $userRole;
 
-        static private $table_id = "id";
-        static private $table_name = "name";
-        static private $table_pwd = "password";
-        static private $table_role = "role";
+        static private $table_id               = "id";
+        static private $table_name             = "name";
+        static private $table_pwd              = "password";
+        static private $table_role             = "role";
+        static private $table_last_access_time = "last_access_time";
 
         public function __construct($importButton,
                                     $userId,
@@ -57,14 +58,17 @@
                 $name = Fun::ProcessUsername($_POST[$this->userName]);
                 $pwd = Fun::ProcessPassword($_POST[$this->userPWD]);
                 $role = $_POST[$this->userRole];
+                $last_access_time = "";
                 $propArray = Array(self::$table_id,
                                    self::$table_name,
                                    self::$table_pwd,
-                                   self::$table_role);
+                                   self::$table_role,
+                                   self::$table_last_access_time);
                 $valueArray = Array($id,
                                     $name,
                                     $pwd,
-                                    $role);
+                                    $role,
+                                    $last_access_time);
                 //open table
                 $tableManager = TableManagerFactory::Create(Configure::$USERTABLE);
                 $rs = $tableManager->Insert($propArray, $valueArray);

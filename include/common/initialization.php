@@ -34,6 +34,7 @@
                 return false;
             }
             Log::Echo2Web("<h3>Authentication  success.</h3>");
+            //-------------------------------------------------------------------
 
             //check out the necessary root dir
             if ( !is_dir(Configure::$STORE_DIR) ) {

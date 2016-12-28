@@ -62,7 +62,7 @@
             $password = trim($password);
             $password = stripslashes($password);
             $password = htmlspecialchars($password);
-            //$password = Encode::Hash($password);
+            $password = Encode::Hash($password);
             return $password;
         }
 

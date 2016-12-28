@@ -62,7 +62,7 @@
             }
         }
 
-        private function Destroy() {
+        public function Destroy() {
             $_SESSION = array();
             session_destroy();
         }

@@ -8,20 +8,13 @@
     include_once "include/service/download_service.php";
     include_once "include/service/export_homework_service.php";
     include_once "include/service/query_homework_service.php";
-    //temp
-    session_start();
-    /*
     $sessionService = new SessionService(Web::GetCurrentPage());
     $sessionService->Run();
     //if login, get user
-    $user = $sessionService::GetLegalUser();
+    $user = $sessionService->GetLegalUser();
     if ( is_null($user) ) {
         Web::Jump2Web(Web::GetLoginPage());
     }
-    */
-    $user = UserFactory::Create("admin", "root");
-    $user->SetName("testAdmin");
-    $user->SetPassword("root");
 
     //services
     //1. export service
@@ -266,9 +259,20 @@
                 <div class="recent">
                     <?php
                         include_once "include/module/user_console_module.php";
+                        include_once "include/service/user_console_service.php";
                         Log::RawEcho("<!-- user console module -->\n");
                         $userConsoleModule = new UserConsoleModule(20, $user);
                         $userConsoleModule->Display();
+
+                        //start service
+                        $userConsoleService = new UserConsoleService(UserConsoleModule::GetSignoutButton(),
+                                                                     UserConsoleModule::GetChangePWDButton(),
+                                                                     UserConsoleModule::GetNewPassword(),
+                                                                     $user);
+                        $rs = $userConsoleService->Run();
+                        if ( is_bool($rs) && (true == $rs) ) {
+                            Log::Echo2Web("Change Password success.");
+                        }
                     ?>
                 </div>
 

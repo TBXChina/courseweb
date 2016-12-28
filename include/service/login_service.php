@@ -34,6 +34,9 @@
                 $user = UserFactory::Query($id);
                 if ( !is_null($user) &&
                       $pwd == $user->GetPassword() ) {
+                    //set the access_time
+                    $last_access_time = time();
+                    $user->SetLastAccessTime($last_access_time);
                     //register the legal user
                     $au = new Authentication();
                     $au->SetLegalUser($user);
@@ -43,26 +46,6 @@
                 } else {
                     Log::Echo2Web("Login failed");
                 }
-                /*
-                //query user table
-                $tableManager = TableManagerFactory::Create(Configure::$USERTABLE);
-                $propArray  = Array("id", "password");
-                $valueArray = Array($id, $pwd);
-                $rs = $tableManager->Query($propArray, $valueArray);
-                if ( !empty($rs) && 1 == count($rs) ) {
-                    $user = UserFactory::Create($rs[0]["role"], $rs[0]["id"]);
-                    $user->SetName($rs[0]["name"]);
-                    $user->SetPassword($rs[0]["password"]);
-                    //register the legal user
-                    $au = new Authentication();
-                    $au->SetLegalUser($user);
-                    //jump to the correspond console page
-                    $jump2url = $user->GetHomepage();
-                    Web::Jump2Web($jump2url);
-                } else {
-                    Log::Echo2Web("Login failed");
-                }
-                */
             }
         }
     }

@@ -4,6 +4,7 @@
     include_once "include/common/fun.php";
     include_once "include/common/log.php";
     include_once "include/common/user.php";
+    include_once "include/common/web.php";
 
     //user console
     class UserConsoleModule implements Module {
@@ -18,12 +19,16 @@
             $this->user     = $user;
         }
 
-        static public function GetSignOutButton() {
+        static public function GetSignoutButton() {
             return self::$signOut;
         }
 
         static public function GetChangePWDButton() {
             return self::$changePWD;
+        }
+
+        static public function GetNewPassword() {
+            return self::$newPassword;
         }
 
         public function Display() {
@@ -34,14 +39,14 @@
             $str   .= $prefix."<h3>Your Identity is ".
                       $user->GetRole()."</h3>\n";
             $str   .= $prefix."<form action = \"".
-                      htmlspecialchars($_SERVER["PHP_SELF"]).
+                      Web::GetCurrentPage().
                       "\" method = \"post\">\n";
             $str   .= $prefix."    <input type = \"submit\" name = \"".
                       self::$signOut."\" value = \"Sign out\">\n";
             $str   .= $prefix."</form>\n";
             $str   .= $prefix."<h3>Change your password</h3>\n";
             $str   .= $prefix."<form action = \"".
-                      htmlspecialchars($_SERVER["PHP_SELF"]).
+                      Web::GetCurrentPage().
                       "\" method = \"post\">\n";
             $str   .= $prefix."    <input type = \"password\" name = \"".
                       self::$newPassword."\" placeholder = \"New Password\" required>\n";
