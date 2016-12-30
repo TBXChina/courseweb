@@ -23,7 +23,7 @@
                                                          $homeDir);
     $downloadService_4_homeworlist->Run();
     //2. assignment download
-    $assignDir = Configure::$SHARED_DIR."/assign";
+    $assignDir = Configure::$ASSIGNMENTDIR;
     $downloadService_4_assigments = new DownloadService(AssignmentsModule::GetDownloadButton(),
                                                         AssignmentsModule::GetFileName(),
                                                         $assignDir);

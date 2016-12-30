@@ -8,6 +8,8 @@
     include_once "include/service/download_service.php";
     include_once "include/service/export_homework_service.php";
     include_once "include/service/query_homework_service.php";
+    include_once "include/module/assignments_module.php";
+
     $sessionService = new SessionService(Web::GetCurrentPage());
     $sessionService->Run();
     //if login, get user
@@ -32,6 +34,13 @@
                                                                $storeDir);
         $downloadService_4_queryhomework->Run();
     }
+
+    //3. download for assignment download
+    $assignDir = Configure::$ASSIGNMENTDIR;
+    $downloadService_4_assigments = new DownloadService(AssignmentsModule::GetDownloadButton(),
+                                                        AssignmentsModule::GetFileName(),
+                                                        $assignDir);
+    $downloadService_4_assigments->Run();
 ?>
 <!DOCTYPE html>
 <html>
@@ -178,8 +187,17 @@
                     <div>
                         <?php
                             include_once "include/module/assignments_module.php";
+                            include_once "include/service/delete_service.php";
                             Log::RawEcho("<!-- Assignments Module -->\n");
                             $assignmentDir = Configure::$ASSIGNMENTDIR;
+                            //delete service
+                            $deleteService_4_assignment = new DeleteService(AssignmentsModule::GetDeleteButton(),
+                                                                            AssignmentsModule::GetFileName(),
+                                                                            $assignmentDir);
+                            if ( true == $deleteService_4_assignment->Run() ) {
+                                Log::Echo2Web("<p>Delete File success.</p>");
+                            }
+
                             $assignmentsModule = new AssignmentsModule(24, $assignmentDir, $user);
                             $assignmentsModule->Display();
                         ?>
