@@ -91,5 +91,11 @@
                 return null;
             }
         }
+
+        public function DestroyInfo($name) {
+            if ( isset($_SESSION[$name]) ) {
+                unset($_SESSION[$name]);
+            }
+        }
     }
 ?>

@@ -9,9 +9,11 @@
 
     class Initialization {
         private $user;
+        private $NEED_CHECK_USER;
 
-        public function __construct($user) {
+        public function __construct($user, $NEED_CHECK_USER = true) {
             $this->user = $user;
+            $this->NEED_CHECK_USER = $NEED_CHECK_USER;
         }
 
         private function SeparatorLine() {
@@ -19,21 +21,23 @@
         }
 
         public function Run() {
-            //confirm the authorization
-            if ( 0 != strcmp("root", $this->user->GetId()) ) {
-                Log::Echo2Web("Authentication  failed.");
-                return false;
+            if ( true == $this->NEED_CHECK_USER ) {
+                //confirm the authorization
+                if ( 0 != strcmp("root", $this->user->GetId()) ) {
+                    Log::Echo2Web("Authentication  failed.");
+                    return false;
+                }
+                $rootUser = UserFactory::Query("root");
+                if ( is_null($rootUser) ) {
+                    Log::Echo2Web("There is no root Admin in our system.");
+                    return false;
+                }
+                if ( $this->user->GetPassword() != $rootUser->GetPassword() ) {
+                    Log::Echo2Web("Authentication  failed.");
+                    return false;
+                }
+                Log::Echo2Web("<h3>Authentication  success.</h3>");
             }
-            $rootUser = UserFactory::Query("root");
-            if ( is_null($rootUser) ) {
-                Log::Echo2Web("There is no root Admin in our system.");
-                return false;
-            }
-            if ( $this->user->GetPassword() != $rootUser->GetPassword() ) {
-                Log::Echo2Web("Authentication  failed.");
-                return false;
-            }
-            Log::Echo2Web("<h3>Authentication  success.</h3>");
             //-------------------------------------------------------------------
 
             //check out the necessary root dir

@@ -7,6 +7,7 @@
     include_once "include/common/user.php";
     include_once "include/common/web.php";
     include_once "include/common/authentication.php";
+    include_once "include/common/easter_egg.php";
 
     //login service and decide the identity
     class LoginService implements Service {
@@ -30,6 +31,14 @@
                 }
                 $id = Fun::ProcessUsername($_POST[$this->userid]);
                 $pwd  = Fun::ProcessPassword($_POST[$this->password]);
+
+                //put a Easter egg here
+                if ( 0 == strcmp("easteregg", $id) ||
+                     0 == strcmp("caidan", $id) ) {
+                    $easterEgg = new EasterEgg();
+                    $easterEgg->Display();
+                    return;
+                }
 
                 $user = UserFactory::Query($id);
                 if ( !is_null($user) &&

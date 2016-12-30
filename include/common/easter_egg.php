@@ -1,7 +1,21 @@
-<!DOCTYPE html>
 <?php
-    include_once "include/common/log.php";
-    $str = "<html>
+    include_once "include/common/web.php";
+    include_once "include/common/fun.php";
+
+    class EasterEgg {
+        public function Display() {
+            $info2NextPage = new PassInfoBetweenPage();
+            $info2NextPage->SetInfo(self::GetEgg(), self::$egg);
+            Web::Jump2Web("/courseweb/easter_egg.php");
+        }
+
+        static public function GetEgg() {
+            return "EasterEgg";
+        }
+
+        static private $egg = "
+<!DOCTYPE html>
+<html>
 <style>.c {margin :1px;width:19px;height:19px;background:red;position:absolute;}
 .d {margin :1px;width:19px;height:19px;background:gray;position:absolute;}
 .f {top:0px;left:0px;background:black;position:absolute;}
@@ -142,7 +156,6 @@
         case 39: //right
             s.hMove(1);
             break;}}
-</script>
-";
-    Log::RawEcho($str);
+</script>";
+    }
 ?>

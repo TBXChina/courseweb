@@ -15,7 +15,8 @@
 
         public function Run() {
             if ( isset($_POST[$this->resetButton]) ) {
-                $init = new Initialization($this->user);
+                $NEED_CHECK_USER = true;
+                $init = new Initialization($this->user, $NEED_CHECK_USER);
                 $init->Run();
             }
         }
