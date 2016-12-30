@@ -41,31 +41,27 @@
             //-------------------------------------------------------------------
 
             //check out the necessary root dir
-            if ( !is_dir(Configure::$STORE_DIR) ) {
-                Log::Echo2Web("Root Store Dir: ".
-                               Configure::$STORE_DIR.
-                              " can't find in the old system");
-                return false;
+            if ( is_dir(Configure::$STORE_DIR) ) {
+                //clear the specified dir
+                $this->SeparatorLine();
+                Log::Echo2Web("<h3>Clear the specified Dir in old system</h3>");
+                Log::EchoByStatus(true == File::RM(Configure::$ADMIN_DIR),
+                                  "RM Dir: ".Configure::$ADMIN_DIR,
+                                  "Fail to RM Dir: ".Configure::$ADMIN_DIR);
+                Log::EchoByStatus(true == File::RM(Configure::$STUDENT_DIR),
+                                  "RM Dir: ".Configure::$STUDENT_DIR,
+                                  "Fail to RM Dir: ".Configure::$STUDENT_DIR);
+                Log::EchoByStatus(true == File::RM(Configure::$SHARED_DIR),
+                                  "RM Dir: ".Configure::$SHARED_DIR,
+                                  "Fail to RM Dir: ".Configure::$SHARED_DIR);
             }
+
             if ( !is_dir(NewConfigure::$STORE_DIR) ) {
                 Log::Echo2Web("Root Store Dir in new system: ".
                                NewConfigure::$STORE_DIR.
                               " Should be created handly, and chmod");
                 return false;
             }
-
-            //clear the specified dir
-            $this->SeparatorLine();
-            Log::Echo2Web("<h3>Clear the specified Dir in old system</h3>");
-            Log::EchoByStatus(true == File::RM(Configure::$ADMIN_DIR),
-                              "RM Dir: ".Configure::$ADMIN_DIR,
-                              "Fail to RM Dir: ".Configure::$ADMIN_DIR);
-            Log::EchoByStatus(true == File::RM(Configure::$STUDENT_DIR),
-                              "RM Dir: ".Configure::$STUDENT_DIR,
-                              "Fail to RM Dir: ".Configure::$STUDENT_DIR);
-            Log::EchoByStatus(true == File::RM(Configure::$SHARED_DIR),
-                              "RM Dir: ".Configure::$SHARED_DIR,
-                              "Fail to RM Dir: ".Configure::$SHARED_DIR);
 
             //create the necessary dir and file
             $this->SeparatorLine();
