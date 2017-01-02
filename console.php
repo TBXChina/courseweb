@@ -153,7 +153,7 @@
                             /* download service */
                             //display the assignment module
                             Log::RawEcho("<!-- Assignments Module-->\n");
-                            $assignDir = Configure::$SHARED_DIR."/assign";
+                            $assignDir = Configure::$ASSIGNMENTDIR;
                             $assignmentsModule = new AssignmentsModule(24, $assignDir, $user);
                             $assignmentsModule->Display();
                         ?>
