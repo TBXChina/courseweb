@@ -120,7 +120,7 @@
             //recent news table
             $newNewsTable = new TableManager($newDB, NewConfigure::$NEWSTABLE);
             Log::Echo2Web("<h3>Create Recent News table.</h3>");
-            $newTableSql = "id int NOT NULL, primary key(id), message varchar(200), time varchar(50)";
+            $newTableSql = "id int NOT NULL, primary key(id), time varchar(50), message varchar(200)";
             Log::EchoByStatus(true == $newNewsTable->CreateNewTable($newTableSql),
                               "create success",
                               "create failed");

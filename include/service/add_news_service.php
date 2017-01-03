@@ -30,10 +30,11 @@
                 $rows = $tableManager->TableRows();
                 $id = $rows + 1;
                 $msg = Fun::ProcessStr($_POST[$this->newsText]);
+                Log::Echo2Web($msg);
                 $time = date("Y-m-d");
                 $propArray = Array(self::$NEWSTABLE_ID,
-                                   self::$NEWSTABLE_MSG,
-                                   self::$NEWSTABLE_TIME);
+                                   self::$NEWSTABLE_TIME,
+                                   self::$NEWSTABLE_MSG);
                 $valueArray = Array($id, $msg, $time);
                 return $tableManager->Insert($propArray, $valueArray);
             }

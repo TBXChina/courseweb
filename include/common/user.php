@@ -5,8 +5,7 @@
     include_once "include/common/log.php";
 
     class User {
-        //unique, to identity each user
-        protected $id;
+        protected $id; //unique, to identity each other
         protected $name;
         protected $password;
         protected $last_access_time;
