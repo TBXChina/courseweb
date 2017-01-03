@@ -54,8 +54,8 @@
                     return;
                 }
 
-                $id = $_POST[$this->userId];
-                $name = Fun::ProcessUsername($_POST[$this->userName]);
+                $id = Fun::ProcessUserId($_POST[$this->userId]);
+                $name = $_POST[$this->userName];
                 $pwd = Fun::ProcessPassword($_POST[$this->userPWD]);
                 $role = $_POST[$this->userRole];
                 $last_access_time = "";

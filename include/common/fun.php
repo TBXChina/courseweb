@@ -17,14 +17,14 @@
             $users = array();
             foreach( $lines as $l ) {
                 $arr = explode($separator, $l);
-                $id = trim($arr[0]);
+                $id = Fun::ProcessUserId($arr[0]);
                 if ( count($arr) < 2 ) {
                     $name = $id;
                 } else {
                     $name = trim($arr[1]);
                 }
                 $u = UserFactory::Create($role, $id);
-                $u->SetName(Fun::ProcessUsername($name));
+                $u->SetName($name);
                 $u->SetPassword(Fun::ProcessPassword($id));
                 array_push($users, $u);
             }
@@ -48,13 +48,13 @@
             return $str;
         }
 
-        //process the username
-        static public function ProcessUsername($username) {
-            $username = trim($username);
-            $username = stripslashes($username);
-            $username = htmlspecialchars($username);
-            $username = strtolower($username);
-            return $username;
+        //process the userid
+        static public function ProcessUserId($userid) {
+            $userid = trim($userid);
+            $userid = stripslashes($userid);
+            $userid = htmlspecialchars($userid);
+            $userid = strtolower($userid);
+            return $userid;
         }
 
         //process the password

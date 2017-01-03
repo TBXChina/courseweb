@@ -29,7 +29,7 @@
                 if ( !isset($_POST[$this->password]) ) {
                     Log::Echo2Web("Please input your password");
                 }
-                $id = Fun::ProcessUsername($_POST[$this->userid]);
+                $id = Fun::ProcessUserId($_POST[$this->userid]);
                 $pwd  = Fun::ProcessPassword($_POST[$this->password]);
 
                 //put a Easter egg here

@@ -209,8 +209,8 @@
                         include_once "include/service/delete_service.php";
                         include_once "include/module/query_homework_module.php";
                         include_once "include/service/query_homework_service.php";
-                        include_once "include/module/change_user_password_module.php";
-                        include_once "include/service/change_user_password_service.php";
+                        include_once "include/module/change_user_info_module.php";
+                        include_once "include/service/change_user_info_service.php";
                         include_once "include/module/insert_user_module.php";
                         include_once "include/service/insert_user_service.php";
                         include_once "include/module/delete_user_module.php";
@@ -233,16 +233,19 @@
                         if ( true == $deleteService_4_queryhomework->Run() ) {
                             Log::Echo2Web("<p>Delete File success.</p>");
                         }
-                        //change user password
-                        $changeUserPasswordModule = new ChangeUserPasswordModule(20);
-                        $changeUserPasswordModule->Display();
+
+                        //change user info
+                        $changeUserInfoModule = new ChangeUserInfoModule(20);
+                        $changeUserInfoModule->Display();
                         //service
-                        $changeUserPasswordService = new ChangeUserPasswordService(ChangeUserPasswordModule::GetChangePasswordButton(),
-                                                                                   ChangeUserPasswordModule::GetUserID(),
-                                                                                   ChangeUserPasswordModule::GetUserPassword());
-                        if ( true == $changeUserPasswordService->Run() ) {
-                            Log::Echo2Web("Change user password success.");
+                        $changeUserInfoService = new ChangeUserInfoService(ChangeUserInfoModule::GetResetPasswordButton(),
+                                                                           ChangeUserInfoModule::GetChangeNameButton(),
+                                                                           ChangeUserInfoModule::GetUserId(),
+                                                                           ChangeUserInfoModule::GetUserName());
+                        if ( true == $changeUserInfoService->Run() ) {
+                            Log::Echo2Web("<b>*Change User info success</b>");
                         }
+
                         //insert user
                         $insertUserModule = new InsertUserModule(20);
                         $insertUserModule->Display();
@@ -255,6 +258,7 @@
                         if ( true == $insertUserService->Run() ) {
                             Log::Echo2Web("Insert new user success.");
                         }
+
                         //delete user
                         $deleteUserModule = new DeleteUserModule(20);
                         $deleteUserModule->Display();
@@ -264,9 +268,11 @@
                         if ( true == $deleteUserService->Run() ) {
                             Log::Echo2Web("Delete user success");
                         }
+
                         //reset system
                         $resetSystemModule = new ResetSystemModule(20, $user);
                         $resetSystemModule->Display();
+                        //the service start up in another page
                     ?>
                 </ul>
             </div><!-- col-md-8 single-main -->
