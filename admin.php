@@ -112,9 +112,9 @@
                                 //start up upload service
                                 $saveDir = Configure::$ASSIGNMENTDIR;
                                 $uploadService = new UploadService(DistributeModule::GetUploadButton(),
-    DistributeModule::GetFileName(),
-    DistributeModule::GetSaveFileName(),
-    $saveDir);
+                                                                   DistributeModule::GetFileName(),
+                                                                   DistributeModule::GetSaveFileName(),
+                                                                   $saveDir);
                                 if ( $uploadService->Run() ) {
                                     Log::Echo2Web("<p>Upload success</p>");
                                 }
@@ -173,7 +173,6 @@
                                 Log::RawEcho("<!-- Export Module -->\n");
                                 $exportHomeworkModule = new ExportHomeworkModule(28);
                                 $exportHomeworkModule->Display();
-
                                 //start up export, will cause download, so need to start on the top
                                 /*export code*/
                             ?>
@@ -287,7 +286,6 @@
                         Log::RawEcho("<!-- user console module -->\n");
                         $userConsoleModule = new UserConsoleModule(20, $user);
                         $userConsoleModule->Display();
-
                         //start service
                         $userConsoleService = new UserConsoleService(UserConsoleModule::GetSignoutButton(),
                                                                      UserConsoleModule::GetChangePWDButton(),

@@ -85,39 +85,38 @@
 
                 <ul class="comment-list"  id="submit">
                     <h3 class="post-author_head">Submit homework</h3>
-                        <li>
-                            <div class="desc">
+                    <li>
+                        <div class="desc">
+                            <?php
+                                include_once "include/module/submit_module.php";
+                                include_once "include/service/upload_service.php";
+                                Log::RawEcho("<!-- Submit Form -->\n");
+                                $assignDir = Configure::$ASSIGNMENTDIR;
+                                $submitModule = new SubmitModule(32, $assignDir, $user);
+                                $submitModule->Display();
+
+                                //start up upload service
+                                $saveDir = $user->GetStoreDir();
+                                $uploadService = new UploadService(SubmitModule::GetUploadButton(),
+                                                                   SubmitModule::GetFileName(),
+                                                                   SubmitModule::GetSaveFileName(),
+                                                                   $saveDir);
+                                if ( true == $uploadService->Run() ) {
+                                    Log::Echo2Web("<p>Upload success</p>");
+                                }
+                            ?>
+
+                            <div class = "man-info">
                                 <?php
-                                    include_once "include/module/submit_module.php";
-                                    include_once "include/service/upload_service.php";
-                                    Log::RawEcho("<!-- Submit Form -->\n");
-                                    $assignDir = Configure::$ASSIGNMENTDIR;
-                                    $submitModule = new SubmitModule(32, $assignDir, $user);
-                                    $submitModule->Display();
-
-                                    //start up upload service
-                                    $saveDir = $user->GetStoreDir();
-                                    $uploadService = new UploadService(SubmitModule::GetUploadButton(),
-                                                                       SubmitModule::GetFileName(),
-                                                                       SubmitModule::GetSaveFileName(),
-                                                                       $saveDir);
-                                    if ( $uploadService->Run() ) {
-                                        Log::Echo2Web("<p>Upload success</p>");
-                                    }
+                                    include_once "include/module/notices_module.php";
+                                    Log::RawEcho("<!-- Notices -->\n");
+                                    $noticesModule = new NoticesModule(36);
+                                    $noticesModule->Display();
                                 ?>
-
-                                <div class = "man-info">
-                                    <?php
-                                        include_once "include/module/notices_module.php";
-                                        Log::RawEcho("<!-- Notices -->\n");
-                                        $noticesModule = new NoticesModule(36);
-                                        $noticesModule->Display();
-                                    ?>
-                                </div>
                             </div>
-
-                            <div class="clearfix"></div>
-                        </li>
+                        </div>
+                        <div class="clearfix"></div>
+                    </li>
                 </ul>
 
                 <ul class="comment-list"  id="list">
@@ -184,12 +183,12 @@
 
                 <div class="archives">
                     <h3 style="color:#2ad2c9;font-size: 25pt;">Recent News</h3>
-                        <?php
-                            include_once "include/module/recent_news_module.php";
-                            Log::RawEcho("<!-- recent news module -->\n");
-                            $recentNewsModule = new RecentNewsModule(20);
-                            $recentNewsModule->Display();
-                        ?>
+                    <?php
+                        include_once "include/module/recent_news_module.php";
+                        Log::RawEcho("<!-- recent news module -->\n");
+                        $recentNewsModule = new RecentNewsModule(20);
+                        $recentNewsModule->Display();
+                    ?>
                 </div>
             </div>
 
@@ -204,7 +203,6 @@
                 <div class="col-md-6 footer-left">
                     <p>Copyright &copy; 2016.Visg All rights reserved.</p>
                 </div>
-
                 <div class="clearfix"></div>
             </div>
         </div>
