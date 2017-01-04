@@ -1,6 +1,7 @@
 <?php
     include_once "include/service/service.php";
     include_once "include/configure.php";
+    include_once "include/common/fun.php";
     include_once "include/common/log.php";
     include_once "include/common/table_manager.php";
 
@@ -23,6 +24,7 @@
                 if ( !isset($_POST[$this->newsText]) ||
                       empty($_POST[$this->newsText]) ) {
                     Log::Echo2Web("Empty News");
+                    return false;
                 }
 
                 //insert into news table
@@ -30,7 +32,6 @@
                 $rows = $tableManager->TableRows();
                 $id = $rows + 1;
                 $msg = Fun::ProcessStr($_POST[$this->newsText]);
-                Log::Echo2Web($msg);
                 $time = date("Y-m-d");
                 $propArray = Array(self::$NEWSTABLE_ID,
                                    self::$NEWSTABLE_TIME,

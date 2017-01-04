@@ -73,6 +73,32 @@
     <script src="js/addClassRoot.js" type="text/javascript"></script>
     <script src="js/ajax.js" type="text/javascript"></script>
     <script src="js/slow_move.js" type="text/javascript"></script>
+
+    <!-- ajax -->
+    <script type = "text/javascript">
+        var ajaxhttp;
+        function LoadAjaxDoc(url, postStr, cfunc) {
+            if ( window.XMLHttpRequest ) {
+                //code for ie7+, firefox, chrome, opera, safari
+                ajaxhttp = new XMLHttpRequest();
+            } else {
+                //code for ie5, ie6
+                ajaxhttp = new ActiveXObject();
+            }
+            ajaxhttp.onreadystatechange = cfunc;
+            ajaxhttp.open("POST", url, true);
+            ajaxhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            ajaxhttp.send(postStr);
+        }
+
+        function test() {
+            LoadAjaxDoc("/courseweb/ajax.php", "b&&str=testinfo", function() {
+                if ( ajaxhttp.readyState == 4 && ajaxhttp.status == 200 ) {
+                    document.getElementById("mydiv").innerHTML = ajaxhttp.responseText;
+                }
+            });
+        }
+    </script>
 </head>
 
 <body>

@@ -42,6 +42,7 @@
 
                 $user = UserFactory::Query($id);
                 if ( !is_null($user) &&
+                      User::GetRole() != $user->GetRole() &&
                       $pwd == $user->GetPassword() ) {
                     //set the access_time
                     $last_access_time = time();

@@ -23,7 +23,7 @@
         }
 
         static public function GetRole() {
-            return "Guest";
+            return "guest";
         }
 
         public function GetId() {
@@ -78,6 +78,19 @@
             Log::Echo2Web("Homepage: ".$this->homepage);
             Log::Echo2Web("Store_Dir: ".$this->storeDir);
             Log::Echo2Web("Role: ".$this->GetRole());
+        }
+
+        public function Insert2Table($tableName) {
+            $propArray  = Array("id", "name", "password", "role", "last_access_time");
+            $valueArray = Array($this->id,
+                                $this->name,
+                                $this->password,
+                                $this->GetRole(),
+                                $this->last_access_time);
+            //open table
+            $tableManager = TableManagerFactory::Create($tableName);
+            $rs = $tableManager->Insert($propArray, $valueArray);
+            return $rs;
         }
     }
 
