@@ -125,6 +125,14 @@
                               "create success",
                               "create failed");
 
+            //discuss borad table
+            $newDiscussTable = new TableManager($newDB, NewConfigure::$DISCUSSTABLE);
+            Log::Echo2Web("<h3>Create Discuss board table.</h3>");
+            $newTableSql = "id int not null, primary key(id), state varchar(10), user_id varchar(15), time char(20), message varchar(200)";
+            Log::EchoByStatus(true == $newDiscussTable->CreateNewTable($newTableSql),
+                              "create success",
+                              "create failed");
+
             //import the student and admin users list
             $separator = " ";
             $studentUsers = Fun::ImportUser(Student::GetRole(),

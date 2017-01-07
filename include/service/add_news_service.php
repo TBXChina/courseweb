@@ -36,7 +36,7 @@
                 $propArray = Array(self::$NEWSTABLE_ID,
                                    self::$NEWSTABLE_TIME,
                                    self::$NEWSTABLE_MSG);
-                $valueArray = Array($id, $msg, $time);
+                $valueArray = Array($id, $time, $msg);
                 return $tableManager->Insert($propArray, $valueArray);
             }
             return null;

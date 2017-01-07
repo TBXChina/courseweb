@@ -101,17 +101,33 @@
             }
         }
 
-        //query discuss, where id1 < id < id2, or id2 < id < id1
-        static public function Query($id1, $id2) {
+        //query discuss, where id1 <= id < id2, or id2 <= id < id1
+        static public function Find($id1, $id2) {
             if ( !is_int($id1) || !is_int($id2) ) {
                 Log::Echo2Web("Discuss id is int.");
-                return false;
+                return null;
             }
-            if ( $id2 <= $id1 ) {
+            if ( $id2 < $id1 ) {
                 $temp = $id2;
                 $id2  = $id1;
-                $id1  = $id2;
+                $id1  = $temp;
             }
+            //query the table, [id1, id2)
+            $tableManager = TableManagerFactory::Create(Configure::$DISCUSSTABLE);
+            $sqlstr = "select * from ".Configure::$DISCUSSTABLE.
+                      " where id >= ".$id1.
+                      " and id < ".$id2;
+            $rs = $tableManager->Execute($sqlstr);
+            $discussions = array();
+            foreach ($rs as $r) {
+                $d = DiscussFactory::Create($r["id"]);
+                $d->SetState($r["state"]);
+                $d->SetUserId($r["user_id"]);
+                $d->SetTime($r["time"]);
+                $d->SetMessage($r["message"]);
+                array_push($discussions, $d);
+            }
+            return $discussions;
         }
     }
 ?>

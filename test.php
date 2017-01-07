@@ -1,32 +1,18 @@
+<!DOCTYPE HTML>
 <html>
-<head>
-<script type = "text/javascript">
-function show()
-{
-var xmlhttp;
-if (window.XMLHttpRequest) {
-//code for ie7+, firefox, chrome, opera, safari
-xmlhttp = new XMLHttpRequest();
-}
-else
-{
-xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-}
-xmlhttp.onreadystatechange=function()
-{
-if (xmlhttp.readyState == 4 && xmlhttp.status == 200 )
-{
-document.getElementById("mydiv").innerHTML=xmlhttp.responseText;
-}
-}
-xmlhttp.open("POST", "/courseweb/ajax.php", true);
-xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-xmlhttp.send("b&&str=asbdfg");
-}
-    </script>
-</head>
 <body>
-    <button type = "button" onclick = "show()">Request</button>
-    <div id = "mydiv"></div>
+<?php
+    include_once "include/service/discuss_board_service.php";
+    include_once "include/module/discuss_board_module.php";
+    $m = new DiscussBoardModule(2);
+    $m->Display();
+?>
+
+<button type = "button" onclick = "test()">Re</button>
+
+<script type = "text/javascript">
+    function test() {
+        alert("2124");
+    }
+</script>
 </body>
-</html>

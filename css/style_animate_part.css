@@ -1,5 +1,6 @@
 /* v_show style */
-.v_caption { height:30px;
+.v_caption { 
+	height:30px;
 	width:80px; 
 	overflow:hidden; 
 	background:url(../images/btn_cartoon.gif) no-repeat 0 0; 
@@ -10,25 +11,45 @@
 	/*position: relative;
 	/*top: 80px;
 	left: 910px;*/
+	vertical-align: center;
 	}
 	.center {
 		position:relative;
 		top: 65px;
-		left: 48%;
+		/*left: 48%;*/
+		margin-left:48%;
 	}
 
 
-.v_caption .cartoon { background-position: 0 -100px; }
-.v_caption .variety { background-position:-100px -100px; }
-.highlight_tip { display:inline; float:left; margin:14px 0 0 10px; }
-.highlight_tip span { display:inline; float:left; width:7px; height:7px; overflow:hidden; margin:0 2px; 
+.v_caption .cartoon { 
+	background-position: 0 -100px; 
+}
+.v_caption .variety { 
+	background-position:-100px -100px; 
+}
+.highlight_tip { 
+	display:inline; 
+	float:left; 
+	margin:14px 0 0 10px; 
+	text-align: center;
+}
+.highlight_tip span { 
+	display:inline; 
+	float:left; 
+	width:7px; 
+	height:7px; 
+	overflow:hidden; 
+	margin:0 2px; 
 	background:url(../images/btn_cartoon.gif) no-repeat 0 -320px; 
-	text-indent:-9999px; }
-.highlight_tip .current { background-position:0 -220px; }
-.change_btn { float:left; margin:7px 0 0 10px; }
-.change_btn span { display:block; float:left; width:30px; height:23px; overflow:hidden; 
-	background:url(../images/btn_cartoon.gif) no-repeat; 
-	text-indent:-9999px; cursor:pointer; }
-.change_btn .prev { background-position:0 -400px;  }
-.change_btn .next { width:31px; background-position:-30px -400px; }
-.v_caption em { display:inline; float:right; margin:10px 12px 0 0; font-family:simsun; }
+	text-indent:-9999px; 
+}
+.highlight_tip .current { 
+	background-position:0 -220px; 
+}
+
+.v_caption em { 
+	display:inline; 
+	float:right; 
+	margin:10px 12px 0 0; 
+	font-family:simsun; 
+}
