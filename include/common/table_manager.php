@@ -29,6 +29,18 @@
             }
         }
 
+        //lock the table, write lock
+        public function Lock() {
+            $sqlstr = "lock table ".$this->tableName." write";
+            $this->db->RawExecute($sqlstr);
+        }
+
+        //unlock the table
+        public function Unlock() {
+            $sqlstr = "unlock tables";
+            $this->db->RawExecute($sqlstr);
+        }
+
         //return an array in which saved the result
         public function Query($propArray/*property*/ = array(),
                               $valueArray            = array()) {

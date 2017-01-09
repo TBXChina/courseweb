@@ -77,6 +77,17 @@
             $rs = $tableManager->Insert($propArray, $valueArray);
             return $rs;
         }
+
+        public function Insert2TableManager($tableManager) {
+            $propArray = Array("id", "state", "user_id", "time", "message");
+            $valueArray = Array($this->id,
+                                $this->state,
+                                $this->user_id,
+                                $this->time,
+                                $this->message);
+            $rs = $tableManager->Insert($propArray, $valueArray);
+            return $rs;
+        }
     }
 
     class DiscussFactory {

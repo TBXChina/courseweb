@@ -93,7 +93,7 @@
             }
         }
 
-        //execute any sql str
+        //execute common sql str
         //return true/false, or the result set according to the sql str;
         public function execute($sqlstr) {
             //cut out the first 6 character
@@ -127,6 +127,10 @@
                 return false;
             }
             return false;
+        }
+
+        public function RawExecute($sqlstr) {
+            return $this->conn->query($sqlstr);
         }
 
         private $dbParam;
