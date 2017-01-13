@@ -3,54 +3,61 @@
     include_once "include/common/log.php";
     include_once "include/common/discuss.php";
     include_once "include/common/user.php";
+    include_once "include/common/fun.php";
 
     class DiscussBoardService implements Service {
+        private $spaceNum;
         private $user;
         private $id1;
         private $id2;
 
         //display discussions which between [id1, id2) 
-        public function __construct($user, $id1, $id2) {
+        public function __construct($spaceNum, $user, $id1, $id2) {
+            $this->spaceNum = $spaceNum;
             $this->user = $user;
             $this->id1   = $id1;
             $this->id2   = $id2;
         }
 
         public function Run() {
-            $str      = "<table border = 1>\n";
+            $prefix = Fun::NSpaceStr($this->spaceNum);
+            $str      = $prefix."<table>\n";
             $discussions = DiscussFactory::Find($this->id1, $this->id2);
             $size = count($discussions);
             for ( $i = ($size - 1); $i >= 0; $i-- ) {
                 $d = $discussions[$i];
-                $str .= "    <tr>\n";
-                //user
+                $str .= $prefix."    <tr>\n";
+                //floor and user
+                $str .= $prefix."        <td align = \"left\"><p>#".$d->GetId()." ";
                 $user = UserFactory::Query($d->GetUserId());
                 if ( is_null($user) ) {
-                    $str .= "        <td>Unknown User</td>\n";
+                    $str .= "Unknown User</p></td>\n";
                 } else {
-                    $str .= "        <td>".$user->GetName()."</td>\n";
+                    $str .= $user->GetName()."</p></td>\n";
                 }
                 //time
+                $str .= $prefix."        <td align = \"right\">";
                 if ( empty($d->GetTime()) ) {
-                    $str .= "        <td>Unknown Time</td>\n";
+                    $str .= "<p>Unknown Time</p>";
                 } else {
-                    $str .= "        <td>".date("Y-m-d H:i", $d->GetTime())."</td>\n";
+                    $str .= "<p>".date("Y-m-d H:i", $d->GetTime())."</p>";
                 }
-                $str .= "    </tr>\n    <tr>\n";
+                $str .= "</td>\n";
+                $str .= $prefix."    </tr>\n";
+                $str .= $prefix."    <tr>\n";
                 //message
+                $str .= $prefix."        <td colspan = \"2\">";
                 if ( ( is_null($this->user) || Admin::GetRole() != $this->user->GetRole() ) &&
                        Discuss::$STATE_VALID != $d->GetState() ) {
-                    $str .= "        <td>This comment has been deleted.</td>\n";
+                    $str .= "<p>&nbsp;&nbsp;This comment has been deleted.</p>";
                 } else {
-                    $str .= "        <td>".$d->GetMessage()."</td>\n";
+                    $str .= "<p>&nbsp;&nbsp;".$d->GetMessage()."</p>";
                 }
-
-                $str .= "    </tr>\n    <tr>\n";
-                //floor
-                $str .= "        <td>#".$d->GetId()." floor</td>\n";
-                $str .= "    </tr>\n";
+                $str .= "</td>\n";
+                $str .= $prefix."    </tr>\n";
+                $str .= $prefix."    <tr><th></th></tr>\n";
             }
-            $str     .= "</table>\n";
+            $str     .= $prefix."</table>\n";
             Log::RawEcho($str);
         }
     }

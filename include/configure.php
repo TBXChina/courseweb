@@ -73,7 +73,7 @@
             self::$NEWSTABLE            = "NewsTable";
             self::$DISCUSSTABLE         = "DiscussTable";
             self::$UPLOAD_FILE_MAX      = 20971520;
-            self::$SESSION_VALID_TIME   = 1000;
+            self::$SESSION_VALID_TIME   = 10000;
             self::$SALT                 = "6Ut!4Q";
         }
     }

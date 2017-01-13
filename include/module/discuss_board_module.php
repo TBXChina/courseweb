@@ -9,19 +9,30 @@
     include_once "include/common/discuss.php";
 
     class DiscussBoardModule implements Module {
+        private $spaceNum;
         private $nums_to_display; //the number of discussion to display
         private $user;
+        private $tableClass;
+        private $buttonClass;
+        private $submitClass;
+
         private $infoBetweenPage; //pass max id between page
         private $maxIdinTable;
         private $currentMaxId;
 
         static private $currentMaxDiscussIdName = "DiscussBoard_max_id";
 
-        static private $divId = "DiscussBoard_table";
+        static private $nums_to_displayName = "DiscussBoard_Nums_to_Display";
+        static private $divId = "DiscussBoard";
         static private $textareaId = "DiscussBoard_textareaId";
         static private $textareaContent = "DiscussBoard_textarea";
         static private $userIdTag = "DiscussBoard_userIdTag";
         static private $user2NextPageName = "DiscussBoard_User";
+
+        //class name to next page
+        static private $tableClass2NextPageName = "DiscussBoard_TableClass";
+        static private $buttonClass2NextPageName = "DiscussBoard_ButtonClass";
+        static private $submitClass2NextPageName = "DiscussBoard_SubmitClass";
 
         //button
         static private $firstPageButton        = "FirstPageButton";
@@ -39,13 +50,19 @@
         static private $lastPageButtonFun      = "PressLastPageButton";
         static private $submitDiscussButtonFun = "PressSubmitButton";
 
-        public function __construct($nums_to_display, $user = null) {
+        public function __construct($spaceNum, $nums_to_display, $user = null,
+                                    $tableClass = "", $buttonClass ="", $submitClass = "") {
             if ( !is_int($nums_to_display) ) {
                 Log::Echo2Web("DiscussBoard::nums_to_display must be int");
                 exit(0);
             }
+            $this->spaceNum        = $spaceNum;
             $this->nums_to_display = $nums_to_display;
             $this->user            = $user;
+            $this->tableClass      = $tableClass;
+            $this->buttonClass     = $buttonClass;
+            $this->submitClass     = $submitClass;
+
             $this->infoBetweenPage = new PassInfoBetweenPage();
             //open table
             $tableManager = TableManagerFactory::Create(Configure::$DISCUSSTABLE);
@@ -69,6 +86,22 @@
             return $this->user;
         }
 
+        public function GetTableClass() {
+            return $this->tableClass;
+        }
+
+        public function GetButtonClass() {
+            return $this->buttonClass;
+        }
+
+        public function GetSubmitClass() {
+            return $this->submitClass;
+        }
+
+        static function GetNums2DisplayName() {
+            return self::$nums_to_displayName;
+        }
+
         static public function GetDivId() {
             return self::$divId;
         }
@@ -85,8 +118,20 @@
             return self::$userIdTag;
         }
 
-        static public function GetUser2NextPage() {
+        static public function GetUser2NextPageName() {
             return self::$user2NextPageName;
+        }
+
+        static public function GetTableClass2NextPageName() {
+            return self::$tableClass2NextPageName;
+        }
+
+        static public function GetButtonClass2NextPageName() {
+            return self::$buttonClass2NextPageName;
+        }
+
+        static public function GetSubmitClass2NextPageName() {
+            return self::$submitClass2NextPageName;
         }
 
         //button
@@ -210,6 +255,64 @@
             return $rs;
         }
 
+        private function ButtonDisplay($id1, $id2) {
+            $prefix = Fun::NSpaceStr($this->spaceNum);
+            //button
+            $str  = $prefix."    <div class = \"".$this->buttonClass."\">\n";
+            $str .= $prefix."        <table>\n";
+            $str .= $prefix."            <tr>\n";
+
+            //first button
+            $str .= $prefix."                <td>";
+            if ($id2 <= $this->maxIdinTable) {
+                $str .= "<img src = \"images/icons/firstpage.jpg\" ".
+                        "title = \"first page\" ";
+                $str .= "onclick = \"".self::$firstPageButtonFun."()\"";
+                $str .= "/>";
+            }
+            $str .= "</td>\n";
+
+            //previous button
+            $str .= $prefix."                <td>";
+            if ( $id2 <= $this->maxIdinTable ) {
+                $str .= "<img src = \"images/icons/previouspage.jpg\" ".
+                        "title = \"previous page\" ";
+                $str .= "onclick = \"".self::$previousPageButtonFun."()\"";
+                $str .= "/>";
+            }
+            $str .= "</td>\n";
+
+            //refresh button
+            $str .= $prefix."                <td><img src = \"images/icons/refresh.jpg\" ".
+                    "title = \"refresh\" ";
+            $str .= "onclick = \"".self::$refreshButtonFun."()\"";
+            $str .= "/></td>\n";
+
+            //next button
+            $str .= $prefix."                <td>";
+            if ( $id1 > 1 ) {
+                $str .= "<img src = \"images/icons/nextpage.jpg\" ".
+                        "title = \"next page\" ";
+                $str .= "onclick = \"".self::$nextPageButtonFun."()\"";
+                $str .= "/>";
+            }
+            $str .= "</td>\n";
+
+            //last button
+            $str .= $prefix."                <td>";
+            if ( $id1 > 1 ) {
+                $str .= "<img src = \"images/icons/lastpage.jpg\" ".
+                        "title = \"last page\" ";
+                $str .= "onclick = \"".self::$lastPageButtonFun."()\"";
+                $str .= "/>";
+            }
+            $str .= "</td>\n";
+            $str .= $prefix."            </tr>\n";
+            $str .= $prefix."        </table>\n";
+            $str .= $prefix."    </div>\n";
+            Log::RawEcho($str);
+        }
+
         public function Display() {
             if ( isset($_POST[self::$firstPageButton]) ) {
                 $this->FirstPage();
@@ -236,70 +339,48 @@
                 $submitResult = $this->Submit();
             }
 
-            $id2 = $this->currentMaxId + 1;
-            $id1 = $id2 - $this->nums_to_display;
-            $service = new DiscussBoardService($this->user, $id1, $id2);
-            $str  = "<div id = \"".self::$divId."\" >\n";
+            $prefix = Fun::NSpaceStr($this->spaceNum);
+            $str  = $prefix."<div id = \"".self::$divId."\" >\n";
             Log::RawEcho($str);
-            $service->Run();
 
             //button
-            $str = "<table border = 1>\n";
-            $str .= "    <tr>\n";
+            $id2 = $this->currentMaxId + 1;
+            $id1 = $id2 - $this->nums_to_display;
+            $this->ButtonDisplay($id1, $id2);
 
-            //first button
-            $str .= "        <td><button type = \"button\" ";
-            if ( $id2 > $this->maxIdinTable ) {
-                $str .= "disabled = \"disabled\" ";
-            }
-            $str .= "onclick = \"".self::$firstPageButtonFun."()\"";
-            $str .= ">First Page</button></td>\n";
+            //comment table
+            $str = $prefix."    <div class = \"".$this->tableClass."\">\n";
+            Log::RawEcho($str);
 
-            //previous button
-            $str .= "        <td><button type = \"button\" ";
-            if ( $id2 > $this->maxIdinTable ) {
-                $str .= "disabled = \"disabled\" ";
-            }
-            $str .= "onclick = \"".self::$previousPageButtonFun."()\"";
-            $str .= ">Previous Page</button></td>\n";
+            $service = new DiscussBoardService($this->spaceNum + 8, $this->user, $id1, $id2);
+            $service->Run();
 
-            //previous button
-            $str .= "        <td><button type = \"button\" ";
-            $str .= "onclick = \"".self::$refreshButtonFun."()\"";
-            $str .= ">Refresh</button></td>\n";
+            $str = $prefix."    </div>\n";
+            Log::RawEcho($str);
 
-            //next button
-            $str .= "        <td><button type = \"button\" ";
-            if ( $id1 <= 1) {
-                $str .= "disabled = \"disabled\" ";
-            }
-            $str .= "onclick = \"".self::$nextPageButtonFun."()\"";
-            $str .= ">Next Page</button></td>\n";
+            //button
+            $this->ButtonDisplay($id1, $id2);
 
-            //last button
-            $str .= "        <td><button type = \"button\" ";
-            if ( $id1 <= 1) {
-                $str .= "disabled = \"disabled\" ";
-            }
-            $str .= "onclick = \"".self::$lastPageButtonFun."()\"";
-            $str .= ">Last Page</button></td>\n";
-            $str .= "    </tr>\n";
-
+            //submit
             if ( !is_null($this->user) ) {
-                $str .= "    <tr>\n";
-                $str .= "        <td><textarea id = \"".
+                $str = $prefix."    <div class = \"".$this->submitClass."\">\n";
+                $str .= $prefix."        <h1>Comment</h1>\n";
+                $str .= $prefix."        <table>\n";
+                $str .= $prefix."            <tr>\n";
+                $str .= $prefix."                <td><textarea id = \"".
                         self::$textareaId."\"></textarea></td>\n";
-                $str .= "    </tr>\n";
+                $str .= $prefix."            </tr>\n";
 
-                $str .= "    <tr>\n";
-                $str .= "        <td><button type = \"button\" ";
+                $str .= $prefix."            <tr>\n";
+                $str .= $prefix."                <td><button type = \"button\" ";
                 $str .= "onclick = \"".self::$submitDiscussButtonFun."()\"";
-                $str .= ">Submit</button></td>";
-                $str .= "    </tr>\n";
+                $str .= ">Submit</button></td>\n";
+                $str .= $prefix."            </tr>\n";
+                $str .= $prefix."        </table>\n";
+                $str .= $prefix."    </div>\n";
             }
 
-            $str .= "</table>\n";
-            $str .= "</div>\n";
+            $str .= $prefix."</div>\n";
             Log::RawEcho($str);
 
             if ( !is_null($submitResult) ) {

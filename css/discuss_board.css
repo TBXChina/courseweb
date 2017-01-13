@@ -1,0 +1,64 @@
+.DS_Comment_List table {
+    border-collapse: collapse;
+}
+
+.DS_Comment_List td {
+    border-top-width: 1px;
+    border-top-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-style:solid;
+    border-color: #aaa;
+    width: 180px;
+    word-break:break-all;
+}
+
+.DS_Comment_List th {
+    height: 20px;
+}
+
+.DS_Comment_Button table {
+    margin: 0px auto;
+    margin-bottom: 10px;
+}
+
+.DS_Comment_Button td{
+    width: 30px;
+    height: 30px;
+}
+
+.DS_Comment_Button img {
+    width: 30px;
+    height: 30px;
+}
+
+.DS_Comment_Submit table {
+    margin: 0px auto;
+    border-collapse: collapse;
+    border: 2px solid #dedcdc;
+}
+
+.DS_Comment_Submit h1 {
+    color: #2ad2c9;
+    font-size: 20pt;
+    margin: 10px;
+    text-align: center;
+}
+
+.DS_Comment_Submit td {
+    padding: 3px;
+    text-align: center;
+}
+
+.DS_Comment_Submit textarea {
+    width: 300px;
+    height: 100px;
+    margin: 0px;
+}
+
+.DS_Comment_Submit button {
+    background-color: rgb(149, 186, 18);
+    color: #ffffff;
+    padding: 5px;
+    margin: 3px;
+    font-size: 15px;
+}

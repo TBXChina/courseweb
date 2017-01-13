@@ -5,28 +5,29 @@
     include_once "include/common/user.php";
 
     class DiscussBoard_JS_Service implements service {
+        private $spaceNum;
         private $user;
         private $post2URL;
-        private $spaceNum;
 
         static private $AJAXFUNNAME = "LoadAjaxDoc";
 
-        public function __construct($user, $post2URL, $spaceNum) {
+        public function __construct($spaceNum, $user, $post2URL) {
+            $this->spaceNum = $spaceNum;
             $this->user = $user;
             $this->post2URL = $post2URL;
-            $this->spaceNum = $spaceNum;
         }
 
-        private function FunGenerate($funName, $postStr, $changeDivId) {
+        private function ButtonFunGenerate($funName, $postStr, $changeDivId) {
             $prefix = Fun::NSpaceStr($this->spaceNum + 4);
             $str  = $prefix."function ".$funName."() {\n";
-            $str .= $prefix."    ".self::$AJAXFUNNAME."(".$this->post2URL.",\n";
+            $str .= $prefix."    ".self::$AJAXFUNNAME."(\"".$this->post2URL."\",\n";
             $str .= $prefix."    \"".$postStr."\",\n";
             $str .= $prefix."    function() {\n";
             $str .= $prefix."        if ( 4 == ajaxhttp.readyState && 200 == ajaxhttp.status) {\n";
             $str .= $prefix."            document.getElementById(\"".$changeDivId."\").innerHTML = ajaxhttp.responseText;\n";
             $str .= $prefix."        }\n";
             $str .= $prefix."    });\n";
+            $str .= $prefix."}\n";
             Log::RawEcho($str);
         }
 
@@ -50,9 +51,53 @@
             Log::RawEcho($str);
 
             //first page
-            $this->FunGenerate("Funname", "poststr", "divid");
+            $this->ButtonFunGenerate(DiscussBoardModule::GetFirstPageButtonFun(),
+                                     DiscussBoardModule::GetFirstPageButton(),
+                                     DiscussBoardModule::GetDivId());
 
-            $str .= $prefix."</script>\n";
+            //previous page
+            $this->ButtonFunGenerate(DiscussBoardModule::GetPreviousPageButtonFun(),
+                                     DiscussBoardModule::GetPreviousPageButton(),
+                                     DiscussBoardModule::GetDivId());
+
+            //refresh
+            $this->ButtonFunGenerate(DiscussBoardModule::GetRefreshButtonFun(),
+                                     DiscussBoardModule::GetRefreshButton(),
+                                     DiscussBoardModule::GetDivId());
+
+            //next page
+            $this->ButtonFunGenerate(DiscussBoardModule::GetNextPageButtonFun(),
+                                     DiscussBoardModule::GetNextPageButton(),
+                                     DiscussBoardModule::GetDivId());
+
+            //last page
+            $this->ButtonFunGenerate(DiscussBoardModule::GetLastPageButtonFun(),
+                                     DiscussBoardModule::GetLastPageButton(),
+                                     DiscussBoardModule::GetDivId());
+
+            //submit
+            $str  = $prefix."    function ".DiscussBoardModule::GetSubmitButtonFun()."() {\n";
+            $str .= $prefix."        var textarea = document.getElementById(\"".
+                    DiscussBoardModule::GetTextareaId()."\");\n";
+            $str .= $prefix."        var postStr = \"".DiscussBoardModule::GetSubmitButton()."\"\n";
+            if ( !is_null($this->user) ) {
+                $str .= $prefix."                      + \"&".DiscussBoardModule::GetUserIdTag()."=".
+                        $this->user->GetId()."\"\n";
+            }
+            $str .= $prefix."                      + \"&".DiscussBoardModule::GetTextareaContent().
+                    "=\" + textarea.value;\n";
+            $str .= $prefix."        ".self::$AJAXFUNNAME."(\"".$this->post2URL."\",\n";
+            $str .= $prefix."        postStr,\n";
+            $str .= $prefix."        function() {\n";
+            $str .= $prefix."            if ( 4 == ajaxhttp.readyState && 200 == ajaxhttp.status ) {\n";
+            $str .= $prefix."                document.getElementById(\"".
+                    DiscussBoardModule::GetDivId()."\").innerHTML = ajaxhttp.responseText;\n";
+            $str .= $prefix."            }\n";
+            $str .= $prefix."        });\n";
+            $str .= $prefix."    }\n";
+
+            $str  .= $prefix."</script>\n";
+            Log::RawEcho($str);
         }
     }
 ?>
