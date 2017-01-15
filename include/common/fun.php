@@ -3,6 +3,7 @@
     include_once "include/common/user.php";
     include_once "include/common/encode.php";
     include_once "include/common/log.php";
+    include_once "include/common/emoji.php";
 
     //some usefull function
     class Fun {
@@ -45,6 +46,15 @@
             $str = trim($str);
             $str = stripslashes($str);
             $str = htmlspecialchars($str);
+            return $str;
+        }
+
+        //process the common str
+        static public function ProcessEmoji($str) {
+            $str = trim($str);
+            $str = stripslashes($str);
+            $str = htmlspecialchars($str);
+            $str = emoji_unified_to_html($str);
             return $str;
         }
 

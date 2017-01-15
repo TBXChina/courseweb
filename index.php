@@ -31,6 +31,9 @@
     <!-- <link rel="stylesheet" href="css/style_contact.css" type='text/css'/> -->
     <link rel='stylesheet' href='css/googleFont.css' type='text/css'/>
 
+    <!-- emoji -->
+    <link rel="stylesheet" href="css/emoji.css" type='text/css'/>
+
     <!-- scripts-->
     <script src="js/jquery-2.1.3.min.js" type="text/javascript"></script>
     <script src="js/modernizr.js" type="text/javascript"></script>

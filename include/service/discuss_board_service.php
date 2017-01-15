@@ -51,7 +51,7 @@
                        Discuss::$STATE_VALID != $d->GetState() ) {
                     $str .= "<p>&nbsp;&nbsp;This comment has been deleted.</p>";
                 } else {
-                    $str .= "<p>&nbsp;&nbsp;".$d->GetMessage()."</p>";
+                    $str .= "<p>&nbsp;&nbsp;".Fun::ProcessEmoji($d->GetMessage())."</p>";
                 }
                 $str .= "</td>\n";
                 $str .= $prefix."    </tr>\n";

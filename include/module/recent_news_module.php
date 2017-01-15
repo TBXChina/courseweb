@@ -32,7 +32,8 @@
             for ( $i = ($size - 1); $i >= 0; $i-- ) {
                 $str .= $prefix."   <li>\n";
                 $str .= $prefix."       <b>".$rs[$i][self::$NEWSTABLE_TIME]."</b><br>\n";
-                $str .= $prefix."       <p>". $rs[$i][self::$NEWSTABLE_MSG]."</p>\n";
+                //$str .= $prefix."       <p>".$rs[$i][self::$NEWSTABLE_MSG]."</p>\n";
+                $str .= $prefix."       <p>".Fun::ProcessEmoji($rs[$i][self::$NEWSTABLE_MSG])."</p>\n";
                 $str .= $prefix."   </li>\n";
             }
             $str   .= $prefix."</ul>\n";

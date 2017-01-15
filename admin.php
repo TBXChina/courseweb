@@ -57,6 +57,9 @@
     <link href="css/font_icon/css/pe-icon-7-stroke.css" rel="stylesheet"  type='text/css'/>
     <link href="css/font_icon/css/helper.css" rel="stylesheet" type='text/css'/>
 
+    <!-- emoji -->
+    <link rel="stylesheet" href="css/emoji.css" type='text/css'/>
+
     <!-- button style-->
     <link href="css/button.css" rel='stylesheet' type='text/css'>
 
