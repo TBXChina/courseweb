@@ -47,7 +47,6 @@
 <head>
     <title>Admin Console</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="keywords" content="Probability Theory Submission System"/>
 
     <!-- stylesheets -->
     <link href="css/style.css" rel='stylesheet' type='text/css' />
@@ -56,6 +55,7 @@
     <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
     <link href="css/font_icon/css/pe-icon-7-stroke.css" rel="stylesheet"  type='text/css'/>
     <link href="css/font_icon/css/helper.css" rel="stylesheet" type='text/css'/>
+    <link href="css/discuss_board.css" rel='stylesheet' type='text/css' />
 
     <!-- emoji -->
     <link rel="stylesheet" href="css/emoji.css" type='text/css'/>
@@ -76,32 +76,14 @@
     <script src="js/addClassRoot.js" type="text/javascript"></script>
     <script src="js/ajax.js" type="text/javascript"></script>
     <script src="js/slow_move.js" type="text/javascript"></script>
-
-    <!-- ajax -->
-    <script type = "text/javascript">
-        var ajaxhttp;
-        function LoadAjaxDoc(url, postStr, cfunc) {
-            if ( window.XMLHttpRequest ) {
-                //code for ie7+, firefox, chrome, opera, safari
-                ajaxhttp = new XMLHttpRequest();
-            } else {
-                //code for ie5, ie6
-                ajaxhttp = new ActiveXObject();
-            }
-            ajaxhttp.onreadystatechange = cfunc;
-            ajaxhttp.open("POST", url, true);
-            ajaxhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            ajaxhttp.send(postStr);
-        }
-
-        function test() {
-            LoadAjaxDoc("/courseweb/ajax.php", "b&&str=testinfo", function() {
-                if ( ajaxhttp.readyState == 4 && ajaxhttp.status == 200 ) {
-                    document.getElementById("mydiv").innerHTML = ajaxhttp.responseText;
-                }
-            });
-        }
-    </script>
+    <script src="js/discuss_board.js" type="text/javascript"></script>
+    <?php
+        include_once "include/service/discuss_board_js_service.php";
+        Log::RawEcho("<!-- Ajax -->\n");
+        $url = "/courseweb/ajax_discuss_board.php";
+        $discussBoard_JS_Service = new DiscussBoard_JS_Service(4, $user, $url);
+        $discussBoard_JS_Service->Run();
+    ?>
 </head>
 
 <body>
@@ -335,6 +317,36 @@
                         $recentNewsModule = new RecentNewsModule(20);
                         $recentNewsModule->Display();
                     ?>
+                    <br>
+                    <h3 id = "discuss_board_title" style="color:#2ad2c9;font-size: 25pt;" onclick = "Switch_DiscussBoard_Display()">+ Discuss Board</h3>
+                    <div id = "control_discuss_board_display" style = "display: none;">
+                        <?php
+                            include_once "include/module/discuss_board_module.php";
+                            Log::RawEcho("<!-- discuss board module -->\n");
+                            $nums_to_display = 5;
+                            $tableClass = "DS_Comment_List";
+                            $buttonClass = "DS_Comment_Button";
+                            $submitClass = "DS_Comment_Submit";
+                            $discussBoardModule = new DiscussBoardModule(24, $nums_to_display, $user,
+                                                                         $tableClass,
+                                                                         $buttonClass,
+                                                                         $submitClass);
+                            $discussBoardModule->Display();
+                            $info2NextPage = new PassInfoBetweenPage();
+                            //pass num to display
+                            $info2NextPage->SetInfo(DiscussBoardModule::GetNums2DisplayName(),
+                                                    $discussBoardModule->GetNums2Display());
+                            //pass user
+                            $info2NextPage->SetInfo(DiscussBoardModule::GetUser2NextPageName(),
+                                                    $discussBoardModule->GetUser());
+                            //pass class
+                            $info2NextPage->SetInfo(DiscussBoardModule::GetTableClass2NextPageName(),
+                                                    $discussBoardModule->GetTableClass());
+                            $info2NextPage->SetInfo(DiscussBoardModule::GetButtonClass2NextPageName(),
+                                                    $discussBoardModule->GetButtonClass());
+                            $info2NextPage->SetInfo(DiscussBoardModule::GetSubmitClass2NextPageName(),
+                                                    $discussBoardModule->GetSubmitClass());
+                        ?>
                 </div>
             </div>
             <div class="clearfix"></div>

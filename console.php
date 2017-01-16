@@ -40,9 +40,9 @@
     <link href="css/TW.css" rel="stylesheet" type='text/css'>
     <link href="css/OS.css" rel='stylesheet' type='text/css'>
     <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
-    <link href="css/discuss_board.css" rel='stylesheet' type='text/css' />
     <link href="css/font_icon/css/pe-icon-7-stroke.css" rel="stylesheet"  type='text/css'/>
     <link href="css/font_icon/css/helper.css" rel="stylesheet" type='text/css'/>
+    <link href="css/discuss_board.css" rel='stylesheet' type='text/css' />
 
     <!-- emoji -->
     <link rel="stylesheet" href="css/emoji.css" type='text/css'/>
@@ -62,6 +62,7 @@
     <script src="js/addClass.js" type="text/javascript"></script>
     <script src="js/ajax.js" type="text/javascript"></script>
     <script src="js/slow_move.js" type="text/javascript"></script>
+    <script src="js/discuss_board.js" type="text/javascript"></script>
     <?php
         include_once "include/service/discuss_board_js_service.php";
         Log::RawEcho("<!-- Ajax -->\n");
@@ -92,6 +93,7 @@
 
     <div class="single">
         <div class="container">
+            <!-- middle -->
             <div class="col-md-8 single-main">
                 <div class="single-grid">
                     <img src="images/6.jpg" alt="cover image"/>
@@ -174,6 +176,7 @@
                 </ul>
             </div>
 
+            <!-- right -->
             <div class="col-md-4 side-content">
                 <div class="recent">
                     <?php
@@ -203,34 +206,37 @@
                         $recentNewsModule = new RecentNewsModule(20);
                         $recentNewsModule->Display();
                     ?>
-                    <h3 style="color:#2ad2c9;font-size: 25pt;">Discuss Board</h3>
-                    <?php
-                        include_once "include/module/discuss_board_module.php";
-                        Log::RawEcho("<!-- discuss board module -->\n");
-                        $nums_to_display = 3;
-                        $tableClass = "DS_Comment_List";
-                        $buttonClass = "DS_Comment_Button";
-                        $submitClass = "DS_Comment_Submit";
-                        $discussBoardModule = new DiscussBoardModule(20, $nums_to_display, $user,
-                                                                     $tableClass,
-                                                                     $buttonClass,
-                                                                     $submitClass);
-                        $discussBoardModule->Display();
-                        $info2NextPage = new PassInfoBetweenPage();
-                        //pass num to display
-                        $info2NextPage->SetInfo(DiscussBoardModule::GetNums2DisplayName(),
-                                                $discussBoardModule->GetNums2Display());
-                        //pass user
-                        $info2NextPage->SetInfo(DiscussBoardModule::GetUser2NextPageName(),
-                                                $discussBoardModule->GetUser());
-                        //pass class
-                        $info2NextPage->SetInfo(DiscussBoardModule::GetTableClass2NextPageName(),
-                                                $discussBoardModule->GetTableClass());
-                        $info2NextPage->SetInfo(DiscussBoardModule::GetButtonClass2NextPageName(),
-                                                $discussBoardModule->GetButtonClass());
-                        $info2NextPage->SetInfo(DiscussBoardModule::GetSubmitClass2NextPageName(),
-                                                $discussBoardModule->GetSubmitClass());
-                    ?>
+                    <br>
+                    <h3 id = "discuss_board_title" style="color:#2ad2c9;font-size: 25pt;" onclick = "Switch_DiscussBoard_Display()">+ Discuss Board</h3>
+                    <div id = "control_discuss_board_display" style = "display: none;">
+                        <?php
+                            include_once "include/module/discuss_board_module.php";
+                            Log::RawEcho("<!-- discuss board module -->\n");
+                            $nums_to_display = 5;
+                            $tableClass = "DS_Comment_List";
+                            $buttonClass = "DS_Comment_Button";
+                            $submitClass = "DS_Comment_Submit";
+                            $discussBoardModule = new DiscussBoardModule(24, $nums_to_display, $user,
+                                                                         $tableClass,
+                                                                         $buttonClass,
+                                                                         $submitClass);
+                            $discussBoardModule->Display();
+                            $info2NextPage = new PassInfoBetweenPage();
+                            //pass num to display
+                            $info2NextPage->SetInfo(DiscussBoardModule::GetNums2DisplayName(),
+                                                    $discussBoardModule->GetNums2Display());
+                            //pass user
+                            $info2NextPage->SetInfo(DiscussBoardModule::GetUser2NextPageName(),
+                                                    $discussBoardModule->GetUser());
+                            //pass class
+                            $info2NextPage->SetInfo(DiscussBoardModule::GetTableClass2NextPageName(),
+                                                    $discussBoardModule->GetTableClass());
+                            $info2NextPage->SetInfo(DiscussBoardModule::GetButtonClass2NextPageName(),
+                                                    $discussBoardModule->GetButtonClass());
+                            $info2NextPage->SetInfo(DiscussBoardModule::GetSubmitClass2NextPageName(),
+                                                    $discussBoardModule->GetSubmitClass());
+                        ?>
+                    </div>
                 </div>
             </div>
 
