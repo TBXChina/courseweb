@@ -1,4 +1,3 @@
-
 html, body{
     font-size: 100%;
 	background:	#fff;
@@ -416,7 +415,7 @@ span.menu2{
   background: #f0f8ff;
   font-size: 1.3em;
   margin:0 auto;
-  height: 610px;
+  /*height: 1000px;*/
   overflow: hidden;
 }
 .recent_news h3 {
@@ -442,9 +441,10 @@ span.menu2{
 /*--real contact start here--*/
 #contact {
   position: absolute;
-  top: 1650px;
+  /*top: 1650px;*/
   width: 100%;
   height: 620px;
+  -webkit-filter: brightness(0.3);
   filter: brightness(0.3);
 }
 

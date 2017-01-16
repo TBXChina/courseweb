@@ -235,7 +235,10 @@
                                                     $discussBoardModule->GetButtonClass());
                             $info2NextPage->SetInfo(DiscussBoardModule::GetSubmitClass2NextPageName(),
                                                     $discussBoardModule->GetSubmitClass());
+                            //Notice
+                            $discussBoardModule->GetNotices();
                         ?>
+                        </div>
                     </div>
                 </div>
             </div>

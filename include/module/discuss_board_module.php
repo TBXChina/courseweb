@@ -78,6 +78,16 @@
             $this->currentMaxId = (int)$this->currentMaxId;
         }
 
+        public function GetNotices() {
+            $prefix = Fun::NSpaceStr($this->spaceNum);
+            $str  = $prefix."<b>* Notices:</b>\n";
+            $str .= $prefix."<ol>\n";
+            $str .= $prefix."    <li>Support Emoji face</li>\n";
+            $str .= $prefix."    <li><b>Warning:</b> don't abuse anyone.</li>\n";
+            $str .= $prefix."</ol>\n";
+            Log::RawEcho($str);
+        }
+
         public function GetNums2Display() {
             return $this->nums_to_display;
         }

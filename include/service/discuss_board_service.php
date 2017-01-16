@@ -21,9 +21,14 @@
 
         public function Run() {
             $prefix = Fun::NSpaceStr($this->spaceNum);
-            $str      = $prefix."<table>\n";
             $discussions = DiscussFactory::Find($this->id1, $this->id2);
             $size = count($discussions);
+            if ( 0 >= $size ) {
+                $str = $prefix."<p>骚年，为什么不评论一发呢!</p>";
+                Log::Echo2Web($str);
+                return;
+            }
+            $str      = $prefix."<table>\n";
             for ( $i = ($size - 1); $i >= 0; $i-- ) {
                 $d = $discussions[$i];
                 $str .= $prefix."    <tr>\n";
