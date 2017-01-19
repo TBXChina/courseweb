@@ -238,7 +238,6 @@
                             //Notice
                             $discussBoardModule->GetNotices();
                         ?>
-                        </div>
                     </div>
                 </div>
             </div>

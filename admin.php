@@ -349,6 +349,7 @@
                             //Notice
                             $discussBoardModule->GetNotices();
                         ?>
+                    </div>
                 </div>
             </div>
             <div class="clearfix"></div>

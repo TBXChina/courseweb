@@ -112,7 +112,7 @@
             //user table
             $newUserTableManager = new TableManager($newDB, NewConfigure::$USERTABLE);
             Log::Echo2Web("<h3>Create user table.</h3>");
-            $newTableSql = "id varchar(15) NOT NULL, PRIMARY KEY(id), name varchar(15), password varchar(40), role varchar(10), last_access_time char(20)";
+            $newTableSql = "id varchar(15) NOT NULL, PRIMARY KEY(id), name varchar(100), password varchar(40), role varchar(10), last_access_time char(20)";
             Log::EchoByStatus(true == $newUserTableManager->CreateNewTable($newTableSql),
                               "create success",
                               "create failed");

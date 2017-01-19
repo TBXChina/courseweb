@@ -38,7 +38,11 @@
                 if ( is_null($user) ) {
                     $str .= "Unknown User</p></td>\n";
                 } else {
-                    $str .= $user->GetName()."</p></td>\n";
+                    if ( Admin::GetRole() == $user->GetRole() ) {
+                        $str .= "(Administrator)".$user->GetName()."</p></td>\n";
+                    } else {
+                        $str .= $user->GetName()."</p></td>\n";
+                    }
                 }
                 //time
                 $str .= $prefix."        <td align = \"right\">";

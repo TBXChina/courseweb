@@ -82,8 +82,11 @@
             $prefix = Fun::NSpaceStr($this->spaceNum);
             $str  = $prefix."<b>* Notices:</b>\n";
             $str .= $prefix."<ol>\n";
-            $str .= $prefix."    <li>Support Emoji face</li>\n";
             $str .= $prefix."    <li><b>Warning:</b> don't abuse anyone.</li>\n";
+            $str .= $prefix."    <li>Press ".
+                    "<img src = \"images/icons/refresh.jpg\" width = \"30\" title = \"refresh\" /> ".
+                    "if you wanna see the newest comments</li>\n";
+            $str .= $prefix."    <li>Support display Emoji face <span class=\"emoji-outer emoji-sizer\"><span class=\"emoji-inner emoji1f36d\"></span></span></li>\n";
             $str .= $prefix."</ol>\n";
             Log::RawEcho($str);
         }
@@ -243,6 +246,12 @@
                 return false;
             }
 
+            //control the length
+            if ( 100 <= strlen($msg)) {
+                Log::Echo2Web("Commit failed: you input too much words");
+                return false;
+            }
+
             //open table, query the newest max id
             $tableManager = TableManagerFactory::Create(Configure::$DISCUSSTABLE);
             //lock the table
@@ -378,7 +387,8 @@
                 $str .= $prefix."        <table>\n";
                 $str .= $prefix."            <tr>\n";
                 $str .= $prefix."                <td><textarea id = \"".
-                        self::$textareaId."\"></textarea></td>\n";
+                        self::$textareaId."\" placeholder = \"".
+                                "骚年，为什么不评论一发呢!\" ></textarea></td>\n";
                 $str .= $prefix."            </tr>\n";
 
                 $str .= $prefix."            <tr>\n";
