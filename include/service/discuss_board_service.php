@@ -33,23 +33,27 @@
                 $d = $discussions[$i];
                 $str .= $prefix."    <tr>\n";
                 //floor and user
-                $str .= $prefix."        <td align = \"left\"><p>#".$d->GetId()." ";
+                $str .= $prefix."        <td align = \"left\"><h2>#".$d->GetId()."</h2> ";
                 $user = UserFactory::Query($d->GetUserId());
                 if ( is_null($user) ) {
                     $str .= "Unknown User</p></td>\n";
                 } else {
                     if ( Admin::GetRole() == $user->GetRole() ) {
-                        $str .= "(Administrator)".$user->GetName()."</p></td>\n";
-                    } else {
-                        $str .= $user->GetName()."</p></td>\n";
+                        $str .= "(Administrator)";
                     }
+                    if ( $this->user->GetId() == $user->GetId() ) {
+                        $str .= "<h1>".$user->GetName()."</h1>";
+                    } else {
+                        $str .= $user->GetName();
+                    }
+                    $str .= "</td>\n";
                 }
                 //time
                 $str .= $prefix."        <td align = \"right\">";
                 if ( empty($d->GetTime()) ) {
-                    $str .= "<p>Unknown Time</p>";
+                    $str .= "<h2>Unknown Time</h2>";
                 } else {
-                    $str .= "<p>".date("Y-m-d H:i", $d->GetTime())."</p>";
+                    $str .= "<h2>".date("Y-m-d H:i", $d->GetTime())."</h2>";
                 }
                 $str .= "</td>\n";
                 $str .= $prefix."    </tr>\n";
