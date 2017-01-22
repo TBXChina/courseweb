@@ -65,6 +65,21 @@
             Log::Echo2Web("message: ".$this->message);
         }
 
+        public function Update2Table($tableName) {
+            $prop4location = "id";
+            $value         = $this->id;
+            $prop4modifyArray = Array("state", "user_id", "time", "message");
+            $newValueArray = Array($this->state,
+                                   $this->user_id,
+                                   $this->time,
+                                   $this->message);
+            //open table
+            $tableManager = TableManagerFactory::Create($tableName);
+            $rs = $tableManager->Update($prop4location, $value,
+                                        $prop4modifyArray, $newValueArray);
+            return $rs;
+        }
+
         public function Insert2Table($tableName) {
             $propArray = Array("id", "state", "user_id", "time", "message");
             $valueArray = Array($this->id,

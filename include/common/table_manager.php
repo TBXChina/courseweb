@@ -120,23 +120,46 @@
             return 0 < $this->TableRows($propArray, $valueArray);
         }
 
-        public function Update($prop4location, $value, $prop4modify, $newValue) {
+        public function Update($prop4location, $value, $prop4modifyArray, $newValueArray) {
             if (empty($prop4location) ||
                 empty($value)         ||
-                empty($prop4modify)   ||
-                empty($newValue)
+                empty($prop4modifyArray)   ||
+                empty($newValueArray)
                ) {
                 Log::DebugEcho("Error in TableManager::Update, Empty var.");
                 return false;
             }
+
+            if ( !is_array($prop4modifyArray) ) {
+                $prop4modifyArray = Array($prop4modifyArray);
+            }
+            if ( !is_array($newValueArray) ) {
+                $newValueArray = Array($newValueArray);
+            }
+            if ( count($prop4modifyArray) != count($newValueArray) ) {
+                Log::DebugEcho("Error in TableManager::Update: ".
+                               "The size of prop4modifyArray and newValueArray not equal");
+                return false;
+            }
+
             //first, make sure this record exists
             if (false == $this->Exist($prop4location, $value)) {
                 Log::DebugEcho("Error in TableManager::Updata: the record don't exist.");
                 return false;
             }
             //second, modify this record
-            $sqlstr = "UPDATE $this->tableName SET $prop4modify = '$newValue'
-                       WHERE $prop4location = '$value'";
+            $sqlstr = "UPDATE $this->tableName SET ".$prop4modifyArray[0]." = '".$newValueArray[0]."' ";
+            $size = count($prop4modifyArray);
+            for ( $i = 1; $i < $size; $i++ ) {
+                $sqlstr .= ", ".$prop4modifyArray[$i].
+                           " = '".$newValueArray[$i]."' ";
+            }
+            $sqlstr .= " WHERE $prop4location = '$value'";
+            /*
+            Log::Echo2Web($sqlstr);
+            return true;
+            */
+
             if ( true == $this->db->execute($sqlstr) ) {
                 return true;
             } else {

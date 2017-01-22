@@ -216,6 +216,8 @@
 
                 <ul class="comment-list comment-extra"  id="extra">
                     <?php
+                        include_once "include/module/delete_comment_module.php";
+                        include_once "include/service/delete_comment_service.php";
                         include_once "include/service/delete_service.php";
                         include_once "include/module/query_homework_module.php";
                         include_once "include/service/query_homework_service.php";
@@ -227,6 +229,16 @@
                         include_once "include/service/delete_user_service.php";
                         include_once "include/module/reset_system_module.php";
                         Log::RawEcho("<!-- user manager module -->\n");
+                        //delete comment
+                        $deleteCommentModule = new DeleteCommentModule(20);
+                        $deleteCommentModule->Display();
+                        //delete comment service
+                        $deleteCommentService = new DeleteCommentService(DeleteCommentModule::GetDeleteCommentButton(),
+                                                                         DeleteCommentModule::GetCommentId());
+                        if ( true == $deleteCommentService->Run() ) {
+                            Log::Echo2Web("delete success.");
+                        }
+
                         //query
                         $queryHomeworkModule = new QueryHomeworkModule(20);
                         $queryHomeworkModule->Display();

@@ -47,6 +47,7 @@
         //set the time, and update the dataset
         public function SetLastAccessTime($t) {
             $this->last_access_time = $t;
+            /*
             //update the dataset
             //open table
             $tableManager = TableManagerFactory::Create(Configure::$USERTABLE);
@@ -57,6 +58,7 @@
             $rs = $tableManager->Update($prop4location, $value,
                                         $prop4modify, $newValue);
             return $rs;
+            */
         }
         public function GetLastAccessTime() {
             return $this->last_access_time;
@@ -78,6 +80,21 @@
             Log::Echo2Web("Homepage: ".$this->homepage);
             Log::Echo2Web("Store_Dir: ".$this->storeDir);
             Log::Echo2Web("Role: ".$this->GetRole());
+        }
+
+        public function Update2Table($tableName) {
+            $prop4location = "id";
+            $value         = $this->id;
+            $prop4modifyArray  = Array("name", "password", "role", "last_access_time");
+            $newValueArray = Array($this->name,
+                                   $this->password,
+                                   $this->GetRole(),
+                                   $this->last_access_time);
+            //open table
+            $tableManager = TableManagerFactory::Create($tableName);
+            $rs = $tableManager->Update($prop4location, $value,
+                                        $prop4modifyArray, $newValueArray);
+            return $rs;
         }
 
         public function Insert2Table($tableName) {

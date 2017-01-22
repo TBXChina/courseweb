@@ -39,7 +39,7 @@
                     $str .= "Unknown User</p></td>\n";
                 } else {
                     if ( Admin::GetRole() == $user->GetRole() ) {
-                        $str .= "(Administrator)";
+                        $str .= "(Admin) ";
                     }
                     if ( $this->user->GetId() == $user->GetId() ) {
                         $str .= "<h1>".$user->GetName()."</h1>";
@@ -62,12 +62,17 @@
                 $str .= $prefix."        <td colspan = \"2\">";
                 if ( ( is_null($this->user) || Admin::GetRole() != $this->user->GetRole() ) &&
                        Discuss::$STATE_VALID != $d->GetState() ) {
-                    $str .= "<p>&nbsp;&nbsp;This comment has been deleted.</p>";
+                    $str .= "<p>&nbsp;&nbsp;This comment has been deleted by Admin.</p>";
                 } else {
                     $str .= "<p>&nbsp;&nbsp;".Fun::ProcessEmoji($d->GetMessage())."</p>";
                 }
                 $str .= "</td>\n";
                 $str .= $prefix."    </tr>\n";
+                if ( Admin::GetRole() == $this->user->GetRole() ) {
+                    $str .= $prefix."    <tr>\n";
+                    $str .= $prefix."        <td colspan = \"2\">Comment State: ".$d->GetState()."</td>\n";
+                    $str .= $prefix."    </tr>\n";
+                }
                 $str .= $prefix."    <tr><th></th></tr>\n";
             }
             $str     .= $prefix."</table>\n";

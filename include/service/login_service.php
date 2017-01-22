@@ -47,6 +47,7 @@
                     //set the access_time
                     $last_access_time = time();
                     $user->SetLastAccessTime($last_access_time);
+                    $user->Update2Table(Configure::$USERTABLE);
                     //register the legal user
                     $au = new Authentication();
                     $au->SetLegalUser($user);
