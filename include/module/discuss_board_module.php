@@ -20,35 +20,36 @@
         private $maxIdinTable;
         private $currentMaxId;
 
-        static private $currentMaxDiscussIdName = "DiscussBoard_max_id";
+        static private $commentMaxLength         = 100;
+        static private $currentMaxDiscussIdName  = "DiscussBoard_max_id";
 
-        static private $nums_to_displayName = "DiscussBoard_Nums_to_Display";
-        static private $divId = "DiscussBoard";
-        static private $textareaId = "DiscussBoard_textareaId";
-        static private $textareaContent = "DiscussBoard_textarea";
-        static private $userIdTag = "DiscussBoard_userIdTag";
-        static private $user2NextPageName = "DiscussBoard_User";
+        static private $nums_to_displayName      = "DiscussBoard_Nums_to_Display";
+        static private $divId                    = "DiscussBoard";
+        static private $textareaId               = "DiscussBoard_textareaId";
+        static private $textareaContent          = "DiscussBoard_textarea";
+        static private $userIdTag                = "DiscussBoard_userIdTag";
+        static private $user2NextPageName        = "DiscussBoard_User";
 
         //class name to next page
-        static private $tableClass2NextPageName = "DiscussBoard_TableClass";
+        static private $tableClass2NextPageName  = "DiscussBoard_TableClass";
         static private $buttonClass2NextPageName = "DiscussBoard_ButtonClass";
         static private $submitClass2NextPageName = "DiscussBoard_SubmitClass";
 
         //button
-        static private $firstPageButton        = "FirstPageButton";
-        static private $nextPageButton         = "NextPageButton";
-        static private $refreshButton          = "RefreshButton";
-        static private $previousPageButton     = "PreviousPageButton";
-        static private $lastPageButton         = "LastPageButton";
-        static private $submitDiscussButton    = "SubmitButton";
+        static private $firstPageButton          = "FirstPageButton";
+        static private $nextPageButton           = "NextPageButton";
+        static private $refreshButton            = "RefreshButton";
+        static private $previousPageButton       = "PreviousPageButton";
+        static private $lastPageButton           = "LastPageButton";
+        static private $submitDiscussButton      = "SubmitButton";
 
         //callback function when press button
-        static private $firstPageButtonFun     = "PressFirstPageButton";
-        static private $nextPageButtonFun      = "PressNextPageButton";
-        static private $refreshButtonFun       = "PressRefressButton";
-        static private $previousPageButtonFun  = "PressPreviousButton";
-        static private $lastPageButtonFun      = "PressLastPageButton";
-        static private $submitDiscussButtonFun = "PressSubmitButton";
+        static private $firstPageButtonFun       = "PressFirstPageButton";
+        static private $nextPageButtonFun        = "PressNextPageButton";
+        static private $refreshButtonFun         = "PressRefressButton";
+        static private $previousPageButtonFun    = "PressPreviousButton";
+        static private $lastPageButtonFun        = "PressLastPageButton";
+        static private $submitDiscussButtonFun   = "PressSubmitButton";
 
         public function __construct($spaceNum, $nums_to_display, $user = null,
                                     $tableClass = "", $buttonClass ="", $submitClass = "") {
@@ -247,7 +248,7 @@
             }
 
             //control the length
-            if ( 100 <= strlen($msg)) {
+            if ( self::$commentMaxLength <= strlen($msg)) {
                 Log::Echo2Web("Commit failed: you input too much words");
                 return false;
             }
