@@ -389,7 +389,7 @@
                 $str .= $prefix."            <tr>\n";
                 $str .= $prefix."                <td><textarea id = \"".
                         self::$textareaId."\" placeholder = \"".
-                                "骚年，为什么不评论一发呢!\" ></textarea></td>\n";
+                        "骚年，为什么不评论一发呢!\" ></textarea></td>\n";
                 $str .= $prefix."            </tr>\n";
 
                 $str .= $prefix."            <tr>\n";
