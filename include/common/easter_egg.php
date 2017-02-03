@@ -5,13 +5,30 @@
     class EasterEgg {
         public function Display() {
             $info2NextPage = new PassInfoBetweenPage();
-            $info2NextPage->SetInfo(self::GetEgg(), self::$egg2);
+            $info2NextPage->SetInfo(self::GetEgg(), self::$egg);
             Web::Jump2Web("/courseweb/easter_egg.php");
         }
 
         static public function GetEgg() {
             return "EasterEgg";
         }
+
+        static private $egg = "
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <style>
+                html, body {
+                    height: 100%;
+                    width:  100%;
+                    margin: 0px;
+                }
+            </style>
+        </head>
+        <body>
+            <object width = \"100%\" height = \"100%\" data = \"data/dessert.swf\"></object>
+        </body>
+        </html>";
 
         static private $egg1 = "
             <!DOCTYPE html>
