@@ -54,7 +54,7 @@
         public function __construct($spaceNum, $nums_to_display, $user = null,
                                     $tableClass = "", $buttonClass ="", $submitClass = "") {
             if ( !is_int($nums_to_display) ) {
-                Log::Echo2Web("DiscussBoard::nums_to_display must be int");
+                Log::Echo2Web("DiscussBoardModule::nums_to_display must be int");
                 exit(0);
             }
             $this->spaceNum        = $spaceNum;
