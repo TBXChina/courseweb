@@ -85,6 +85,7 @@ Write a test.php:
     phpinfo();
 ?>
 ```
+To confirm whether success, input 127.0.0.1/test.php.
 
 ## Install
 ```
@@ -92,6 +93,11 @@ cd APACHEROOT/htdocs
 git clone git@github.com:TBXChina/courseweb.git
 cd courseweb
 ```
+customize your courseweb
+```
+vim include/configure.php include/new_configure.php
+```
+
 In your browser, input ```127.0.0.1/courseweb/setup.php```.
 
-Enjoy! <font color=red>Don't forget to remove the setup.php!</font>
+Enjoy! <font color=red>Don't forget to remove the setup.php andreplace the ```include/configure.php``` by ```include/new_configure.php```!</font>
