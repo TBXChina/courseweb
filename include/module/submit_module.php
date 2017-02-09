@@ -11,8 +11,8 @@
         private $spaceNum;
         private $assignDir;
         private $user;
-        static private $FILENAME = "Submit_FileName";
-        static private $UPLOAD   = "Submit_Upload";
+        static private $FILENAME     = "Submit_FileName";
+        static private $UPLOAD       = "Submit_Upload";
         static private $SAVEFILENAME = "Submit_Select";
 
         public function __construct($spaceNum, $assignDir, $user) {

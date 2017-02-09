@@ -44,14 +44,7 @@
         //return an array in which saved the result
         public function Query($propArray/*property*/ = array(),
                               $valueArray            = array()) {
-            /*
             // allow empty var now, to get all query results
-            if ( empty($propArray) || empty($valueArray) ) {
-                Log::DebugEcho("Error in TableManager::Query: ".
-                               "Empty var.");
-                return false;
-            }
-            */
             if ( !is_array($propArray) ) {
                 $propArray = Array($propArray);
             }
@@ -155,10 +148,6 @@
                            " = '".$newValueArray[$i]."' ";
             }
             $sqlstr .= " WHERE $prop4location = '$value'";
-            /*
-            Log::Echo2Web($sqlstr);
-            return true;
-            */
 
             if ( true == $this->db->execute($sqlstr) ) {
                 return true;

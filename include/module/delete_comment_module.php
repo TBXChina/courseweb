@@ -8,7 +8,7 @@
         private $spaceNum;
 
         static private $DELETECOMMENTBUTTON = "DeleteComment_Delete";
-        static private $COMMENTID = "DeleteComment_CommentId";
+        static private $COMMENTID           = "DeleteComment_CommentId";
 
         public function __construct($spaceNum) {
             $this->spaceNum = $spaceNum;

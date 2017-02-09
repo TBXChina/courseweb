@@ -7,7 +7,7 @@
     class ChangeUserInfoModule implements Module {
         private $spaceNum;
 
-        static private $RESETPWDBUTTON  = "ChangeUserInfo_ResetPassword";
+        static private $RESETPWDBUTTON   = "ChangeUserInfo_ResetPassword";
         static private $CHANGENAMEBUTTON = "ChangeUserInfo_ChangeName";
         static private $USERID           = "ChangeUserInfo_id";
         static private $USERNAME         = "ChangeUserInfo_name";

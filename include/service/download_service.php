@@ -12,7 +12,7 @@
         public function __construct($downloadButton, $fileName, $storeDir) {
             $this->downloadButton = $downloadButton;
             $this->fileName       = $fileName;
-            $this->storeDir        = File::Trim($storeDir);
+            $this->storeDir       = File::Trim($storeDir);
         }
 
         public function Run() {

@@ -8,7 +8,7 @@
         private $spaceNum;
 
         static private $DELETEUSERBUTTON = "DeleteUser_Delete";
-        static private $USERID = "DeleteUser_UserId";
+        static private $USERID           = "DeleteUser_UserId";
 
         public function __construct($spaceNum) {
             $this->spaceNum = $spaceNum;

@@ -28,7 +28,7 @@
             } else {
                 Log::DebugEcho("connect to db: ".$host."::".$dbname);
             }
-            $this->dbParam 	= $dbParam;
+            $this->dbParam = $dbParam;
             $this->conn = $conn;
         }
 

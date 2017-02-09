@@ -12,7 +12,7 @@
         public function __construct($deleteButton, $fileName, $storeDir) {
             $this->deleteButton = $deleteButton;
             $this->fileName     = $fileName;
-            $this->storeDir      = File::Trim($storeDir);
+            $this->storeDir     = File::Trim($storeDir);
         }
 
         public function Run() {

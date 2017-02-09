@@ -14,9 +14,9 @@
         //display discussions which between [id1, id2) 
         public function __construct($spaceNum, $user, $id1, $id2) {
             $this->spaceNum = $spaceNum;
-            $this->user = $user;
-            $this->id1   = $id1;
-            $this->id2   = $id2;
+            $this->user     = $user;
+            $this->id1      = $id1;
+            $this->id2      = $id2;
         }
 
         public function Run() {

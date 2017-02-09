@@ -10,7 +10,7 @@
         private $TextRows;
         private $TextCols;
 
-        static private $ADD = "AddNews_Add";
+        static private $ADD      = "AddNews_Add";
         static private $NEWSTEXT = "AddNews_Text";
 
         public function __construct($spaceNum, $rows, $cols) {

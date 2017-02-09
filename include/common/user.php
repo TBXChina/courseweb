@@ -47,18 +47,6 @@
         //set the time, and update the dataset
         public function SetLastAccessTime($t) {
             $this->last_access_time = $t;
-            /*
-            //update the dataset
-            //open table
-            $tableManager = TableManagerFactory::Create(Configure::$USERTABLE);
-            $prop4location = "id";
-            $value = $this->id;
-            $prop4modify = "last_access_time";
-            $newValue = $this->last_access_time;
-            $rs = $tableManager->Update($prop4location, $value,
-                                        $prop4modify, $newValue);
-            return $rs;
-            */
         }
         public function GetLastAccessTime() {
             return $this->last_access_time;

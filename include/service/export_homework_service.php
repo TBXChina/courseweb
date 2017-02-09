@@ -14,7 +14,7 @@
         private $homeworkNo;
 
         public function __construct($exportButton, $homeworkNo) {
-            $this->tempDir    = File::Trim(Configure::$ADMIN_DIR."/temp4ExportHomework");
+            $this->tempDir      = File::Trim(Configure::$ADMIN_DIR."/temp4ExportHomework");
             $this->exportButton = $exportButton;
             $this->homeworkNo   = $homeworkNo;
         }

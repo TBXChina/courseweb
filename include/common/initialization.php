@@ -24,7 +24,7 @@
             if ( true == $this->NEED_CHECK_USER ) {
                 //confirm the authorization
                 if ( 0 != strcmp("root", $this->user->GetId()) ) {
-                    Log::Echo2Web("Authentication  failed.");
+                    Log::Echo2Web("Authentication failed.");
                     return false;
                 }
                 $rootUser = UserFactory::Query("root");
@@ -33,10 +33,10 @@
                     return false;
                 }
                 if ( $this->user->GetPassword() != $rootUser->GetPassword() ) {
-                    Log::Echo2Web("Authentication  failed.");
+                    Log::Echo2Web("Authentication failed.");
                     return false;
                 }
-                Log::Echo2Web("<h3>Authentication  success.</h3>");
+                Log::Echo2Web("<h3>Authentication success.</h3>");
             }
             //-------------------------------------------------------------------
 

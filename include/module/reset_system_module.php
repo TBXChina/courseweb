@@ -10,7 +10,7 @@
         private $user;
 
         static private $RESETBUTTON = "ResetSystem_Reset";
-        static private $USER = "ResetSytem_user";
+        static private $USER        = "ResetSytem_user";
 
         public function __construct($spaceNum, $user) {
             $this->spaceNum = $spaceNum;

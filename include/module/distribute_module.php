@@ -10,8 +10,8 @@
         private $spaceNum;
         private $assignDir;
 
-        static private $FILENAME = "Distribute_FileName";
-        static private $UPLOAD   = "Distribute_Upload";
+        static private $FILENAME     = "Distribute_FileName";
+        static private $UPLOAD       = "Distribute_Upload";
 
         static private $SAVEFILENAME = "Distribute_No";
 

@@ -132,7 +132,6 @@
                                 //display the form
                                 $distributeModule = new DistributeModule(28);
                                 $distributeModule->Display();
-
                             ?>
 
                             <div class = "man-info">
@@ -207,7 +206,6 @@
                             if ( true == $deleteService_4_assignment->Run() ) {
                                 Log::Echo2Web("<p>Delete File success.</p>");
                             }
-
                             $assignmentsModule = new AssignmentsModule(24, $assignmentDir, $user);
                             $assignmentsModule->Display();
                         ?>

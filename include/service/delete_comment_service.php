@@ -11,7 +11,7 @@
         public function __construct($deleteButton, $commentId) {
             $this->deleteButton = $deleteButton;
             $this->commentId    = $commentId;
-}
+        }
 
         public function Run() {
             if ( isset($_POST[$this->deleteButton]) ) {

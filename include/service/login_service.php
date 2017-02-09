@@ -17,7 +17,7 @@
 
         public function __construct($loginButton, $userid, $password) {
             $this->loginButton = $loginButton;
-            $this->userid    = $userid;
+            $this->userid      = $userid;
             $this->password    = $password;
         }
 
