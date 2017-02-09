@@ -55,7 +55,7 @@
                     $jump2url = $user->GetHomepage();
                     Web::Jump2Web($jump2url);
                 } else {
-                    Log::Echo2Web("Login failed");
+                    Log::Echo2Web("Login failed.<br>");
                 }
             }
         }

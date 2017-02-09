@@ -686,6 +686,9 @@ address {
   font-style: normal;
   line-height: 1.42857143;
 }
+.address a {
+  color: #ffffff;
+}
 code,
 kbd,
 pre,
