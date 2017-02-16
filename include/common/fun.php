@@ -12,7 +12,7 @@
             $RETURN_IN_LINES = true;
             $lines = File::ReadFileContent($namelistFile, $RETURN_IN_LINES);
             if ( is_bool($lines) && false == $lines ) {
-                Log::Echo2Web("Can't Read file");
+                Log::Echo2Web("Can't Read file:".$namelistFile);
                 return array();
             }
             $users = array();

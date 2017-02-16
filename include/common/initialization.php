@@ -45,15 +45,21 @@
                 //clear the specified dir
                 $this->SeparatorLine();
                 Log::Echo2Web("<h3>Clear the specified Dir in old system</h3>");
-                Log::EchoByStatus(true == File::RM(Configure::$ADMIN_DIR),
-                                  "RM Dir: ".Configure::$ADMIN_DIR,
-                                  "Fail to RM Dir: ".Configure::$ADMIN_DIR);
-                Log::EchoByStatus(true == File::RM(Configure::$STUDENT_DIR),
-                                  "RM Dir: ".Configure::$STUDENT_DIR,
-                                  "Fail to RM Dir: ".Configure::$STUDENT_DIR);
-                Log::EchoByStatus(true == File::RM(Configure::$SHARED_DIR),
-                                  "RM Dir: ".Configure::$SHARED_DIR,
-                                  "Fail to RM Dir: ".Configure::$SHARED_DIR);
+                if ( is_dir(Configure::$ADMIN_DIR) ) {
+                    Log::EchoByStatus(true == File::RM(Configure::$ADMIN_DIR),
+                                      "RM Dir: ".Configure::$ADMIN_DIR,
+                                      "Fail to RM Dir: ".Configure::$ADMIN_DIR);
+                }
+                if ( is_dir(Configure::$STUDENT_DIR) ) {
+                    Log::EchoByStatus(true == File::RM(Configure::$STUDENT_DIR),
+                                      "RM Dir: ".Configure::$STUDENT_DIR,
+                                      "Fail to RM Dir: ".Configure::$STUDENT_DIR);
+                }
+                if ( is_dir(Configure::$SHARED_DIR) ) {
+                    Log::EchoByStatus(true == File::RM(Configure::$SHARED_DIR),
+                                      "RM Dir: ".Configure::$SHARED_DIR,
+                                      "Fail to RM Dir: ".Configure::$SHARED_DIR);
+                }
             }
 
             if ( !is_dir(NewConfigure::$STORE_DIR) ) {
@@ -134,6 +140,8 @@
                               "create failed");
 
             //import the student and admin users list
+            $this->SeparatorLine();
+            Log::Echo2Web("<h3>Import admin and student into the system.</h3>");
             $separator = " ";
             $studentUsers = Fun::ImportUser(Student::GetRole(),
                                             NewConfigure::$STUDENTNAMELISTFILE,
@@ -145,10 +153,9 @@
                 Log::Echo2Web("Import Users Failed");
                 exit(0);
             }
-            $this->SeparatorLine();
             $propArray = Array("id", "name", "password", "role", "last_access_time");
             $last_access_time = "";
-            Log::Echo2Web("<h3>Import Student Name List...</h3>");
+            Log::Echo2Web("<h4>Import Student Name List...</h4>");
             foreach ( $studentUsers as $u) {
                 $valueArray = Array($u->GetId(),
                                     $u->GetName(),
@@ -163,7 +170,7 @@
                     exit(0);
                 }
             }
-            Log::Echo2Web("<h3>Import Admin Name List...</h3>");
+            Log::Echo2Web("<h4>Import Admin Name List...</h4>");
             foreach ( $adminUsers as $u) {
                 $valueArray = Array($u->GetId(),
                                     $u->GetName(),
