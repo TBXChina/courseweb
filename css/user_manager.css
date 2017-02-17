@@ -1,0 +1,15 @@
+ul.user_manager_class {
+    border: 1px solid #BAB6B6;
+    margin-bottom: 100px;
+    padding: 20px;
+}
+
+.user_manager_class h3 {
+    font-family: ''Titillium Web', sans-serif';
+    color: rgb(42, 210, 201);
+    margin: 5px;
+}
+
+.user_manager_class form {
+    margin: 10px;
+}

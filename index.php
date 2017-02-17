@@ -199,12 +199,6 @@
                     </span>
                 </li>
                 <li>
-                    <i class="pe-7s-phone"></i>
-                    <span>
-                        +1-202-555-0144
-                    </span>
-                </li>
-                <li>
                     <i class="pe-7s-global"></i>
                     <span>
                         <a href="<?php Log::RawEcho(Configure::$URL); ?>">

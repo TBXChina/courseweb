@@ -56,6 +56,7 @@
     <link href="css/font_icon/css/pe-icon-7-stroke.css" rel="stylesheet"  type='text/css'/>
     <link href="css/font_icon/css/helper.css" rel="stylesheet" type='text/css'/>
     <link href="css/discuss_board.css" rel='stylesheet' type='text/css' />
+    <link href="css/user_manager.css" rel='stylesheet' type='text/css' />
 
     <!-- emoji -->
     <link rel="stylesheet" href="css/emoji.css" type='text/css'/>
@@ -212,7 +213,7 @@
                     </div>
                 </ul>
 
-                <ul class="comment-list comment-extra"  id="extra">
+                <ul class="user_manager_class" id="extra">
                     <?php
                         include_once "include/module/delete_comment_module.php";
                         include_once "include/service/delete_comment_service.php";
