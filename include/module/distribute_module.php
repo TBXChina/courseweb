@@ -43,12 +43,12 @@
             $size = count($files);
             for ( $i = 1; $i <= $size; $i++ ) {
                 $str .= $prefix."    <input type = \"radio\" name = \"".
-                        self::$SAVEFILENAME."\" value = \"《概率论与随机过程》大作业".
+                        self::$SAVEFILENAME."\" value = \"Assignment_".
                         $i."\" required>$i\n";
             }
             $size++;
             $str     .= $prefix."    <input type = \"radio\" name = \"".
-                        self::$SAVEFILENAME."\" value = \"《概率论与随机过程》大作业".
+                        self::$SAVEFILENAME."\" value = \"Assignment_".
                         $size."\" checked = \"true\" required>$size (New)\n";
             $str     .= $prefix."    <p>assignment to distribute</p>\n";
             $str     .= $prefix."    <input type = \"file\" name = \"".
