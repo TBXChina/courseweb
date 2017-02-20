@@ -344,6 +344,9 @@ padding: 2em;
 margin: 3em 0;
 list-style: none;
 }
+ul.comment-list td {
+    padding: 10px;
+}
 h5.post-author_head {
 font-size: 1.3em;
 color: #848484;
