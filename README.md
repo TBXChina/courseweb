@@ -70,6 +70,10 @@ copy the configure:
 ```
 cp php.ini-development /usr/local/lib/php.ini
 ```
+change a configure in php.ini,
+```
+upload_max_filesize = 30M  //any size you need
+```
 modify the configure of apache, add:
 ```
 LoadModule php5_module modules/libphp5.so
