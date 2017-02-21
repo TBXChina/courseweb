@@ -48,7 +48,11 @@
     <script src="js/owl.carousel.js" type="text/javascript"></script>
     <script src="js/script.js" type="text/javascript"></script>
     <script src="js/slow_move.js" type="text/javascript"></script>
+    <script src="js/browser.js" type="text/javascript"></script>
     <script type="text/javascript" src = "http://webapi.amap.com/maps?v=1.3&key=e36412affa2229780f8d052a3249de45"></script>
+    <script>
+        getOs();
+    </script>
 </head>
 
 <body>

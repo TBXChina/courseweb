@@ -63,6 +63,10 @@
     <script src="js/ajax.js" type="text/javascript"></script>
     <script src="js/slow_move.js" type="text/javascript"></script>
     <script src="js/discuss_board.js" type="text/javascript"></script>
+    <script src="js/browser.js" type="text/javascript"></script>
+    <script>
+        getOs();
+    </script>
     <?php
         include_once "include/service/discuss_board_js_service.php";
         Log::RawEcho("<!-- Ajax -->\n");
