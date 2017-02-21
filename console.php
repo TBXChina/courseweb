@@ -41,7 +41,9 @@
     <link href="css/font_icon/css/pe-icon-7-stroke.css" rel="stylesheet"  type='text/css'/>
     <link href="css/font_icon/css/helper.css" rel="stylesheet" type='text/css'/>
     <link href="css/discuss_board.css" rel='stylesheet' type='text/css' />
-    <link href="css/font.css" rel='stylesheet' type='text/css' />
+    <link href="css/OS.css" rel='stylesheet' type='text/css' />
+    <link href="css/TW.css" rel='stylesheet' type='text/css' />
+    <link href="css/googleFont.css" rel='stylesheet' type='text/css' />
 
     <!-- emoji -->
     <link rel="stylesheet" href="css/emoji.css" type='text/css'/>

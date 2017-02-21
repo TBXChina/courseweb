@@ -26,7 +26,9 @@
     <link rel="stylesheet" href="css/owl.carousel.css" type='text/css'/>
     <link rel="stylesheet" href="css/owl.theme.css" type='text/css'/>
     <link rel="stylesheet" href="css/animate.css" type='text/css'/>
-    <link rel="stylesheet" href="css/font.css" type='text/css'/>
+    <link rel="stylesheet" href="css/OS.css" type='text/css'/>
+    <link rel="stylesheet" href="css/TW.css" type='text/css'/>
+    <link rel="stylesheet" href="css/googleFont.css" type='text/css'/>
     <!-- <link rel="stylesheet" href="css/style_contact.css" type='text/css'/> -->
 
     <!-- emoji -->
