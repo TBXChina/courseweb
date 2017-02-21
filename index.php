@@ -18,8 +18,6 @@
     <!-- stylesheets -->
     <link rel='stylesheet' href="css/bootstrap.css" type='text/css' />
     <link rel='stylesheet' href="css/style.css" type='text/css' />
-    <link rel="stylesheet" href="css/TW.css" type='text/css'/>
-    <link rel='stylesheet' href="css/OS.css" type='text/css'/>
     <link rel="stylesheet" href="css/font_icon/css/pe-icon-7-stroke.css" type='text/css'/>
     <link rel="stylesheet" href="css/font_icon/css/helper.css" type='text/css'/>
     <link rel='stylesheet' href="css/style_animate_part.css" type='text/css' />
@@ -28,8 +26,8 @@
     <link rel="stylesheet" href="css/owl.carousel.css" type='text/css'/>
     <link rel="stylesheet" href="css/owl.theme.css" type='text/css'/>
     <link rel="stylesheet" href="css/animate.css" type='text/css'/>
+    <link rel="stylesheet" href="css/font.css" type='text/css'/>
     <!-- <link rel="stylesheet" href="css/style_contact.css" type='text/css'/> -->
-    <link rel='stylesheet' href='css/googleFont.css' type='text/css'/>
 
     <!-- emoji -->
     <link rel="stylesheet" href="css/emoji.css" type='text/css'/>
