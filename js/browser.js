@@ -16,7 +16,7 @@ function getOs()
     } else if(isMozilla=navigator.userAgent.indexOf("Gecko/")>0){
         OsObject = "Gecko";
     }
-    if ("MSIE" == OsObject) {
+    if ("" == OsObject || "MSIE" == OsObject) {
         var msg = "您的浏览器是ie内核，不支持本网站部分功能，推荐使用Chrome，Firefox，\n或者双核浏览器中的极速内核.\n\n" +
               "以360安全浏览器为例，如何切换浏览器内核\n" +
               "点击确认前往教程." +
