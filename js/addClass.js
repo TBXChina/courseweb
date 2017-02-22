@@ -3,7 +3,8 @@ $(function(){
   var username = $(".contact-right").find("input").eq(0);
   username.addClass("name");
   //UpLoad
-  var upLoadInput = $(".desc form").find("input").eq(4);
+  var uploadlist = $(".desc form").find("input");
+  var upLoadInput = uploadlist.eq(uploadlist.length - 1);
   upLoadInput.addClass("button green");
   //homework lists :Download and Delete
   var list = $("#list").find("input");
