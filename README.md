@@ -73,6 +73,7 @@ cp php.ini-development /usr/local/lib/php.ini
 change a configure in php.ini,
 ```
 upload_max_filesize = 30M  //any size you need
+post_max_size = 0M
 ```
 modify the configure of apache, add:
 ```
