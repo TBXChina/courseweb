@@ -6,6 +6,7 @@
     include_once "include/module/homework_list_module.php";
     include_once "include/service/download_service.php";
     include_once "include/module/assignments_module.php";
+    include_once "include/service/assignments_service.php";
 
     $sessionService = new SessionService(Web::GetCurrentPage());
     $sessionService->Run();
@@ -24,9 +25,9 @@
     $downloadService_4_homeworlist->Run();
     //2. assignment download
     $assignDir = Configure::$ASSIGNMENTDIR;
-    $downloadService_4_assigments = new DownloadService(AssignmentsModule::GetDownloadButton(),
-                                                        AssignmentsModule::GetFileName(),
-                                                        $assignDir);
+    $downloadService_4_assigments = new AssignmentsDownloadService(AssignmentsModule::GetDownloadButton(),
+                                                                   AssignmentsModule::GetFileName(),
+                                                                   $assignDir);
     $downloadService_4_assigments->Run();
 ?>
 <!DOCTYPE html>
@@ -80,7 +81,7 @@
     <div class="header">
         <div class="container">
             <div class="header-logo">
-                <h1><a href="<?php Log::RawEcho(Web::GetLoginPage()); ?>">Visg</a></h1>
+                <h1><a href="<?php Log::RawEcho(Web::GetLoginPage()); ?>">VISG</a></h1>
             </div>
             <div class="top-nav">
                 <ul class="nav1">

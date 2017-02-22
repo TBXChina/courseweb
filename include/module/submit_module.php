@@ -5,6 +5,7 @@
     include_once "include/common/user.php";
     include_once "include/common/web.php";
     include_once "include/common/homework.php";
+    include_once "include/common/assignment.php";
 
     //submit what you want
     class SubmitModule implements Module {
@@ -35,9 +36,9 @@
 
         public function Display() {
             $prefix = Fun::NSpaceStr($this->spaceNum);
-            $RETURN_VALUE_CONTAIN_SUBDIR = false;
-            $files = File::LS($this->assignDir, $RETURN_VALUE_CONTAIN_SUBDIR);
-            if ( 0 == count($files) ) {
+            $maxNo = AssignmentFactory::QueryMaxNo();
+            $assignments = AssignmentFactory::Find(0, $maxNo + 1);
+            if ( is_null($assignments) || empty($assignments) ) {
                 Log::Echo2Web($prefix."<p>You can't submit your homework because no assignment available.</p>");
                 return;
             }
@@ -46,13 +47,13 @@
                         Web::GetCurrentPage().
                         "\" method = \"post\">\n";
             $str      .= $prefix."    <p>Choose No.</p>\n";
-            $size = count($files);
             $with_document_type = false;
-            for ( $i = 1; $i <= $size; $i++ ) {
-                $homework = new Homework($this->user->GetId(), $i);
+            foreach ( $assignments as $a ) {
+                $homework = new Homework($this->user->GetId(), $a->GetNo());
                 $str .= $prefix."    <input type = \"radio\" name = \"".
                         self::$SAVEFILENAME."\" value = \"".
-                        $homework->GetHomeworkName($with_document_type)."\" required>$i\n";
+                        $homework->GetHomeworkName($with_document_type).
+                        "\" required>".$a->GetNo()."\n";
             }
             $str     .= $prefix."    <p>Assignment to submit.</p><br>\n";
             $str     .= $prefix."    <input type = \"file\" name = \"".

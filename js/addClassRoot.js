@@ -1,4 +1,3 @@
-
 $(function(){
   //Hello part
   var signOut = $(".recent").find("input").eq(0);
@@ -45,6 +44,4 @@ $(function(){
   //Reset All System part
   var ResetInput = $("#reset").find("input");
   ResetInput.eq(ResetInput.length-1).addClass("button red small");
-
-
 })

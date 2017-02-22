@@ -56,10 +56,12 @@
                 $str   .= $prefix."        </li>\n";
             }
             $str       .= $prefix."    </ul><br>\n";
-            $str       .= $prefix."    <input type = \"submit\" name = \"".
+            $str       .= $prefix."    <input type = \"submit\" ".
+                          "id = \"Assignment_download\" name = \"".
                           self::$DOWNLOAD."\" value = \"Download\">\n";
             if ( Admin::GetRole() == $this->user->GetRole() ) {
-                $str   .= $prefix."    <input type = \"submit\" name = \"".
+                $str   .= $prefix."    <input type = \"submit\" ".
+                          "id = \"Assignment_delete\" name = \"".
                           self::$DELETE."\" value = \"Delete\">\n";
             }
             $str       .= $prefix."</form>\n";
