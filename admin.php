@@ -9,6 +9,7 @@
     include_once "include/service/export_homework_service.php";
     include_once "include/service/query_homework_service.php";
     include_once "include/module/assignments_module.php";
+    include_once "include/service/assignments_service.php";
 
     $sessionService = new SessionService(Web::GetCurrentPage());
     $sessionService->Run();
@@ -37,9 +38,9 @@
 
     //3. download for assignment download
     $assignDir = Configure::$ASSIGNMENTDIR;
-    $downloadService_4_assigments = new DownloadService(AssignmentsModule::GetDownloadButton(),
-                                                        AssignmentsModule::GetFileName(),
-                                                        $assignDir);
+    $downloadService_4_assigments = new AssignmentsDownloadService(AssignmentsModule::GetDownloadButton(),
+                                                                   AssignmentsModule::GetFileName(),
+                                                                   $assignDir);
     $downloadService_4_assigments->Run();
 ?>
 <!DOCTYPE html>
@@ -124,14 +125,16 @@
                             <?php
                                 include_once "include/module/distribute_module.php";
                                 include_once "include/service/upload_service.php";
+                                include_once "include/service/distribute_service.php";
                                 Log::RawEcho("<!-- Distribute Module -->\n");
-                                //start up upload service
+                                //start up distribute service
                                 $saveDir = Configure::$ASSIGNMENTDIR;
-                                $uploadService = new UploadService(DistributeModule::GetUploadButton(),
-                                                                   DistributeModule::GetFileName(),
-                                                                   DistributeModule::GetSaveFileName(),
-                                                                   $saveDir);
-                                if ( $uploadService->Run() ) {
+                                $distributeService = new DistributeService($user->GetId(),
+                                                                           DistributeModule::GetUploadButton(),
+                                                                           DistributeModule::GetFileName(),
+                                                                           DistributeModule::GetSaveFileName(),
+                                                                           $saveDir);
+                                if ( $distributeService->run() ) {
                                     Log::Echo2Web("<p>Upload success</p>");
                                 }
                                 //display the form
@@ -205,9 +208,9 @@
                             Log::RawEcho("<!-- Assignments Module -->\n");
                             $assignmentDir = Configure::$ASSIGNMENTDIR;
                             //delete service
-                            $deleteService_4_assignment = new DeleteService(AssignmentsModule::GetDeleteButton(),
-                                                                            AssignmentsModule::GetFileName(),
-                                                                            $assignmentDir);
+                            $deleteService_4_assignment = new AssignmentsDeleteService(AssignmentsModule::GetDeleteButton(),
+                                                                                       AssignmentsModule::GetFileName(),
+                                                                                       $assignmentDir);
                             if ( true == $deleteService_4_assignment->Run() ) {
                                 Log::Echo2Web("<p>Delete File success.</p>");
                             }

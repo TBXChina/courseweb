@@ -4,13 +4,14 @@
     include_once "include/common/fun.php";
     include_once "include/common/file.php";
     include_once "include/common/user.php";
+    include_once "include/common/assignment.php";
 
     //Show the asssignment
     class AssignmentsModule implements Module {
         private $spaceNum;
         private $assignDir;
         private $user;
-        static private $FILENAME = "AssignmentModule_FileName";
+        static private $FILENAME = "AssignmentNo";
         static private $DOWNLOAD = "AssignmentModule_Download";
         static private $DELETE   = "AssignmentModule_Delete";
 
@@ -34,22 +35,24 @@
 
         public function Display() {
             $prefix     = Fun::NSpaceStr($this->spaceNum);
-            $RETURN_VALUE_CONTAIN_SUBDIR = false;
-            $files = File::LS($this->assignDir, $RETURN_VALUE_CONTAIN_SUBDIR);
-            if ( 0 == count($files) ) {
+            $maxNo = AssignmentFactory::QueryMaxNo();
+            $assignments = AssignmentFactory::Find(0, $maxNo + 1);
+            if ( is_null($assignments) || empty($assignments) ) {
                 Log::Echo2Web($prefix."<p>No Assignment Available.</p>");
                 return;
             }
+
             $str        = $prefix."<form action = \"".
                           htmlspecialchars($_SERVER["PHP_SELF"]).
                           "\" method = \"post\">\n";
             $str       .= $prefix."    <ul>\n";
-            foreach ( $files as $f ) {
+            foreach ( $assignments as $a ) {
+                $no = $a->GetNo();
                 $str   .= $prefix."        <li>\n";
                 $str   .= $prefix."            <input type = \"radio\" name = \"".
                           self::$FILENAME."\" value = \"".
-                          $f."\" required>".
-                          $f."\n";
+                          $no."\" required>".
+                          $a->GetName().".".$a->GetDocumentType()."\n";
                 $str   .= $prefix."        </li>\n";
             }
             $str       .= $prefix."    </ul><br>\n";

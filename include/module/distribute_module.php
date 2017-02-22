@@ -4,6 +4,7 @@
     include_once "include/common/log.php";
     include_once "include/common/fun.php";
     include_once "include/common/web.php";
+    include_once "include/common/assignment.php";
 
     //distribute new assignment
     class DistributeModule implements Module {
@@ -34,21 +35,23 @@
         }
 
         public function Display() {
+            $size = AssignmentFactory::QueryMaxNo();
+            if ( is_null($size) ) {
+                $size = 0;
+            }
+
             $prefix = Fun::NSpaceStr($this->spaceNum);
-            $RETURN_VALUE_CONTAIN_SUBDIR = false;
-            $files = File::LS($this->assignDir, $RETURN_VALUE_CONTAIN_SUBDIR);
             $str      = $prefix."<form enctype = \"multipart/form-data\" action = \"".
                         Web::GetCurrentPage()."\" method = \"post\">\n";
             $str     .= $prefix."    <p>This is No.</p>\n";
-            $size = count($files);
             for ( $i = 1; $i <= $size; $i++ ) {
                 $str .= $prefix."    <input type = \"radio\" name = \"".
-                        self::$SAVEFILENAME."\" value = \"Assignment_".
+                        self::$SAVEFILENAME."\" value = \"".
                         $i."\" required>$i\n";
             }
             $size++;
             $str     .= $prefix."    <input type = \"radio\" name = \"".
-                        self::$SAVEFILENAME."\" value = \"Assignment_".
+                        self::$SAVEFILENAME."\" value = \"".
                         $size."\" checked = \"true\" required>$size (New)\n";
             $str     .= $prefix."    <p>assignment to distribute</p>\n";
             $str     .= $prefix."    <input type = \"file\" name = \"".

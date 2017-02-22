@@ -139,6 +139,14 @@
                               "create success",
                               "create failed");
 
+            //assignment table
+            $newAssignmentTable = new TableManager($newDB, NewConfigure::$ASSIGNMENTTABLE);
+            Log::Echo2Web("<h3>Create Assignment table.</h3>");
+            $newTableSql = "no int not null, primary key(no), user_id varchar(15), document_type varchar(10), time char(20)";
+            Log::EchoByStatus(true == $newAssignmentTable->CreateNewTable($newTableSql),
+                              "create success",
+                              "create failed");
+
             //import the student and admin users list
             $this->SeparatorLine();
             Log::Echo2Web("<h3>Import admin and student into the system.</h3>");
@@ -155,8 +163,8 @@
             }
             $propArray = Array("id", "name", "password", "role", "last_access_time");
             $last_access_time = "";
-            Log::Echo2Web("<h4>Import Student Name List...</h4>");
-            foreach ( $studentUsers as $u) {
+            Log::Echo2Web("<h4>Import Admin Name List...</h4>");
+            foreach ( $adminUsers as $u) {
                 $valueArray = Array($u->GetId(),
                                     $u->GetName(),
                                     $u->GetPassword(),
@@ -170,8 +178,8 @@
                     exit(0);
                 }
             }
-            Log::Echo2Web("<h4>Import Admin Name List...</h4>");
-            foreach ( $adminUsers as $u) {
+            Log::Echo2Web("<h4>Import Student Name List...</h4>");
+            foreach ( $studentUsers as $u) {
                 $valueArray = Array($u->GetId(),
                                     $u->GetName(),
                                     $u->GetPassword(),

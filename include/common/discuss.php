@@ -111,6 +111,9 @@
         }
 
         static public function Query($id) {
+            if ( is_null($id) || empty($id) ) {
+                return null;
+            }
             $tableManager = TableManagerFactory::Create(Configure::$DISCUSSTABLE);
             $propArray = Array("id");
             $valueArray = Array($id);

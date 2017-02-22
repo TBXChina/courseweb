@@ -28,9 +28,9 @@
 
         public function Display() {
             $prefix = Fun::NspaceStr($this->spaceNum);
-            $RETURN_VALUE_CONTAIN_SUBDIR = false;
-            $files = File::LS($this->assignDir, $RETURN_VALUE_CONTAIN_SUBDIR);
-            if ( 0 == count($files) ) {
+            $maxNo = AssignmentFactory::QueryMaxNo();
+            $assignments = AssignmentFactory::Find(0, $maxNo + 1);
+            if ( is_null($assignments) || empty($assignments) ) {
                 Log::Echo2Web($prefix."<p>No Homework to export because you haven't distribute any assignment.</p>");
                 return;
             }
@@ -38,11 +38,11 @@
             $str = $prefix."<form action = \"".
                    Web::GetCurrentPage()."\" method = \"post\">\n";
             $str .= $prefix."    <p>Choose No.</p>\n";
-            $size = count($files);
-            for ( $i = 1;  $i <= $size ; $i++) {
+            foreach ( $assignments as $a ) {
+                $assignment_no = $a->GetNo();
                 $str .= $prefix."    <input type = \"radio\" name = \"".
                         self::$NO."\" value = \"".
-                        $i."\" required>$i\n";
+                        $assignment_no."\" required>$assignment_no\n";
             }
             $str .= $prefix."    <p>Homework to export.</p><br>\n";
             $str .= $prefix."    <input type = \"submit\" name = \"".

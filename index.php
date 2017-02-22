@@ -186,7 +186,7 @@
     <div>
         <div class="moreDetails">
             <h2 class="con-title">Contact Us</h2>
-            <p>Authors: <?php Log::RawEcho(Configure::$AUTHORS); ?></p>
+            <p>Teaching Assistant: Binbin Song, Li Shi, Jie Fang, Siyuan Bei</p>
             <ul class="address">
                 <li>
                     <i class="pe-7s-map-marker"></i>
@@ -213,6 +213,7 @@
                     </span>
                 </li>
             </ul>
+            <p>Website Authors: <?php Log::RawEcho(Configure::$AUTHORS); ?></p>
         </div><!-- moreDetails -->
     </div><!-- row -->
 </div><!-- container -->
