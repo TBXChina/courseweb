@@ -52,7 +52,7 @@
                            self::$FILENAME."\" value = \"".
                            $f."\" required>".
                            $f."</td>\n";
-                $str    .= $prefix."            <td>".
+                $str    .= $prefix."            <td align = \"center\">".
                            date("Y-m-d H:i:s", filectime($this->homeDir."/".$f)).
                            "</td>\n";
                 $str    .= $prefix."            <td align = \"center\">".

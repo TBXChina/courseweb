@@ -58,15 +58,25 @@
                                     ") have submitted homework:</h3>\n";
                         $str     .= $prefix."<form action = \"".
                                     Web::GetCurrentPage()."\" method = \"post\">\n";
-                        $str     .= $prefix."    <ul>\n";
+                        $str     .= $prefix."    <table border = \"1\" border-spacing = \"100\">\n";
+                        $str     .= $prefix."        <tr>\n";
+                        $str     .= $prefix."            <td align = \"center\">Name</td>\n";
+                        $str     .= $prefix."            <td align = \"center\">Upload Time</td>\n";
+                        $str     .= $prefix."            <td align = \"center\">Size (MB)</td>\n";
+                        $str     .= $prefix."        </tr>\n";
                         foreach ($files as $f) {
-                            $str .= $prefix."        <li>\n";
-                            $str .= $prefix."            <input type = \"radio\" name = \"".
+                            $filepath = File::Trim($user->GetStoreDir())."/".$f;
+                            $str .= $prefix."        <tr>\n";
+                            $str .= $prefix."            <td><input type = \"radio\" name = \"".
                                     self::$FILENAME."\" value = \"".
-                                    $f."\" required>".$f."\n";
-                            $str .= $prefix."        </li>\n";
+                                    $f."\" required>".$f."</td>\n";
+                            $str .= $prefix."            <td align = \"center\">".
+                                    date("Y-m-d H:i:s", filectime($filepath))."</td>\n";
+                            $str .= $prefix."            <td align = \"center\">".
+                                    Fun::Byte2MB(filesize($filepath))."</td>\n";
+                            $str .= $prefix."        </tr>\n";
                         }
-                        $str     .= $prefix."    </ul>\n";
+                        $str     .= $prefix."    </table>\n";
                         $str     .= $prefix."    <input type = \"submit\" name = \"".
                                     self::$DOWNLOAD."\" value = \"Download\">\n";
                         $str     .= $prefix."    <input type = \"submit\" name = \"".
@@ -78,7 +88,7 @@
                         $info2NextPage = new PassInfoBetweenPage();
                         $info2NextPage->SetInfo(self::$STODEDIR, $user->GetStoreDir());
                     } else {
-                        Log::Echo2Web("null");
+                        Log::Echo2Web("Student: ".$id." isn't in our system");
                     }
                 } else {
                     Log::Echo2Web("Require User ID.");
