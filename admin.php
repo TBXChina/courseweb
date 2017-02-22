@@ -36,12 +36,20 @@
         $downloadService_4_queryhomework->Run();
     }
 
-    //3. download for assignment download
+    //3. download for assignment
     $assignDir = Configure::$ASSIGNMENTDIR;
     $downloadService_4_assigments = new AssignmentsDownloadService(AssignmentsModule::GetDownloadButton(),
                                                                    AssignmentsModule::GetFileName(),
                                                                    $assignDir);
     $downloadService_4_assigments->Run();
+
+    //4. delete for assignment
+    $assignmentDir = Configure::$ASSIGNMENTDIR;
+    //delete service
+    $deleteService_4_assignment = new AssignmentsDeleteService(AssignmentsModule::GetDeleteButton(),
+                                                               AssignmentsModule::GetFileName(),
+                                                               $assignmentDir);
+    $deleteService_4_assignment_result = $deleteService_4_assignment->Run();
 ?>
 <!DOCTYPE html>
 <html>
@@ -207,11 +215,7 @@
                             include_once "include/service/delete_service.php";
                             Log::RawEcho("<!-- Assignments Module -->\n");
                             $assignmentDir = Configure::$ASSIGNMENTDIR;
-                            //delete service
-                            $deleteService_4_assignment = new AssignmentsDeleteService(AssignmentsModule::GetDeleteButton(),
-                                                                                       AssignmentsModule::GetFileName(),
-                                                                                       $assignmentDir);
-                            if ( true == $deleteService_4_assignment->Run() ) {
+                            if ( true == $deleteService_4_assignment_result ) {
                                 Log::Echo2Web("<p>Delete File success.</p>");
                             }
                             $assignmentsModule = new AssignmentsModule(24, $assignmentDir, $user);
