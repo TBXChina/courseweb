@@ -48,6 +48,10 @@
                     return;
                 }
                 $id = Fun::ProcessUserId($_POST[$this->userId]);
+                if ( !is_null(UserFactory::Query($id)) ) {
+                    Log::Echo2Web("Error! User: ".$id." is already in our system.<br>\n");
+                    return false;
+                }
                 $role = $_POST[$this->userRole];
                 $user = UserFactory::Create($role, $id);
                 $user->SetName($_POST[$this->userName]);
