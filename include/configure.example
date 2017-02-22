@@ -58,8 +58,8 @@
             self::$CONSOLEPAGE          = "/".self::$COURSE_DIR_NAME."/console.php";
             self::$ADMINCONSOLEPAGE     = "/".self::$COURSE_DIR_NAME."/admin.php";
             self::$INITIALIZATIONPAGE   = "/".self::$COURSE_DIR_NAME."/initialization.php";
-            self::$ROOT_DIR             = "/usr/local/apache2/htdocs/courseweb";
-            self::$STORE_DIR            = "/home/tbx/".self::$COURSE;
+            self::$ROOT_DIR             = "/usr/local/apache2/htdocs/".self:$COURSE;
+            self::$STORE_DIR            = "/home/yourname/".self::$COURSE;
             self::$ADMIN_DIR            = self::$STORE_DIR."/admin";
             self::$STUDENT_DIR          = self::$STORE_DIR."/student";
             self::$SHARED_DIR           = self::$STORE_DIR."/shared";
@@ -68,7 +68,7 @@
             self::$ADMINNAMELISTFILE    = self::$STORE_DIR."/admin_namelist.txt";
             self::$DBHOST               = "127.0.0.1";
             self::$DBUSER               = "root";
-            self::$DBPWD                = "tbx";
+            self::$DBPWD                = "password";
             self::$DBNAME               = "ProbabilityTheoryDatabase";
             self::$USERTABLE            = "UserTable";
             self::$NEWSTABLE            = "NewsTable";

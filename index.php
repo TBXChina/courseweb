@@ -59,7 +59,7 @@
 <div class="header">
     <div class="container">
         <div class="header-logo">
-            <h1><a href="<?php Log::RawEcho(Web::GetLoginPage()); ?>">Visg</a></h1>
+            <h1><a href="<?php Log::RawEcho(Web::GetLoginPage()); ?>">VISG</a></h1>
         </div>
         <div class="top-nav">
             <ul class="nav1">

@@ -53,13 +53,13 @@
             self::$COURSE               = "ProbabilityTheory";
             self::$COURSE_DIR_NAME      = "courseweb";
             self::$COURSE_EMAIL         = "probability2017@163.com";
-            self::$URL                  = "http://127.0.0.1/".self::$COURSE_DIR_NAME;
+            self::$URL                  = "http://******************/".self::$COURSE_DIR_NAME;
             self::$LOGINPAGE            = "/".self::$COURSE_DIR_NAME."/index.php";
             self::$CONSOLEPAGE          = "/".self::$COURSE_DIR_NAME."/console.php";
             self::$ADMINCONSOLEPAGE     = "/".self::$COURSE_DIR_NAME."/admin.php";
             self::$INITIALIZATIONPAGE   = "/".self::$COURSE_DIR_NAME."/initialization.php";
-            self::$ROOT_DIR             = "/usr/local/apache2/htdocs/courseweb";
-            self::$STORE_DIR            = "/home/tbx/".self::$COURSE;
+            self::$ROOT_DIR             = "*************************".self::$COURSE;
+            self::$STORE_DIR            = "*************************".self::$COURSE;
             self::$ADMIN_DIR            = self::$STORE_DIR."/admin";
             self::$STUDENT_DIR          = self::$STORE_DIR."/student";
             self::$SHARED_DIR           = self::$STORE_DIR."/shared";
@@ -68,7 +68,7 @@
             self::$ADMINNAMELISTFILE    = self::$STORE_DIR."/admin_namelist.txt";
             self::$DBHOST               = "127.0.0.1";
             self::$DBUSER               = "root";
-            self::$DBPWD                = "tbx";
+            self::$DBPWD                = "****************************";
             self::$DBNAME               = "ProbabilityTheoryDatabase";
             self::$USERTABLE            = "UserTable";
             self::$NEWSTABLE            = "NewsTable";
@@ -76,7 +76,7 @@
             self::$ASSIGNMENTTABLE       = "AssignmentTable";
             self::$UPLOAD_FILE_MAX      = 20971520;
             self::$SESSION_VALID_TIME   = 1000;
-            self::$SALT                 = "6Ut!4Q";
+            self::$SALT                 = "***************************";
         }
     }
     NewConfigure::Init();
