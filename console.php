@@ -81,12 +81,11 @@
     <div class="header">
         <div class="container">
             <div class="header-logo">
-                <h1><a href="<?php Log::RawEcho(Web::GetLoginPage()); ?>">VISG</a></h1>
+                <h1>VISG</h1>
             </div>
             <div class="top-nav">
                 <ul class="nav1">
                     <span><a href="<?php Log::RawEcho(Web::GetLoginPage()); ?>" class="house"> </a></span>
-                    <li><a href="#"><?php Log::RawEcho($user->GetName()); ?></a></li>
                     <li><a href="#submit" id="askSubmit">SUBMIT</a></li>
                     <li><a href="#list" id="askList">LIST</a></li>
                     <li><a href="#assignments" id="askAssignments">ASSIGNMENTS</a></li>
