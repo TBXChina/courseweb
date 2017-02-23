@@ -295,7 +295,8 @@
                         $deleteUserModule = new DeleteUserModule(20);
                         $deleteUserModule->Display();
                         //service
-                        $deleteUserService = new DeleteUserService(DeleteUserModule::GetDeleteUserButton(),
+                        $deleteUserService = new DeleteUserService($user,
+                                                                   DeleteUserModule::GetDeleteUserButton(),
                                                                    DeleteUserModule::GetUserId());
                         if ( true == $deleteUserService->Run() ) {
                             Log::Echo2Web("Delete user success");

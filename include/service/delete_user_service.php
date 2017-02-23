@@ -6,12 +6,14 @@
     include_once "include/common/file.php";
 
     class DeleteUserService implements Service {
+        private $currentUser; //point out who is using this service now
         private $deleteButton;
         private $userId;
 
         static private $table_id = "id";
 
-        public function __construct($deleteButton, $userId) {
+        public function __construct($currentUser, $deleteButton, $userId) {
+            $this->currentUser  = $currentUser;
             $this->deleteButton = $deleteButton;
             $this->userId       = $userId;
         }
@@ -23,6 +25,16 @@
                     $user = UserFactory::Query($id);
                     if ( is_null($user) ) {
                         Log::Echo2Web("User: ".$id." isn't in our system.");
+                        return false;
+                    }
+
+                    if ( "root" == $user->GetId() ) {
+                        Log::Echo2Web("You can't delete the root Administration.");
+                        return false;
+                    }
+
+                    if ( $user->GetId() == $this->currentUser->GetId() ) {
+                        Log::Echo2Web("You can't delete your self.");
                         return false;
                     }
 
