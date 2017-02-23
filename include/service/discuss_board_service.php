@@ -45,6 +45,10 @@
                         $str .= "<h1>".$user->GetName()."</h1>";
                     } else {
                         $str .= $user->GetName();
+                        if ( Admin::GetRole() == $this->user->GetRole() &&
+                             Admin::GetRole() != $user->GetRole() ) {
+                            $str .= " (".$user->GetId().")";
+                        }
                     }
                     $str .= "</td>\n";
                 }
