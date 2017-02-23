@@ -1,5 +1,5 @@
 # CourseWeb
-courseweb is an open php web framework for 
+courseweb is an open php website for 
 The Probability Theory course.
 
 
