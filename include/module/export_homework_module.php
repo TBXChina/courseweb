@@ -29,6 +29,9 @@
         public function Display() {
             $prefix = Fun::NspaceStr($this->spaceNum);
             $maxNo = AssignmentFactory::QueryMaxNo();
+            if ( is_null($maxNo) ) {
+                $maxNo = -1;
+            }
             $assignments = AssignmentFactory::Find(0, $maxNo + 1);
             if ( is_null($assignments) || empty($assignments) ) {
                 Log::Echo2Web($prefix."<p>No Homework to export because you haven't distribute any assignment.</p>");
