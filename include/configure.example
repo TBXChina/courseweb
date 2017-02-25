@@ -58,7 +58,7 @@
             self::$CONSOLEPAGE          = "/".self::$COURSE_DIR_NAME."/console.php";
             self::$ADMINCONSOLEPAGE     = "/".self::$COURSE_DIR_NAME."/admin.php";
             self::$INITIALIZATIONPAGE   = "/".self::$COURSE_DIR_NAME."/initialization.php";
-            self::$ROOT_DIR             = "/usr/local/apache2/htdocs/".self::$COURSE;
+            self::$ROOT_DIR             = "/usr/local/apache2/htdocs/".self::$COURSE_DIR_NAME;
             self::$STORE_DIR            = "yourstorepath".self::$COURSE;
             self::$ADMIN_DIR            = self::$STORE_DIR."/admin";
             self::$STUDENT_DIR          = self::$STORE_DIR."/student";
