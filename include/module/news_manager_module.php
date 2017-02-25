@@ -76,10 +76,12 @@
                         self::$NEWSID."\" >\n";
             for ( $i = ($size - 1); $i >= 0; $i--) {
                 $newsId  = $rs[$i][self::$NEWSTABLE_ID];
-                $newsMsg = $rs[$i][self::$NEWSTABLE_MSG];
+                $newsMsg = Fun::ProcessEmoji($rs[$i][self::$NEWSTABLE_MSG]);
+                /*
                 if ( self::$DISPLAY_LENGTH < strlen($newsMsg) ) {
                     $newsMsg = substr($newsMsg, 0, self::$DISPLAY_LENGTH)."...";
                 }
+                */
                 $str .= $prefix."        <option value = \"".
                         $newsId."\">".$newsMsg."</option>\n";
             }
