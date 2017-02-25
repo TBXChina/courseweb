@@ -35,8 +35,13 @@
 
                 //insert into news table
                 $tableManager = TableManagerFactory::Create(Configure::$NEWSTABLE);
-                $rows = $tableManager->TableRows();
-                $id = $rows + 1;
+                $sqlstr = "select max(id) from ".Configure::$NEWSTABLE;
+                $rs = $tableManager->Execute($sqlstr);
+                $maxId = $rs[0]["max(id)"];
+                if ( is_null($maxId) ) {
+                    $maxId = 0;
+                }
+                $id = $maxId + 1;
                 $msg = Fun::ProcessStr($_POST[$this->newsText]);
                 $time = date("Y-m-d");
                 $propArray = Array(self::$NEWSTABLE_ID,
