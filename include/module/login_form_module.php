@@ -42,8 +42,9 @@
                       "\" placeholder = \"Password: Default password is your Student ID\" required>\n";
             $str   .= $prefix."   <input type = \"submit\" name = \"".
                       self::$LOGIN."\" value = \"Log in\">\n";
-            $str   .= $prefix."</form>";
-            Log::Echo2Web($str);
+            $str   .= $prefix."</form><br>\n";
+            $str   .= $prefix."<b>* Default password is your Student ID.</b>\n";
+            Log::RawEcho($str);
         }
     }
 ?>
