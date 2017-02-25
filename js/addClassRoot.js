@@ -21,7 +21,8 @@ $(function(){
   DistributeInput.eq(DistributeInput.length-1).addClass("button green");
   //Add News in Login Page part
   var ListInput = $("#addnews").find("input");
-  ListInput.eq(ListInput.length-1).addClass("button green");
+  ListInput.eq(ListInput.length-2).addClass("button green");
+  ListInput.eq(ListInput.length-1).addClass("button red");
   //Export Submitted Homework part
   var ExportInput = $("#export").find("input");
   ExportInput.eq(ExportInput.length-1).addClass("button green");

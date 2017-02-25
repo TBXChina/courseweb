@@ -6,20 +6,26 @@
     include_once "include/common/table_manager.php";
 
     //add news to NewsTable
-    class AddNewsService implements Service {
+    class NewsManagerService implements Service {
         private $addButton;
         private $newsText;
+        private $deleteButton;
+        private $newsId;
 
         static private $NEWSTABLE_ID   = "id";
         static private $NEWSTABLE_MSG  ="message";
         static private $NEWSTABLE_TIME = "time";
 
-        public function __construct($addButton, $newsText) {
-            $this->addButton = $addButton;
-            $this->newsText  = $newsText;
+        public function __construct($addButton, $newsText,
+                                    $deleteButton, $newsId) {
+            $this->addButton    = $addButton;
+            $this->newsText     = $newsText;
+            $this->deleteButton = $deleteButton;
+            $this->newsId       = $newsId;
         }
 
         public function Run() {
+            //add news
             if ( isset($_POST[$this->addButton]) ) {
                 if ( !isset($_POST[$this->newsText]) ||
                       empty($_POST[$this->newsText]) ) {
@@ -38,6 +44,20 @@
                                    self::$NEWSTABLE_MSG);
                 $valueArray = Array($id, $time, $msg);
                 return $tableManager->Insert($propArray, $valueArray);
+            }
+            //delete news
+            if ( isset($_POST[$this->deleteButton]) ) {
+                if ( !isset($_POST[$this->newsId]) ||
+                     empty($_POST[$this->newsId]) ) {
+                    Log::Echo2Web("must select one news");
+                    return false;
+                }
+                $id = $_POST[$this->newsId];
+                $prop = self::$NEWSTABLE_ID;
+                $value = $id;
+                //delete news in table
+                $tableManager = TableManagerFactory::Create(Configure::$NEWSTABLE);
+                return $tableManager->Delete($prop, $value);
             }
             return null;
         }

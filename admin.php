@@ -167,23 +167,26 @@
                     <h3 class="post-author_head">Add News in Login Page</h3>
                     <li>
                         <?php
-                            include_once "include/module/add_news_module.php";
-                            include_once "include/service/add_news_service.php";
+                            include_once "include/module/news_manager_module.php";
+                            include_once "include/service/news_manager_service.php";
                             Log::RawEcho("<!-- Add News Module -->\n");
+                            //start up add news service
+                            $newsManagerService = new NewsManagerService(NewsManagerModule::GetAddButton(),
+                                                                         NewsManagerModule::GetNewsText(),
+                                                                         NewsManagerModule::GetDeleteButton(),
+                                                                         NewsManagerModule::GetNewsId());
+                            $rs = $newsManagerService->Run();
+                            //news module
                             $newsTextRows = 5;
                             $newsTextCols = 60;
-                            $addNewsModule = new AddNewsModule(24, $newsTextRows, $newsTextCols);
-                            $addNewsModule->Display();
+                            $newsManagerModule = new NewsManagerModule(24, $newsTextRows, $newsTextCols);
+                            $newsManagerModule->Display();
 
-                            //start up add news service
-                            $addNewsService = new AddNewsService(AddNewsModule::GetAddButton(),
-                                                                 AddNewsModule::GetNewsText());
-                            $rs = $addNewsService->Run();
                             if ( !is_null($rs) ) {
                                 if ( true == $rs ) {
-                                    Log::Echo2Web("<p>Add News Success</p>");
+                                    Log::Echo2Web("<p>News Operation Success</p>");
                                 } else {
-                                    Log::Echo2Web("<p>Add News Fail</p>");
+                                    Log::Echo2Web("<p>News Operation Fail</p>");
                                 }
                             }
                         ?>
