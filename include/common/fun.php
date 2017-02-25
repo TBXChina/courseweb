@@ -26,7 +26,7 @@
                 }
                 $u = UserFactory::Create($role, $id);
                 $u->SetName($name);
-                $u->SetPassword(Fun::ProcessPassword($id));
+                $u->SetPassword(Fun::ProcessPassword_with_new_salt($id));
                 array_push($users, $u);
             }
             return $users;
@@ -73,6 +73,15 @@
             $password = stripslashes($password);
             $password = htmlspecialchars($password);
             $password = Encode::Hash($password);
+            return $password;
+        }
+
+        //process the password with new salt
+        static public function ProcessPassword_with_new_salt($password) {
+            $password = trim($password);
+            $password = stripslashes($password);
+            $password = htmlspecialchars($password);
+            $password = Encode::Hash_with_new_salt($password);
             return $password;
         }
 
