@@ -344,8 +344,8 @@
                         $recentNewsModule->Display();
                     ?>
                     <br>
-                    <h3 id = "discuss_board_title" style="color:#2ad2c9;font-size: 25pt;" onclick = "Switch_DiscussBoard_Display()">+ Discuss Board</h3>
-                    <div id = "control_discuss_board_display" style = "display: none;">
+                    <h3 id = "discuss_board_title" style="color:#2ad2c9;font-size: 25pt;" onclick = "Switch_DiscussBoard_Display()">- Discuss Board</h3>
+                    <div id = "control_discuss_board_display" style = "display: block;">
                         <?php
                             include_once "include/module/discuss_board_module.php";
                             Log::RawEcho("<!-- discuss board module -->\n");
